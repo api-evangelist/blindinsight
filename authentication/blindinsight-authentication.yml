@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/blindinsight-openapi-original.yml
+docs: https://docs.blindinsight.io/api-reference/authentication/
+notes: >-
+  Three authentication methods are documented. JWT Bearer is recommended for
+  production: obtain a token pair via POST /api/token/, send the access token as
+  `Authorization: Bearer <access_token>`, and refresh via POST /api/token/refresh/.
+  HTTP Basic sends `Authorization: Basic <base64(email:password)>` on every request
+  and is the default used by the local Blind Proxy and the blind-ml library.
+  Session/cookie auth uses a `sessionid` cookie after POST /api/accounts/login/,
+  with a CSRF token from GET /api/csrf/. All endpoints require credentials on every
+  request except the public GET /api/status/ health check.
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - cookie
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/blindinsight-openapi-original.yml
+- name: cookieAuth
+  type: apiKey
+  in: cookie
+  parameter: sessionid
+  sources:
+  - openapi/blindinsight-openapi-original.yml
+- name: jwtAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/blindinsight-openapi-original.yml
