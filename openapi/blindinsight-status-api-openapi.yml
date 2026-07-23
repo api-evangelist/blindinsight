@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts status API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: status
+paths:
+  /api/status/:
+    get:
+      operationId: status_retrieve
+      description: This endpoint is used to check the status of the API. When behind the Blind Proxy, the `behind_proxy` field will be set to true.
+      summary: Retrieve the status of the API
+      tags:
+      - status
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  api_version:
+                    type: string
+                  behind_proxy:
+                    type: boolean
+              examples:
+                ExampleStatusResponse:
+                  value:
+                    status: ok
+                    api_version: 10.22.0
+                    behind_proxy: false
+                  summary: Example status response
+          description: ''
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

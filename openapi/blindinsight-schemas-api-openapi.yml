@@ -1,0 +1,533 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts schemas API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: schemas
+paths:
+  /api/schemas/:
+    get:
+      operationId: schemas_list
+      description: 'List all schemas, filtered by the given parameters. Takes optional pagination
+
+        parameters `limit` and `offset`.
+
+
+        The response will be a list of schema objects.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind schemas list
+
+        ```'
+      summary: List all schemas
+      parameters:
+      - in: query
+        name: dataset
+        schema:
+          type: string
+        description: The dataset that this schema belongs to.
+      - in: query
+        name: description
+        schema:
+          type: string
+        description: A longer description of the schema.
+      - in: query
+        name: id
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: A human-readable name for this schema.
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: slug
+        schema:
+          type: string
+        description: A unique slug for this schema.
+      tags:
+      - schemas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSchemaList'
+          description: ''
+    post:
+      operationId: schemas_create
+      description: 'Create a new schema.
+
+
+        The response will be the newly created schema object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind schemas create --data schema.json
+
+        ```'
+      summary: Create a new schema
+      tags:
+      - schemas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schema'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Schema'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Schema'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+          description: ''
+  /api/schemas/{id}/:
+    get:
+      operationId: schemas_retrieve
+      description: 'Retrieve a single schema by its ID.
+
+
+        The response will be the schema object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind schemas retrieve --id "<schema-id>"
+
+        ```'
+      summary: Retrieve a single schema
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this schema.
+        required: true
+      tags:
+      - schemas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+          description: ''
+    put:
+      operationId: schemas_update
+      description: 'Update an existing schema by its ID, replacing the entire schema.
+
+
+        The response will be the updated schema object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind schemas update --id "<schema-id>" --data schema.json
+
+        ```'
+      summary: Update a schema
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this schema.
+        required: true
+      tags:
+      - schemas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schema'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Schema'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Schema'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+          description: ''
+    patch:
+      operationId: schemas_partial-update
+      description: 'Update an existing schema with only the specified fields.
+
+
+        The response will be the updated schema object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind schemas partial-update --id "<schema-id>" --data schema-update.json
+
+        ```'
+      summary: Partially update a schema
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this schema.
+        required: true
+      tags:
+      - schemas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSchema'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSchema'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSchema'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+          description: ''
+    delete:
+      operationId: schemas_destroy
+      description: 'Delete an existing schema by its ID.
+
+
+        The response will be a 204 No Content if successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind schemas destroy --id "<schema-id>"
+
+        ```'
+      summary: Delete a schema
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this schema.
+        required: true
+      tags:
+      - schemas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/schemas/{id}/teams/:
+    get:
+      operationId: schemas_teams
+      description: 'List the teams for a schema.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind schemas teams --id "<schema-id>"
+
+        ```'
+      summary: List the teams for a schema
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this schema.
+        required: true
+      tags:
+      - schemas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+          description: ''
+  /api/schemas/decrypt/:
+    post:
+      operationId: schemas_decrypt
+      description: '[Blind Insight Proxy] Decrypt a schema and return a hashed schema'
+      summary: Decrypt a schema (only available via proxy)
+      tags:
+      - schemas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - id
+              - owner
+              - name
+              - schema
+              properties:
+                id:
+                  type: string
+                owner:
+                  type: string
+                name:
+                  type: string
+                schema:
+                  type: object
+            examples:
+              SingleSchemaDecryptRequest:
+                value:
+                  id: abcdef012345
+                  owner: https://demo.blindinsight.io/api/users/abcdef012345
+                  name: person
+                  schema:
+                    type: object
+                    required:
+                    - name
+                    - age
+                    properties:
+                      name:
+                        type: string
+                      age:
+                        type: number
+                        minimum: 0
+                        maximum: 100
+                summary: single schema decrypt request
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - id
+              - owner
+              - name
+              - schema
+              properties:
+                id:
+                  type: string
+                owner:
+                  type: string
+                name:
+                  type: string
+                schema:
+                  type: object
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - id
+              - owner
+              - name
+              - schema
+              properties:
+                id:
+                  type: string
+                owner:
+                  type: string
+                name:
+                  type: string
+                schema:
+                  type: object
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  example:
+                    02c77f5019095cbdef089d7e469d676daf9b9:
+                      type: string
+                      name: name
+                      minimum: 0
+                      maximum: 0
+                    179b2b1888f4db01c8203b0be7af5c8b5b83b:
+                      type: number
+                      name: age
+                      minimum: 0
+                      maximum: 100
+              examples:
+                SingleNumericDecryptResponse:
+                  value:
+                    02c77f5019095cbdef089d7e469d676daf9b9:
+                      type: string
+                      name: name
+                      minimum: 0
+                      maximum: 0
+                    179b2b1888f4db01c8203b0be7af5c8b5b83b:
+                      type: number
+                      name: age
+                      minimum: 0
+                      maximum: 100
+                  summary: single numeric decrypt response
+          description: ''
+        '422':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: could not get query key
+                  error: Unprocessable entity
+          description: Proxy decrypt failed
+components:
+  schemas:
+    PaginatedSchemaList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Schema'
+    PatchedSchema:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        dataset:
+          type: string
+          format: uri
+        name:
+          type: string
+          description: A human-readable name for this schema.
+          maxLength: 127
+        slug:
+          type: string
+          description: A unique slug for this schema.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          description: A longer description of the schema.
+          maxLength: 255
+        schema:
+          type: object
+          description: The JSON schema definition.
+    Schema:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        dataset:
+          type: string
+          format: uri
+        name:
+          type: string
+          description: A human-readable name for this schema.
+          maxLength: 127
+        slug:
+          type: string
+          description: A unique slug for this schema.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          description: A longer description of the schema.
+          maxLength: 255
+        schema:
+          type: object
+          description: The JSON schema definition.
+      required:
+      - dataset
+      - id
+      - name
+      - url
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

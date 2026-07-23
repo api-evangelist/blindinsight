@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts blindllm-queries API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: blindllm-queries
+paths:
+  /api/blindllm-queries/:
+    get:
+      operationId: blindllm_queries_list
+      description: "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials."
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - blindllm-queries
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBlindLLMQueryList'
+          description: ''
+    post:
+      operationId: blindllm_queries_create
+      description: "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials."
+      tags:
+      - blindllm-queries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlindLLMQueryCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BlindLLMQueryCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BlindLLMQueryCreate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlindLLMQueryCreate'
+          description: ''
+  /api/blindllm-queries/{id}/:
+    get:
+      operationId: blindllm_queries_retrieve
+      description: "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials."
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Blind LLM query.
+        required: true
+      tags:
+      - blindllm-queries
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlindLLMQuery'
+          description: ''
+components:
+  schemas:
+    PaginatedBlindLLMQueryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BlindLLMQuery'
+    DataModeEnum:
+      enum:
+      - proxy
+      - mock
+      type: string
+      description: '* `proxy` - proxy
+
+        * `mock` - mock'
+    BlindLLMQuery:
+      type: object
+      description: Read-side serializer for `BlindLLMQuery`.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          readOnly: true
+        created_by:
+          type: string
+          readOnly: true
+        prompt:
+          type: string
+          readOnly: true
+          description: The user's question to the analyst.
+        hints:
+          type: object
+          readOnly: true
+          description: Dataset hints extracted from `@<slug>` mentions in the prompt. Passed to the LLM as soft direction; not enforced.
+        response:
+          type: string
+          readOnly: true
+          description: The final narrative returned by the orchestrator.
+        used_tool:
+          type: string
+          readOnly: true
+          description: Comma-separated tool names invoked during this query.
+        schemas_queried:
+          type: object
+          readOnly: true
+          description: '`dataset/schema` strings the LLM ran aggregates against.'
+        tool_payload:
+          type: object
+          readOnly: true
+          description: Tool call payloads keyed by `<tool>:<turn>`.
+        fallback:
+          type: boolean
+          readOnly: true
+          description: True when the orchestrator returned its safe fallback message.
+        fallback_reason:
+          type: string
+          readOnly: true
+          description: If fallback is True, the underlying error message.
+        data_mode:
+          allOf:
+          - $ref: '#/components/schemas/DataModeEnum'
+          readOnly: true
+          description: '`proxy` when the org''s Cloud Proxy was used; `mock` otherwise.
+
+
+            * `proxy` - proxy
+
+            * `mock` - mock'
+        duration_ms:
+          type: integer
+          readOnly: true
+          nullable: true
+          description: Total orchestrator wall-clock duration in milliseconds.
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - created_by
+      - data_mode
+      - duration_ms
+      - fallback
+      - fallback_reason
+      - hints
+      - id
+      - organization
+      - prompt
+      - response
+      - schemas_queried
+      - tool_payload
+      - url
+      - used_tool
+    BlindLLMQueryCreate:
+      type: object
+      description: 'Write-side serializer — caller supplies `organization` + `prompt`.
+
+
+        `@<slug>` mentions in the prompt are parsed server-side into `hints`.
+
+        Optional `model` selects the LLM provider (openai / anthropic / gemini).'
+      properties:
+        organization:
+          type: string
+        prompt:
+          type: string
+          maxLength: 4000
+        model:
+          type: string
+          default: ''
+          maxLength: 64
+      required:
+      - organization
+      - prompt
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

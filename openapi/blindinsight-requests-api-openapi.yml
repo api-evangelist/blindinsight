@@ -1,0 +1,462 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts requests API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: requests
+paths:
+  /api/requests/:
+    get:
+      operationId: requests_list
+      description: List all requests that you have access to.
+      summary: List all requests
+      parameters:
+      - in: query
+        name: created
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: expires
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: field_name
+        schema:
+          type: string
+      - in: query
+        name: fulfilled
+        schema:
+          type: boolean
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: identity
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified
+        schema:
+          type: string
+          format: date-time
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: received
+        schema:
+          type: boolean
+      - in: query
+        name: schema
+        schema:
+          type: string
+      - in: query
+        name: shared
+        schema:
+          type: boolean
+        description: Whether a request has had keys shared or not.
+      tags:
+      - requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRequestList'
+          description: ''
+    post:
+      operationId: requests_create
+      description: Create a new request for keys.
+      summary: Create a new request
+      tags:
+      - requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Request'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Request'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+          description: ''
+  /api/requests/{id}/:
+    get:
+      operationId: requests_retrieve
+      description: Retrieve a single request by its ID.
+      summary: Retrieve a single request
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this request.
+        required: true
+      tags:
+      - requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+          description: ''
+    put:
+      operationId: requests_update
+      description: Update a request by its ID. This completely replaces the object.
+      summary: Update a request
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this request.
+        required: true
+      tags:
+      - requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Request'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Request'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+          description: ''
+    patch:
+      operationId: requests_partial-update
+      description: 'Partially update a request by its ID. This only replaces the specified
+
+        fields.'
+      summary: Partially update a request
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this request.
+        required: true
+      tags:
+      - requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRequest'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+          description: ''
+    delete:
+      operationId: requests_destroy
+      description: Delete a request by its ID.
+      summary: Delete a request
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this request.
+        required: true
+      tags:
+      - requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/requests/{request_id}/fulfill/:
+    post:
+      operationId: requests_fulfill-detail
+      description: '[Blind Insight Proxy] Fulfill a single request'
+      summary: Fulfill a single request
+      parameters:
+      - in: path
+        name: request_id
+        schema:
+          type: string
+          format: uuid
+        description: The request ID to fulfill.
+        required: true
+      tags:
+      - requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Material'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: Could not prepare material
+                  error: Bad request
+          description: The requests were not fulfilled successfully.
+  /api/requests/fulfill/:
+    post:
+      operationId: requests_fulfill-list
+      description: '[Blind Insight Proxy] Fulfill all requests'
+      summary: Fulfill all requests
+      tags:
+      - requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Material'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: Could not prepare material
+                  error: Bad request
+          description: The requests were not fulfilled successfully.
+components:
+  schemas:
+    PaginatedRequestList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Request'
+    Request:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        identity:
+          $ref: '#/components/schemas/Identity'
+        schema:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        field_name:
+          type: string
+          maxLength: 255
+        expires:
+          type: string
+          format: date-time
+        received:
+          type: boolean
+        fulfilled:
+          type: boolean
+      required:
+      - created
+      - expires
+      - field_name
+      - id
+      - identity
+      - modified
+      - schema
+      - url
+    Material:
+      type: object
+      description: Encrypted material object.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        payload:
+          type: string
+          description: The encrypted material.
+          maxLength: 4096
+        signature:
+          type: string
+          description: The signature of the material.
+          maxLength: 4096
+        proof:
+          type: string
+          writeOnly: true
+          maxLength: 64
+          minLength: 64
+        request:
+          type: string
+          format: uri
+        uploaded_by:
+          type: string
+          format: uri
+          description: The identity that uploaded this material.
+      required:
+      - created
+      - id
+      - proof
+      - request
+      - uploaded_by
+      - url
+    PatchedRequest:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        identity:
+          $ref: '#/components/schemas/Identity'
+        schema:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        field_name:
+          type: string
+          maxLength: 255
+        expires:
+          type: string
+          format: date-time
+        received:
+          type: boolean
+        fulfilled:
+          type: boolean
+    Identity:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        user:
+          type: string
+          format: uri
+        device_id:
+          type: string
+          description: The device ID associated with this identity.
+          maxLength: 255
+        primary_public_key:
+          type: string
+          description: The primary PGP key for the identity.
+        sub_public_key:
+          type: string
+          description: The PGP sub-key for the identity.
+      required:
+      - device_id
+      - id
+      - primary_public_key
+      - sub_public_key
+      - url
+      - user
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

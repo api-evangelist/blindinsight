@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts ws API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: ws
+paths:
+  /api/ws/jobs/{job_id}/:
+    get:
+      operationId: jobs_websocket
+      description: 'Connect to a job status websocket by its ID.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind jobs websocket --id "<job-id>"
+
+        ```'
+      summary: Connect to a job status websocket (only available via proxy)
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+          format: uuid
+        description: The job ID to get the status of.
+        required: true
+      tags:
+      - ws
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  processed:
+                    type: integer
+                  total:
+                    type: integer
+                  current_batch:
+                    type: integer
+                  total_batches:
+                    type: integer
+                  error:
+                    type: string
+          description: Job status
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+          description: Job not found
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

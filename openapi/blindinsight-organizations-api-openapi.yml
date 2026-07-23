@@ -1,0 +1,2284 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts organizations API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: organizations
+paths:
+  /api/organizations/:
+    get:
+      operationId: organizations_list
+      description: 'Query for a list of all organizations that the currently authenticated user has
+
+        access to.
+
+
+        The response will be a list of organization objects.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations list
+
+        ```'
+      summary: List organizations
+      parameters:
+      - in: query
+        name: created
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: is_active
+        schema:
+          type: boolean
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: The name of the organization
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: slug
+        schema:
+          type: string
+        description: The name in all lowercase, suitable for URL identification
+      - in: query
+        name: stripe_customer_id
+        schema:
+          type: string
+        description: Stripe customer id mirrored from settings['stripe']; indexed.
+      - in: query
+        name: users
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrganizationList'
+          description: ''
+    post:
+      operationId: organizations_create
+      description: 'Create a new organization. The only required field is `name`. The currently
+
+        authenticated user will be set as the owner of the organization.
+
+
+        The response will be the newly created organization object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations create --data ''{"name": "Example Organization"}''
+
+        ```'
+      summary: Create organization
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrganizationCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrganizationCreate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationCreate'
+          description: ''
+  /api/organizations/{id}/:
+    get:
+      operationId: organizations_retrieve
+      description: 'Retrieve a single organization by its ID.
+
+
+        The response will be the organization object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations retrieve --id "<organization-id>"
+
+        ```'
+      summary: Retrieve organization
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization.
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: ''
+    put:
+      operationId: organizations_update
+      description: 'Replace an organization with the data provided in the request.
+
+
+        The response will be the updated organization object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations update --id "<organization-id>" --data organization.json
+
+        ```'
+      summary: Update organization
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization.
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrganizationUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrganizationUpdate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUpdate'
+          description: ''
+    patch:
+      operationId: organizations_partial-update
+      description: 'Update one or more fields of an organization. This does not replace the entire
+
+        organization, it only updates the fields provided in the request.
+
+
+        The response will be the updated organization object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations partial-update --id "<organization-id>" --data organization-update.json
+
+        ```'
+      summary: Partial update organization
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization.
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationUpdate'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUpdate'
+          description: ''
+    delete:
+      operationId: organizations_destroy
+      description: 'Delete an organization. Note that this does not delete the organization''s
+
+        members or any associated data.
+
+
+        The response will be a 204 No Content if successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations destroy --id "<organization-id>"
+
+        ```'
+      summary: Delete organization
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization.
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/organizations/{id}/dataset/{slug}/:
+    get:
+      operationId: organizations_dataset
+      description: 'Retrieve a single organization dataset by its slug.
+
+
+        The response is the dataset object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations dataset --id "<organization-id>" --slug "<dataset-slug>"
+
+        ```'
+      summary: Retrieve organization dataset by slug
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization.
+        required: true
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: ^[-a-zA-Z0-9_]+$
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: ''
+  /api/organizations/{id}/owner/:
+    get:
+      operationId: organizations_owner
+      description: 'Retrieve a single owner of an organization by its ID.
+
+
+        The response will be the user object of the owner.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations owner --id "<organization-id>"
+
+        ```'
+      summary: Retrieve organization owner
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization.
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: ''
+  /api/organizations/{organization_id}/audit-logs/:
+    get:
+      operationId: organizations_audit_logs_list
+      description: Return a list of all organization audit logs.
+      summary: List organization audit logs
+      parameters:
+      - in: query
+        name: action
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+        description: '* `0` - create
+
+          * `1` - update
+
+          * `2` - delete
+
+          * `3` - access'
+      - in: query
+        name: actor
+        schema:
+          type: string
+      - in: query
+        name: actor_email
+        schema:
+          type: string
+      - in: query
+        name: changes_text
+        schema:
+          type: string
+      - in: query
+        name: cid
+        schema:
+          type: string
+      - in: query
+        name: content_type
+        schema:
+          type: integer
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: object_id
+        schema:
+          type: integer
+      - in: query
+        name: object_pk
+        schema:
+          type: string
+      - in: query
+        name: object_repr
+        schema:
+          type: string
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: remote_addr
+        schema:
+          type: string
+      - in: query
+        name: remote_port
+        schema:
+          type: integer
+      - in: query
+        name: timestamp
+        schema:
+          type: string
+          format: date-time
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAuditLogEntryList'
+          description: ''
+  /api/organizations/{organization_id}/audit-logs/{id}/:
+    get:
+      operationId: organizations_audit_logs_retrieve
+      description: Retrieve a single organization audit log by its ID.
+      summary: Retrieve organization audit log
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this log entry.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditLogEntry'
+          description: ''
+  /api/organizations/{organization_id}/invitations/:
+    get:
+      operationId: organizations_invitations_list
+      description: 'Return a list of all organization invitations, including those which have
+
+        already been accepted.
+
+
+        The response is a list of invitation objects.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations invitations list --organization-id "<organization-id>"
+
+        ```'
+      summary: List organization invitations
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrganizationInvitationList'
+          description: ''
+    post:
+      operationId: organizations_invitations_create
+      description: 'Invite a user to join an organization.
+
+
+        The response is the newly created invitation object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations invitations create --organization-id "<organization-id>" --data organization-invitation.json
+
+        ```'
+      summary: Create organization invitation
+      parameters:
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationInvitationCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrganizationInvitationCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrganizationInvitationCreate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvitationCreate'
+          description: ''
+  /api/organizations/{organization_id}/invitations/{id}/:
+    get:
+      operationId: organizations_invitations_retrieve
+      description: 'Retrieve a single organization invitation by its ID.
+
+
+        The response is the invitation object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations invitations retrieve --organization-id "<organization-id>" --id "<invitation-id>"
+
+        ```'
+      summary: Retrieve organization invitation
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization invitation.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvitation'
+          description: ''
+    put:
+      operationId: organizations_invitations_update
+      description: 'Update an organization invitation.
+
+
+        The response is the updated invitation object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations invitations update --organization-id "<organization-id>" --id "<invitation-id>" --data organization-invitation.json
+
+        ```'
+      summary: Update organization invitation
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization invitation.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationInvitation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrganizationInvitation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrganizationInvitation'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvitation'
+          description: ''
+    patch:
+      operationId: organizations_invitations_partial-update
+      description: 'Update one or more fields of an organization invitation. This does not replace
+
+        the entire invitation, it only updates the fields provided in the request.
+
+
+        The response is the updated invitation object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations invitations partial-update --organization-id "<organization-id>" --id "<invitation-id>" --data organization-invitation-update.json
+
+        ```'
+      summary: Partial update organization invitation
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization invitation.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationInvitation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationInvitation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationInvitation'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvitation'
+          description: ''
+    delete:
+      operationId: organizations_invitations_destroy
+      description: 'Delete an organization invitation.
+
+
+        The response is a 204 No Content if successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations invitations destroy --organization-id "<organization-id>" --id "<invitation-id>"
+
+        ```'
+      summary: Delete organization invitation
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization invitation.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/organizations/{organization_id}/teams/:
+    get:
+      operationId: organizations_teams_list
+      description: List all Team objects that you have access to.
+      summary: List all teams
+      parameters:
+      - in: query
+        name: dataset
+        schema:
+          type: string
+        description: Filter by dataset ID.
+      - in: query
+        name: dataset_slug
+        schema:
+          type: string
+        description: Filter by dataset slug.
+      - in: query
+        name: id
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: members
+        schema:
+          type: array
+          items:
+            type: string
+        description: The users that are members of this team.
+        explode: true
+        style: form
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: A human-readable name for this team.
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: organization
+        schema:
+          type: string
+        description: The organization that this team belongs to.
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+          description: The organization that this team belongs to.
+        required: true
+      - in: query
+        name: schema
+        schema:
+          type: string
+        description: Filter by schema ID.
+      - in: query
+        name: schema_slug
+        schema:
+          type: string
+        description: Filter by schema slug.
+      - in: query
+        name: slug
+        schema:
+          type: string
+        description: A unique slug for this team.
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTeamList'
+          description: ''
+    post:
+      operationId: organizations_teams_create
+      description: Create a new Team object.
+      summary: Create a new team
+      parameters:
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+          description: The organization that this team belongs to.
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Team'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Team'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+          description: ''
+  /api/organizations/{organization_id}/teams/{id}/:
+    get:
+      operationId: organizations_teams_retrieve
+      description: Retrieve a single Team object by its ID.
+      summary: Retrieve a single team
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this team.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+          description: The organization that this team belongs to.
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+          description: ''
+    put:
+      operationId: organizations_teams_update
+      description: Update a Team object by its ID. This completely replaces the object.
+      summary: Update a team
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this team.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+          description: The organization that this team belongs to.
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Team'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Team'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+          description: ''
+    patch:
+      operationId: organizations_teams_partial-update
+      description: Partially update a Team object by its ID. This only replaces the specified fields.
+      summary: Partially update a team
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this team.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+          description: The organization that this team belongs to.
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTeam'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTeam'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTeam'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+          description: ''
+    delete:
+      operationId: organizations_teams_destroy
+      description: Delete a Team object by its ID.
+      summary: Delete a team
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this team.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+          description: The organization that this team belongs to.
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/organizations/{organization_id}/teams/{id}/add_member/:
+    post:
+      operationId: organizations_teams_add-member
+      description: Adds a member to a team if you have permissions to manage that team.
+      summary: Add a member to a team
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this team.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+          description: The organization that this team belongs to.
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                id:
+                  type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                id:
+                  type: string
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                id:
+                  type: string
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                description: The resource was added successfully.
+          description: ''
+  /api/organizations/{organization_id}/teams/{id}/remove_member/:
+    post:
+      operationId: organizations_teams_remove-member
+      description: Removes a member from a team if you have permissions to manage that team.
+      summary: Remove a member from a team
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this team.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+          description: The organization that this team belongs to.
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                id:
+                  type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                id:
+                  type: string
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                id:
+                  type: string
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                description: The resource was deleted successfully.
+          description: ''
+  /api/organizations/{organization_id}/users/:
+    get:
+      operationId: organizations_users_list
+      description: 'Return a list of all users of an organization.
+
+
+        The response is a list of user objects belonging to the organization.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations users list --organization-id "<organization-id>"
+
+        ```'
+      summary: List organization users
+      parameters:
+      - in: query
+        name: created
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: has_identity
+        schema:
+          type: boolean
+        description: Filter by whether the organization user has an identity.
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: is_admin
+        schema:
+          type: boolean
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified
+        schema:
+          type: string
+          format: date-time
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: organization
+        schema:
+          type: string
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: user
+        schema:
+          type: string
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrganizationUserList'
+          description: ''
+    post:
+      operationId: organizations_users_create
+      description: 'Add a new user to an organization.
+
+
+        The response is the newly added user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations users create --organization-id "<organization-id>" --data organization-user.json
+
+        ```'
+      summary: Create organization user
+      parameters:
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationUserCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrganizationUserCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrganizationUserCreate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUserCreate'
+          description: ''
+  /api/organizations/{organization_id}/users/{id}/:
+    get:
+      operationId: organizations_users_retrieve
+      description: 'Retrieve a single user of an organization by their ID.
+
+
+        The response is the user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations users retrieve --organization-id "<organization-id>" --id "<user-id>"
+
+        ```'
+      summary: Retrieve organization user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization user.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUser'
+          description: ''
+    put:
+      operationId: organizations_users_update
+      description: 'Replace a user of an organization with the data provided in the request.
+
+
+        The response is the updated user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations users update --organization-id "<organization-id>" --id "<user-id>" --data organization-user.json
+
+        ```'
+      summary: Update organization user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization user.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationUserUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrganizationUserUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrganizationUserUpdate'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUserUpdate'
+          description: ''
+    patch:
+      operationId: organizations_users_partial-update
+      description: 'Update one or more fields of a user of an organization. This does not replace
+
+        the entire user, it only updates the fields provided in the request.
+
+
+        The response is the updated user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations users partial-update --organization-id "<organization-id>" --id "<user-id>" --data organization-user-update.json
+
+        ```'
+      summary: Partial update organization user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization user.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationUserUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationUserUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganizationUserUpdate'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUserUpdate'
+          description: ''
+    delete:
+      operationId: organizations_users_destroy
+      description: 'Delete a user from an organization.
+
+
+        The response is a 204 No Content if successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations users destroy --organization-id "<organization-id>" --id "<user-id>"
+
+        ```'
+      summary: Delete organization user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this organization user.
+        required: true
+      - in: path
+        name: organization_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/organizations/by-slug/{slug}/:
+    get:
+      operationId: organizations_by-slug
+      description: 'Retrieve a single organization by its slug.
+
+
+        The response will be the organization object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind organizations by-slug --slug "<organization-slug>"
+
+        ```'
+      summary: Retrieve organization by slug
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: ^[-a-zA-Z0-9_]+$
+        required: true
+      tags:
+      - organizations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: ''
+components:
+  schemas:
+    PaginatedOrganizationUserList:
+      type: array
+      items:
+        $ref: '#/components/schemas/OrganizationUser'
+    Team:
+      type: object
+      description: Team object denoting permissions within an organization.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        members:
+          type: array
+          items:
+            type: string
+            format: uri
+        name:
+          type: string
+          description: A human-readable name for this team.
+          maxLength: 150
+        slug:
+          type: string
+          description: A unique slug for this team.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - id
+      - members
+      - name
+      - organization
+      - url
+    PatchedOrganizationInvitation:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        guid:
+          type: string
+          format: uuid
+          readOnly: true
+        invitee_identifier:
+          type: string
+          description: The contact identifier for the invitee, email, phone number, social media handle, etc.
+          maxLength: 1000
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        invited_by:
+          type: string
+          format: uri
+        invitee:
+          type: string
+          format: uri
+          nullable: true
+    PaginatedOrganizationInvitationList:
+      type: array
+      items:
+        $ref: '#/components/schemas/OrganizationInvitation'
+    ActionEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      description: '* `0` - create
+
+        * `1` - update
+
+        * `2` - delete
+
+        * `3` - access'
+    PatchedTeam:
+      type: object
+      description: Team object denoting permissions within an organization.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        members:
+          type: array
+          items:
+            type: string
+            format: uri
+        name:
+          type: string
+          description: A human-readable name for this team.
+          maxLength: 150
+        slug:
+          type: string
+          description: A unique slug for this team.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+    OrganizationInvitationCreate:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+          writeOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+          default: false
+      required:
+      - created
+      - email
+      - id
+      - modified
+      - url
+    PatchedOrganizationUpdate:
+      type: object
+      description: 'Update an Organization, allowing for the owner to be changed.
+
+
+        Since an Owner is a 1:1 relationship, we can''t use the default
+
+        `NestedHyperlinkedRelatedField` and must change it to an `OrganizationUser`
+
+        queryset limited to organization members.
+
+
+        The `to_representation()` method is overloaded to return the correct URL for
+
+        the owner.'
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        owner:
+          type: string
+          format: uri
+        organization_users:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        subscription:
+          type: object
+          properties:
+            slug:
+              type: string
+              enum:
+              - build
+              - scale
+              - scale_plus
+              - enterprise
+              - none
+            display_name:
+              type: string
+            active:
+              type: boolean
+          required:
+          - slug
+          - display_name
+          - active
+          readOnly: true
+        slug:
+          type: string
+          title: Organization Slug
+          description: A unique ID used to identify this organization
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          title: Display Name
+          description: A human-readable name for this organization
+          maxLength: 200
+        is_active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        stripe_customer_id:
+          type: string
+          nullable: true
+          description: Stripe customer id mirrored from settings['stripe']; indexed.
+          maxLength: 255
+    OrganizationUserUpdate:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+        user:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - created
+      - id
+      - modified
+      - organization
+      - url
+      - user
+    Organization:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        owner:
+          type: string
+          format: uri
+        organization_users:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        subscription:
+          type: object
+          properties:
+            slug:
+              type: string
+              enum:
+              - build
+              - scale
+              - scale_plus
+              - enterprise
+              - none
+            display_name:
+              type: string
+            active:
+              type: boolean
+          required:
+          - slug
+          - display_name
+          - active
+          readOnly: true
+        name:
+          type: string
+          title: Display Name
+          description: A human-readable name for this organization
+          maxLength: 200
+        is_active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+          title: Organization Slug
+          description: A unique ID used to identify this organization
+          pattern: ^[-a-zA-Z0-9_]+$
+        stripe_customer_id:
+          type: string
+          nullable: true
+          description: Stripe customer id mirrored from settings['stripe']; indexed.
+          maxLength: 255
+      required:
+      - created
+      - id
+      - modified
+      - name
+      - organization_users
+      - owner
+      - slug
+      - subscription
+      - url
+    OrganizationUpdate:
+      type: object
+      description: 'Update an Organization, allowing for the owner to be changed.
+
+
+        Since an Owner is a 1:1 relationship, we can''t use the default
+
+        `NestedHyperlinkedRelatedField` and must change it to an `OrganizationUser`
+
+        queryset limited to organization members.
+
+
+        The `to_representation()` method is overloaded to return the correct URL for
+
+        the owner.'
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        owner:
+          type: string
+          format: uri
+        organization_users:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        subscription:
+          type: object
+          properties:
+            slug:
+              type: string
+              enum:
+              - build
+              - scale
+              - scale_plus
+              - enterprise
+              - none
+            display_name:
+              type: string
+            active:
+              type: boolean
+          required:
+          - slug
+          - display_name
+          - active
+          readOnly: true
+        slug:
+          type: string
+          title: Organization Slug
+          description: A unique ID used to identify this organization
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          title: Display Name
+          description: A human-readable name for this organization
+          maxLength: 200
+        is_active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        stripe_customer_id:
+          type: string
+          nullable: true
+          description: Stripe customer id mirrored from settings['stripe']; indexed.
+          maxLength: 255
+      required:
+      - created
+      - id
+      - modified
+      - name
+      - organization_users
+      - owner
+      - subscription
+      - url
+    PatchedOrganizationUserUpdate:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+        user:
+          type: string
+          format: uri
+          readOnly: true
+    OrganizationUserCreate:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+          default: false
+        user:
+          type: string
+          format: uri
+      required:
+      - created
+      - id
+      - modified
+      - url
+      - user
+    OrganizationUser:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+        user:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - created
+      - id
+      - modified
+      - organization
+      - url
+      - user
+    OrganizationInvitation:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        guid:
+          type: string
+          format: uuid
+          readOnly: true
+        invitee_identifier:
+          type: string
+          description: The contact identifier for the invitee, email, phone number, social media handle, etc.
+          maxLength: 1000
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        invited_by:
+          type: string
+          format: uri
+        invitee:
+          type: string
+          format: uri
+          nullable: true
+      required:
+      - created
+      - guid
+      - id
+      - invited_by
+      - invitee_identifier
+      - modified
+      - organization
+      - url
+    PaginatedAuditLogEntryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AuditLogEntry'
+    OrganizationCreate:
+      type: object
+      description: 'Organization create serializer.
+
+
+        Note that this explicitly disallows a slug from being specified on-create.
+
+        Optionally accepts a ``stripe_session_id`` to atomically write Stripe
+
+        settings onto the new organization when supplied.'
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        owner:
+          type: string
+          format: uri
+        organization_users:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        subscription:
+          type: object
+          properties:
+            slug:
+              type: string
+              enum:
+              - build
+              - scale
+              - scale_plus
+              - enterprise
+              - none
+            display_name:
+              type: string
+            active:
+              type: boolean
+          required:
+          - slug
+          - display_name
+          - active
+          readOnly: true
+        stripe_session_id:
+          type: string
+          writeOnly: true
+          nullable: true
+          description: Stripe Checkout Session ID to attach a subscription at org creation.
+        name:
+          type: string
+          title: Display Name
+          description: A human-readable name for this organization
+          maxLength: 200
+        is_active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+          title: Organization Slug
+          description: A unique ID used to identify this organization
+          pattern: ^[-a-zA-Z0-9_]+$
+        stripe_customer_id:
+          type: string
+          nullable: true
+          description: Stripe customer id mirrored from settings['stripe']; indexed.
+          maxLength: 255
+      required:
+      - created
+      - id
+      - modified
+      - name
+      - organization_users
+      - slug
+      - subscription
+      - url
+    AuditLogEntry:
+      type: object
+      description: Serializer for the AuditLogEntry model.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        model:
+          type: string
+        object_pk:
+          type: string
+          maxLength: 255
+        object_repr:
+          type: string
+          title: Object representation
+        action:
+          allOf:
+          - $ref: '#/components/schemas/ActionEnum'
+          minimum: 0
+          maximum: 32767
+        changes_text:
+          type: string
+          title: Change message
+        changes:
+          type: object
+          nullable: true
+          title: Change message
+        cid:
+          type: string
+          nullable: true
+          title: Correlation ID
+          maxLength: 255
+        remote_addr:
+          type: string
+          nullable: true
+          title: Remote address
+        remote_port:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+        timestamp:
+          type: string
+          format: date-time
+        actor_email:
+          type: string
+          nullable: true
+          maxLength: 254
+        actor:
+          type: string
+          nullable: true
+      required:
+      - action
+      - id
+      - model
+      - object_pk
+      - object_repr
+    PaginatedTeamList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Team'
+    PaginatedOrganizationList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Organization'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

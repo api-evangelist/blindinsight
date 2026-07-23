@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts delete-jobs API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: delete-jobs
+paths:
+  /api/delete-jobs/{job_id}/:
+    get:
+      operationId: delete_job_status
+      description: Poll the progress of a large schema or dataset delete that was queued as a background Celery task. This endpoint is not intercepted by the Blind Insight proxy and is safe to call directly.
+      summary: Get the status of an async delete job
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+          format: uuid
+        description: The Celery task ID returned by the delete endpoint.
+        required: true
+      tags:
+      - delete-jobs
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: string
+                  progress:
+                    type: object
+                    nullable: true
+                  result:
+                    type: object
+                    nullable: true
+          description: Job status
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

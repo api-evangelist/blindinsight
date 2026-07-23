@@ -1,0 +1,201 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts blindllm API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: blindllm
+paths:
+  /api/blindllm/chat/:
+    post:
+      operationId: blindllm_chat_create
+      description: Anonymous, IP-rate-limited demo endpoint used by blindinsight.com to drive the homepage chat experience. Runs the orchestrator against a single configured demo organization.
+      summary: Public BlindLLM demo (marketing site)
+      tags:
+      - blindllm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlindLLMDemoRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BlindLLMDemoRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BlindLLMDemoRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlindLLMDemoResponse'
+          description: ''
+        '400':
+          description: No response body
+        '429':
+          description: No response body
+        '503':
+          description: No response body
+  /api/blindllm/demo/:
+    post:
+      operationId: blindllm_demo_create
+      description: Anonymous, IP-rate-limited demo endpoint used by blindinsight.com to drive the homepage chat experience. Runs the orchestrator against a single configured demo organization.
+      summary: Public BlindLLM demo (marketing site)
+      tags:
+      - blindllm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlindLLMDemoRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BlindLLMDemoRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BlindLLMDemoRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlindLLMDemoResponse'
+          description: ''
+        '400':
+          description: No response body
+        '429':
+          description: No response body
+        '503':
+          description: No response body
+  /api/blindllm/inspect/:
+    get:
+      operationId: blindllm_inspect_retrieve
+      description: Returns the demo organization's derived Dataset/Schema catalog so blindinsight.com can render /datasets inspect and /schemas inspect without a duplicated static catalog.
+      summary: Public BlindLLM schema catalog inspect
+      tags:
+      - blindllm
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlindLLMInspectResponse'
+          description: ''
+        '503':
+          description: No response body
+  /api/blindllm/models/:
+    get:
+      operationId: blindllm_models_retrieve
+      description: Lists the provider selector ids accepted by BlindLLM demo endpoints.
+      summary: Supported BlindLLM model selectors
+      tags:
+      - blindllm
+      security:
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  schemas:
+    BlindLLMInspectResponse:
+      type: object
+      description: Public catalog inspect response consumed by the dot-com hero.
+      properties:
+        datasets:
+          type: array
+          items:
+            type: object
+        catalog_snapshot_at:
+          type: string
+      required:
+      - catalog_snapshot_at
+      - datasets
+    BlindLLMDemoRequest:
+      type: object
+      description: Public demo request — prompt plus an optional model selector.
+      properties:
+        prompt:
+          type: string
+          maxLength: 1000
+        model:
+          type: string
+          default: ''
+          maxLength: 64
+        client_proxy:
+          type: string
+          default: ''
+          maxLength: 64
+        demo_user_id:
+          type: string
+          default: ''
+          maxLength: 128
+      required:
+      - prompt
+    BlindLLMDemoResponse:
+      type: object
+      description: Public demo response — slim subset of `BlindLLMQuery`.
+      properties:
+        ok:
+          type: boolean
+        answer:
+          type: string
+        used_tool:
+          type: string
+          nullable: true
+        schemas_queried:
+          type: array
+          items:
+            type: string
+        fallback:
+          type: boolean
+        fallback_reason:
+          type: string
+          nullable: true
+        provider_error:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        data_mode:
+          type: string
+        duration_ms:
+          type: integer
+        model:
+          type: string
+        client_proxy:
+          type: string
+        request_id:
+          type: string
+      required:
+      - answer
+      - client_proxy
+      - data_mode
+      - duration_ms
+      - fallback
+      - fallback_reason
+      - model
+      - ok
+      - request_id
+      - schemas_queried
+      - used_tool
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

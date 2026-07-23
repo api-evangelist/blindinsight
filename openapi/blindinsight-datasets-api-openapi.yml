@@ -1,0 +1,316 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts datasets API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: datasets
+paths:
+  /api/datasets/:
+    get:
+      operationId: datasets_list
+      description: Retrieve a list of datasets. You can filter the list by providing query parameters.
+      summary: Retrieve a list of Dataset objects, with filters
+      parameters:
+      - in: query
+        name: description
+        schema:
+          type: string
+        description: A longer description of the dataset.
+      - in: query
+        name: id
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: A human-readable name for this dataset.
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: organization
+        schema:
+          type: string
+        description: The organization that this dataset belongs to.
+      - in: query
+        name: slug
+        schema:
+          type: string
+        description: A unique slug for this dataset.
+      tags:
+      - datasets
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDatasetList'
+          description: ''
+    post:
+      operationId: datasets_create
+      description: Create a new dataset.
+      summary: Create a new Dataset
+      tags:
+      - datasets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+  /api/datasets/{id}/:
+    get:
+      operationId: datasets_retrieve
+      description: Retrieve one dataset.
+      summary: Retrieve one Dataset object
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this dataset.
+        required: true
+      tags:
+      - datasets
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+    put:
+      operationId: datasets_update
+      description: Update an existing dataset.
+      summary: Update a Dataset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this dataset.
+        required: true
+      tags:
+      - datasets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+    patch:
+      operationId: datasets_partial_update
+      description: Update an existing dataset with only the specified fields.
+      summary: Partially update a Dataset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this dataset.
+        required: true
+      tags:
+      - datasets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDataset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDataset'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+    delete:
+      operationId: datasets_destroy
+      description: Delete an existing dataset.
+      summary: Delete a Dataset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this dataset.
+        required: true
+      tags:
+      - datasets
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/datasets/{id}/schema/{slug}/:
+    get:
+      operationId: datasets_schema
+      description: Retrieve a dataset schema by its slug.
+      summary: Retrieve a dataset schema by slug
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this dataset.
+        required: true
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: ^[-a-zA-Z0-9_]+$
+        required: true
+      tags:
+      - datasets
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+components:
+  schemas:
+    PaginatedDatasetList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Dataset'
+    PatchedDataset:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        name:
+          type: string
+          description: A human-readable name for this dataset.
+          maxLength: 127
+        slug:
+          type: string
+          description: A unique slug for this dataset.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          description: A longer description of the dataset.
+          maxLength: 255
+    Dataset:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        name:
+          type: string
+          description: A human-readable name for this dataset.
+          maxLength: 127
+        slug:
+          type: string
+          description: A unique slug for this dataset.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          description: A longer description of the dataset.
+          maxLength: 255
+      required:
+      - id
+      - name
+      - organization
+      - url
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

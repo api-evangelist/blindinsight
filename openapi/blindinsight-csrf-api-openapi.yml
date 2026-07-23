@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts csrf API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: csrf
+paths:
+  /api/csrf/:
+    get:
+      operationId: csrf_retrieve
+      description: Retrieve a CSRF token.
+      summary: Retrieve a CSRF token
+      tags:
+      - csrf
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  csrfToken:
+                    type: string
+          description: ''
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

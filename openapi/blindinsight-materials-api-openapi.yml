@@ -1,0 +1,515 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts materials API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: materials
+paths:
+  /api/materials/:
+    get:
+      operationId: materials_list
+      description: List all materials that you have access to.
+      summary: List all materials
+      parameters:
+      - in: query
+        name: created
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: id
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified
+        schema:
+          type: string
+          format: date-time
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: payload
+        schema:
+          type: string
+        description: The encrypted material.
+      - in: query
+        name: proof
+        schema:
+          type: string
+      - in: query
+        name: proofed
+        schema:
+          type: boolean
+      - in: query
+        name: request
+        schema:
+          type: string
+      - in: query
+        name: signature
+        schema:
+          type: string
+        description: The signature of the material.
+      - in: query
+        name: uploaded_by
+        schema:
+          type: string
+        description: The identity that uploaded this material.
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMaterialList'
+          description: ''
+    post:
+      operationId: materials_create
+      description: Create a new material.
+      summary: Create a new material
+      tags:
+      - materials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Material'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Material'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Material'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Material'
+          description: ''
+  /api/materials/{id}/:
+    get:
+      operationId: materials_retrieve
+      description: Retrieve a single material by its ID.
+      summary: Retrieve a single material
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this material.
+        required: true
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Material'
+          description: ''
+    delete:
+      operationId: materials_destroy
+      description: Delete a material by its ID.
+      summary: Delete a material
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this material.
+        required: true
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/materials/{id}/acknowledge/:
+    post:
+      operationId: materials_acknowledge_create
+      description: 'Mark the underlying request as received. Replaces the deprecated
+
+        side-effect on `GET /materials/<id>/`, which mutated state on a read.'
+      summary: Acknowledge receipt of a material
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this material.
+        required: true
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                description: The material has been acknowledged as received.
+          description: ''
+  /api/materials/{id}/proof/:
+    post:
+      operationId: materials_proof_create
+      description: Validate a proof for a material.
+      summary: Validate a proof for a material
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this material.
+        required: true
+      tags:
+      - materials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaterialProof'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MaterialProof'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MaterialProof'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                description: The material has been proven as valid.
+          description: ''
+  /api/materials/{material_id}/receive/:
+    post:
+      operationId: materials_receive-detail
+      description: '[Blind Insight Proxy] Receive a single material'
+      summary: Receive a single material
+      parameters:
+      - in: path
+        name: material_id
+        schema:
+          type: string
+          format: uuid
+        description: The material ID to receive.
+        required: true
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  request:
+                    type: string
+                    description: The request ID
+                  schema:
+                    type: string
+                    description: The schema ID
+                  field_name:
+                    type: string
+                    description: Name of the field
+                required:
+                - request
+                - schema
+                - field_name
+          description: The material was received successfully.
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: Could not receive material
+                  error: Bad request
+          description: The material was not received successfully.
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: No materials found
+                  error: Not found
+          description: No materials were found.
+  /api/materials/overrides/:
+    get:
+      operationId: materials_overrides
+      description: '[Blind Insight Proxy] List all material overrides'
+      summary: List all material overrides
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                ListMaterialOverrides:
+                  value:
+                  - CE2TeNQ2actgUykKuFRXcg:__query
+                  - CE2TeNQ2actgUykKuFRXcg:name
+                  summary: List material overrides
+                  description: The material overrides were retrieved successfully.
+          description: The material overrides were retrieved successfully.
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: No material overrides found.
+                  error: Not found
+          description: ''
+    delete:
+      operationId: materials_overrides_delete-list
+      description: '[Blind Insight Proxy] Delete all material overrides'
+      summary: Delete all material overrides
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: The material overrides have been deleted successfully.
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: Could not delete material overrides.
+                  error: Bad request
+          description: The material override could not be deleted.
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: No material overrides found.
+                  error: Not found
+          description: No material overrides were found.
+  /api/materials/overrides/{key}/:
+    delete:
+      operationId: materials_overrides_delete-detail
+      description: '[Blind Insight Proxy] Delete a single material override'
+      summary: Delete a single material override
+      parameters:
+      - in: path
+        name: key
+        schema:
+          type: string
+        description: The key of the material override to delete.
+        required: true
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                description: The material override has been deleted successfully.
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: Could not delete material override.
+                  error: Bad request
+          description: The material override could not be deleted.
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: No material overrides found.
+                  error: Not found
+          description: No material overrides were found.
+  /api/materials/receive/:
+    post:
+      operationId: materials_receive-list
+      description: '[Blind Insight Proxy] Receive all materials'
+      summary: Receive all materials
+      tags:
+      - materials
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    request:
+                      type: string
+                      description: The request ID
+                    schema:
+                      type: string
+                      description: The schema ID
+                    field_name:
+                      type: string
+                      description: Name of the field
+                  required:
+                  - request
+                  - schema
+                  - field_name
+          description: The materials were received successfully.
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: Could not receive material
+                  error: Bad request
+          description: The materials were not received successfully.
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: No materials found
+                  error: Not found
+          description: No materials were found.
+components:
+  schemas:
+    Material:
+      type: object
+      description: Encrypted material object.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        payload:
+          type: string
+          description: The encrypted material.
+          maxLength: 4096
+        signature:
+          type: string
+          description: The signature of the material.
+          maxLength: 4096
+        proof:
+          type: string
+          writeOnly: true
+          maxLength: 64
+          minLength: 64
+        request:
+          type: string
+          format: uri
+        uploaded_by:
+          type: string
+          format: uri
+          description: The identity that uploaded this material.
+      required:
+      - created
+      - id
+      - proof
+      - request
+      - uploaded_by
+      - url
+    MaterialProof:
+      type: object
+      description: Proof for a material.
+      properties:
+        proof:
+          type: string
+          writeOnly: true
+          description: Proof for the material.
+          maxLength: 64
+          minLength: 64
+      required:
+      - proof
+    PaginatedMaterialList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Material'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

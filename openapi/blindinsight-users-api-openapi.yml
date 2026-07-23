@@ -1,0 +1,505 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts users API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: users
+paths:
+  /api/users/:
+    get:
+      operationId: users_list
+      description: 'Retrieve a list of users. You can filter the list by providing query parameters.
+
+        Only users that you have access to will be returned, which in practice means
+
+        they are in the same organization.
+
+
+        The response will be a list of user objects.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind users list
+
+        ```'
+      summary: Retrieve one or more User objects, with filters
+      parameters:
+      - in: query
+        name: date_joined
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: email
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name
+        schema:
+          type: string
+        description: First name (optional)
+      - in: query
+        name: has_identity
+        schema:
+          type: boolean
+        description: Filter by whether the user has an identity.
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: is_active
+        schema:
+          type: boolean
+        description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+      - in: query
+        name: is_staff
+        schema:
+          type: boolean
+        description: Designates whether the user can log into this admin site.
+      - in: query
+        name: is_superuser
+        schema:
+          type: boolean
+        description: Designates that this user has all permissions without explicitly assigning them.
+      - in: query
+        name: last_login
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: last_name
+        schema:
+          type: string
+        description: Last name (optional)
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserList'
+          description: ''
+    post:
+      operationId: users_create
+      description: 'Create a new user.
+
+
+        The response will be the newly created user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind users create --data user.json
+
+        ```'
+      summary: Create a new User
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/{id}/:
+    get:
+      operationId: users_retrieve
+      description: 'Retrieve a single user by their ID.
+
+
+        The response will be the user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind users retrieve --id "<user-id>"
+
+        ```'
+      summary: Retrieve one User object
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_update
+      description: 'Update an entire existing user, replacing all fields.
+
+
+        The response will be the updated user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind users update --id "<user-id>" --data user.json
+
+        ```'
+      summary: Update a User
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: users_partial-update
+      description: 'Update an existing user with only the specified fields.
+
+
+        The response will be the updated user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind users partial-update --id "<user-id>" --data user-update.json
+
+        ```'
+      summary: Partially update a User
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: users_destroy
+      description: 'Delete an existing user by their ID.
+
+
+        The response will be a 204 No Content if successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind users destroy --id "<user-id>"
+
+        ```'
+      summary: Delete a User
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/by_name/{email}/:
+    get:
+      operationId: users_by-name
+      description: 'Retrieve a single user by their name (email).
+
+
+        The response will be the user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind users by-name --email "<user-name>"
+
+        ```'
+      summary: Retrieve one User object by name
+      parameters:
+      - in: path
+        name: email
+        schema:
+          type: string
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/self/:
+    get:
+      operationId: users_self
+      description: 'Retrieve the currently authenticated user.
+
+
+        The response will be the user object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind users self
+
+        ```'
+      summary: Retrieve current user
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    User:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        has_identity:
+          type: boolean
+          readOnly: true
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly assigning them.
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 255
+        is_staff:
+          type: boolean
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+        settings:
+          type: object
+      required:
+      - email
+      - has_identity
+      - id
+      - url
+    PatchedUser:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        has_identity:
+          type: boolean
+          readOnly: true
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly assigning them.
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 255
+        is_staff:
+          type: boolean
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+        settings:
+          type: object
+    PaginatedUserList:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,1030 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: accounts
+paths:
+  /api/accounts/change-password/:
+    post:
+      operationId: accounts_change-password
+      description: 'Change the password of the currently authenticated user. The `old_password`
+
+        field must match the currently set password. The `password` and
+
+        `password_confirm` fields must match.
+
+
+        The response will be a detail message indicating if the password change was
+
+        successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts change-password --data password-change.json
+
+        ```'
+      summary: Change user password
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ChangePassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ChangePassword'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordChanged'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordChangedError'
+          description: ''
+  /api/accounts/login/:
+    post:
+      operationId: accounts_login
+      description: 'Log in a user using their email and password. On success, returns a JSON web
+
+        token which should be included in the `Authorization` header for all subsequent
+
+        API requests in client implementations.
+
+
+        The response will be a detail message indicating if the login was successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts login --data login.json
+
+        ```'
+      summary: Login a user account
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultLogin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DefaultLogin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DefaultLogin'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginSuccessful'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginSuccessfulError'
+          description: ''
+  /api/accounts/logout/:
+    post:
+      operationId: accounts_logout
+      description: 'Log out the currently authenticated user. This simply invalidates the JSON web
+
+        token used.
+
+
+        This is separate from the porcelain `blind logout` command which removes stored
+
+        credentials on the local machine.
+
+
+        The response will be a detail message indicating if the logout was successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts logout
+
+        ```'
+      summary: Logout a user account
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Logout'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Logout'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Logout'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogoutSuccessful'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogoutSuccessfulError'
+          description: ''
+  /api/accounts/profile/:
+    get:
+      operationId: accounts_profile_retrieve
+      description: 'Retrieve the profile of the currently authenticated user.
+
+
+        The response will be the profile object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts profile retrieve
+
+        ```'
+      summary: Get user profile
+      tags:
+      - accounts
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultUserProfile'
+          description: ''
+    post:
+      operationId: accounts_profile_create
+      description: 'Create a profile for the currently authenticated user. This is useful if you
+
+        don''t have a profile yet, or if you want to edit an existing profile.
+
+
+        The response will be the newly created profile object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts profile create --data profile.json
+
+        ```'
+      summary: Create user profile
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultUserProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DefaultUserProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DefaultUserProfile'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultUserProfile'
+          description: ''
+    put:
+      operationId: accounts_profile_update
+      description: 'Replace the currently authenticated user''s profile with the data provided in
+
+        the request. Fields not specified in the request will be dropped.
+
+
+        The response will be the updated profile object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts profile update --data profile.json
+
+        ```'
+      summary: Update user profile
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultUserProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DefaultUserProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DefaultUserProfile'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultUserProfile'
+          description: ''
+    patch:
+      operationId: accounts_profile_partial-update
+      description: 'Update one or more fields of the currently authenticated user''s profile. This
+
+        does not replace the entire profile, it only updates the fields provided in
+
+        the request.
+
+
+        The response will be the updated profile object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts profile partial-update --data profile-update.json
+
+        ```'
+      summary: Partially update user profile
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDefaultUserProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDefaultUserProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDefaultUserProfile'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultUserProfile'
+          description: ''
+  /api/accounts/register/:
+    post:
+      operationId: accounts_register
+      description: "This endpoint registers a new user. The user will receive an email with a link to activate their account.\n\nThis will also create a new Organization for the user. The user will be the owner of the organization.\n\nSee the [user registration](https://docs.blindinsight.io/) documentation for more information.\n\nThe response will be the newly created user object.\n\n**On the command line:**\n\nYou can supply record data on standard input with the `--data -` or write it to\na file and give the `--data <filename>` flag.\n\n```bash\nblind accounts register --data '{\n  \"email\": \"demo@example.com\",\n  \"first_name\": \"Demo\",\n  \"last_name\": \"User\",\n  \"organization_name\": \"Demo\",\n  \"password\": \"pass1234\",\n  \"password_confirm\": \"pass1234\"\n}'\n```"
+      summary: Register a new user account
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationRegisterUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrganizationRegisterUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrganizationRegisterUser'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUserProfile'
+          description: ''
+  /api/accounts/register-email/:
+    post:
+      operationId: accounts_register-email
+      description: 'Register a new email address for the currently authenticated user. This is
+
+        useful if the user wants to change email addresses associated with
+
+        their account.
+
+
+        The new email must be verified before it is associated with the account.
+
+
+        The response will be a detail message indicating if the email was registered.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts register-email --data ''{"email": "demo-example@example.com"}''
+
+        ```'
+      summary: Register user email
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultRegisterEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DefaultRegisterEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DefaultRegisterEmail'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisteredEmail'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisteredEmailError'
+          description: ''
+  /api/accounts/reset-password/:
+    post:
+      operationId: accounts_reset-password
+      description: 'Reset the password of the given user using the provided signature and timestamp.
+
+
+        This endpoint is generally only used by an administrator to reset a user''s
+
+        password.
+
+
+        The response will be a detail message indicating if the password reset was
+
+        successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts reset-password --data reset-password.json
+
+        ```'
+      summary: Reset user password
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResetPassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResetPassword'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordReset'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResetError'
+          description: ''
+  /api/accounts/send-reset-password-link/:
+    post:
+      operationId: accounts_send-reset-password-link
+      description: 'Send a password reset link email to the user with the given email address. This
+
+        endpoint does not require the user to have activated their account yet.
+
+
+        The response will be a detail message indicating if the reset link was sent.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts send-reset-password-link --data ''{"email": "demo@example.com"}''
+
+        ```'
+      summary: Send reset password link
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultSendResetPasswordLink'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DefaultSendResetPasswordLink'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DefaultSendResetPasswordLink'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResetPasswordLinkSent'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResetPasswordLinkSentError'
+          description: ''
+  /api/accounts/verify-email/:
+    post:
+      operationId: accounts_verify-email
+      description: 'Verify the authenticated user''s email address. This is useful if you want to
+
+        automate onboarding of users within your organization.
+
+
+        The response will be a detail message indicating if the verification was
+
+        successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts verify-email --data verification.json
+
+        ```'
+      summary: Verify user email
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifiedEmail'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifiedEmailError'
+          description: ''
+  /api/accounts/verify-registration/:
+    post:
+      operationId: accounts_verify-registration
+      description: 'This endpoint verifies a new user with their user ID, a timestamp, and a signature. These values must come from the received verification email.
+
+
+        The response will be a detail message indicating if the verification was successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind accounts verify-registration --data registration.json
+
+        ```'
+      summary: Verify a new user account
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyRegistration'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyRegistration'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyRegistration'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountVerified'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountVerifiedError'
+          description: ''
+components:
+  schemas:
+    OrganizationRegisterUser:
+      type: object
+      description: 'Overloads DefaultRegisterUserSerializer for the Blind Insight register
+
+        flow.
+
+
+        Historically this serializer also created an Organization at register
+
+        time. That behavior was removed because the post-pay flow ALSO creates
+
+        an org (via OrganizationCreateSerializer with stripe_session_id), which
+
+        left every signup with two orgs — one orphan from registration with no
+
+        Stripe settings, one "real" org post-checkout. The orphan was the
+
+        target of Stripe webhook lookups by `client_reference_id`, silently
+
+        diverging from the org the user actually worked in. See the A1
+
+        express-checkout PR for context.
+
+
+        Registration now creates the User only. The Organization is created
+
+        when the user lands on /organizations/create?session_id=<...> after
+
+        Stripe Checkout completes, and the subscription is attached
+
+        atomically there.'
+      properties:
+        password:
+          type: string
+          maxLength: 128
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 255
+        id:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+        password_confirm:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - id
+      - password
+      - password_confirm
+    Logout:
+      type: object
+      properties:
+        revoke_token:
+          type: boolean
+          default: false
+    LoginSuccessfulError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    LogoutSuccessfulError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    OrganizationUserProfile:
+      type: object
+      description: Oerloads DefaultUserProfileSerializer to include organization_name and organization_slug.
+      properties:
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Email address
+        id:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+        organization_name:
+          type: string
+          readOnly: true
+          description: Organization Name
+          maxLength: 50
+        organization_slug:
+          type: string
+          readOnly: true
+          description: Organization URL
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        url:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - email
+      - id
+      - organization_name
+      - organization_slug
+      - url
+    AccountVerified:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: User verified successfully
+    DefaultRegisterEmail:
+      type: object
+      description: Default serializer used for e-mail registration (e-mail change).
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    RegisteredEmailError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    ChangePassword:
+      type: object
+      properties:
+        old_password:
+          type: string
+        password:
+          type: string
+        password_confirm:
+          type: string
+          writeOnly: true
+      required:
+      - old_password
+      - password
+      - password_confirm
+    VerifiedEmailError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    VerifyRegistration:
+      type: object
+      properties:
+        user_id:
+          type: string
+        timestamp:
+          type: integer
+        signature:
+          type: string
+      required:
+      - signature
+      - timestamp
+      - user_id
+    PasswordReset:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Reset password successful
+    LogoutSuccessful:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Logout successful
+    DefaultSendResetPasswordLink:
+      type: object
+      description: 'Default serializer used for sending reset password link.
+
+
+        It will use :ref:`send-reset-password-link-serializer-use-email-setting`
+
+        setting.'
+      properties:
+        email:
+          type: string
+      required:
+      - email
+    VerifyEmail:
+      type: object
+      properties:
+        user_id:
+          type: string
+        email:
+          type: string
+          format: email
+        timestamp:
+          type: integer
+        signature:
+          type: string
+      required:
+      - email
+      - signature
+      - timestamp
+      - user_id
+    VerifiedEmail:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Email verified successfully
+    PatchedDefaultUserProfile:
+      type: object
+      description: 'Default serializer used for user profile. It will use these:
+
+
+        * User fields
+
+        * :ref:`user-hidden-fields-setting` setting
+
+        * :ref:`user-public-fields-setting` setting
+
+        * :ref:`user-editable-fields-setting` setting
+
+
+        to automagically generate the required serializer fields.'
+      properties:
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Email address
+        id:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+    LoginSuccessful:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Login successful
+    ResetPassword:
+      type: object
+      properties:
+        user_id:
+          type: string
+        timestamp:
+          type: integer
+        signature:
+          type: string
+        password:
+          type: string
+      required:
+      - password
+      - signature
+      - timestamp
+      - user_id
+    AccountVerifiedError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    DefaultLogin:
+      type: object
+      description: 'Default serializer used for user login. Please keep in mind that
+
+        the authentication is done by separate function defined by
+
+        :ref:`login-authenticator-setting` setting.
+
+
+        By default :ref:`login-authenticator-setting` function will use
+
+        :ref:`user-login-fields-setting` setting to extract the login field
+
+        from the validated serializer data either by using the ''login'' key
+
+        (which is used here) or the specific login field name(s)
+
+        (e.g. ''username'', ''email'').
+
+
+        If you want different behavior, you need to
+
+        override :ref:`login-authenticator-setting` in your settings.'
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+      required:
+      - login
+      - password
+    ResetPasswordLinkSent:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Reset link sent
+    PasswordResetError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    DefaultUserProfile:
+      type: object
+      description: 'Default serializer used for user profile. It will use these:
+
+
+        * User fields
+
+        * :ref:`user-hidden-fields-setting` setting
+
+        * :ref:`user-public-fields-setting` setting
+
+        * :ref:`user-editable-fields-setting` setting
+
+
+        to automagically generate the required serializer fields.'
+      properties:
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Email address
+        id:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+      required:
+      - email
+      - id
+    RegisteredEmail:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Register email link email sent
+    PasswordChangedError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    PasswordChanged:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Password changed successfully
+    ResetPasswordLinkSentError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

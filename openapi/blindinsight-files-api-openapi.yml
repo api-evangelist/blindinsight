@@ -1,0 +1,235 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts files API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: files
+paths:
+  /api/files/:
+    post:
+      operationId: files_create
+      description: 'Create a new upload resource. The Upload-Length header indicates the size of the entire upload in bytes.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind files create --Tus-Resumable 1.0.0  --Upload-Length 1000 --data records.json
+
+        ```'
+      summary: Create a new upload resource (only available via proxy)
+      parameters:
+      - in: header
+        name: Content-Length
+        schema:
+          type: integer
+        description: Set to 0 if the file size is unknown.
+      - in: header
+        name: Tus-Resumable
+        schema:
+          type: string
+          default: 1.0.0
+        description: '[required] The TUS version to use (default: 1.0.0).'
+        required: true
+      - in: header
+        name: Upload-Length
+        schema:
+          type: integer
+        description: '[required] The size of the entire upload in bytes.'
+        required: true
+      - in: header
+        name: Upload-Metadata
+        schema:
+          type: string
+        description: '[required] The upload metadata. Must consist of `filename` and `filetype` keys, separated by commas. The key and value MUST be separated by a space. The value MUST be Base64 encoded. Please see the examples for more information.'
+        required: true
+        examples:
+          MetadataWithFilename'example.csv'AndFiletype'text/csv':
+            value: filename ZXhhbXBsZS5jc3Y=, filetype dGV4dC9jc3Y=
+            summary: Metadata with filename 'example.csv' and filetype 'text/csv'
+      tags:
+      - files
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              format: binary
+          text/csv:
+            schema:
+              type: string
+              format: binary
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          headers:
+            Location:
+              schema:
+                type: string
+              description: The URL of the upload resource that will be used in PATCH requests.
+            Upload-Offset:
+              schema:
+                type: integer
+            Upload-Checksum:
+              schema:
+                type: string
+          description: Upload created successfully
+        '400':
+          description: Bad Request
+        '412':
+          description: Precondition Failed
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        '460':
+          description: Checksum Mismatch
+  /api/files/{id}/:
+    patch:
+      operationId: files_patch
+      description: 'Upload a chunk of a file.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind files patch --id "<upload-id>" --Upload-Offset 1000 --Upload-Checksum "b64:checksum" --data records.json
+
+        ```'
+      summary: Upload file chunk (only available via proxy)
+      parameters:
+      - in: header
+        name: Content-Type
+        schema:
+          type: string
+          default: application/offset+octet-stream
+        description: '[required] Must be application/offset+octet-stream'
+        required: true
+      - in: header
+        name: Upload-Checksum
+        schema:
+          type: string
+        description: The base64 encoded checksum of the current chunk.
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: '[required] The ID of the upload to upload a chunk of.'
+        required: true
+      tags:
+      - files
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              format: binary
+          application/x-www-form-urlencoded:
+            schema:
+              type: string
+              format: binary
+          multipart/form-data:
+            schema:
+              type: string
+              format: binary
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          headers:
+            Upload-Offset:
+              schema:
+                type: integer
+              description: '[required] The byte offset at which to continue the upload.'
+              required: true
+            Tus-Resumable:
+              schema:
+                type: string
+                default: 1.0.0
+              description: '[required] The TUS version to use (default: 1.0.0).'
+              required: true
+          description: Upload chunk successfully
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '409':
+          description: Upload Conflict
+        '412':
+          description: Precondition Failed
+        '415':
+          description: Unsupported Media Type
+        '460':
+          description: Checksum Mismatch
+    delete:
+      operationId: files_delete
+      description: 'Delete an upload resource.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind files delete --id "<upload-id>"
+
+        ```'
+      summary: Delete upload (only available via proxy)
+      parameters:
+      - in: header
+        name: Tus-Resumable
+        schema:
+          type: string
+        description: '[required] The TUS version to use (default: 1.0.0).'
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: '[required] The ID of the upload to delete.'
+        required: true
+      tags:
+      - files
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                description: Upload terminated successfully
+          description: ''
+        '412':
+          content:
+            application/json:
+              schema:
+                description: Precondition Failed
+          description: ''
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

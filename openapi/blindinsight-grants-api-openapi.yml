@@ -1,0 +1,351 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts grants API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: grants
+paths:
+  /api/grants/:
+    get:
+      operationId: grants_list
+      description: List all grants that you have access to.
+      summary: List all grants
+      parameters:
+      - in: query
+        name: can_create_records
+        schema:
+          type: boolean
+        description: Whether this permission allows the user to create records.
+      - in: query
+        name: can_share_keys
+        schema:
+          type: boolean
+        description: Whether this permission allows the user to share the key(s) assigned to this permission.
+      - in: query
+        name: codename
+        schema:
+          type: string
+        description: The codename for this grant.
+      - in: query
+        name: dataset
+        schema:
+          type: string
+        description: The dataset that this grant belongs to.
+      - in: query
+        name: id
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: A human-readable name for this grant.
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: organization
+        schema:
+          type: string
+        description: The organization that this grant belongs to.
+      - in: query
+        name: schema
+        schema:
+          type: string
+        description: The schema that this grant belongs to.
+      - in: query
+        name: teams
+        schema:
+          type: array
+          items:
+            type: string
+        description: The team(s) that this grant is assigned to.
+        explode: true
+        style: form
+      tags:
+      - grants
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGrantList'
+          description: ''
+    post:
+      operationId: grants_create
+      description: Create a new grant.
+      summary: Create a new grant
+      tags:
+      - grants
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Grant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Grant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Grant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Grant'
+          description: ''
+  /api/grants/{id}/:
+    get:
+      operationId: grants_retrieve
+      description: Retrieve a single grant by its ID.
+      summary: Retrieve a single grant
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this grant.
+        required: true
+      tags:
+      - grants
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Grant'
+          description: ''
+    put:
+      operationId: grants_update
+      description: Update a grant by its ID. This completely replaces the object.
+      summary: Update a grant
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this grant.
+        required: true
+      tags:
+      - grants
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Grant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Grant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Grant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Grant'
+          description: ''
+    patch:
+      operationId: grants_partial-update
+      description: 'Partially update a grant by its ID. This only replaces the specified
+
+        fields.'
+      summary: Partially update a grant
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this grant.
+        required: true
+      tags:
+      - grants
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGrant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedGrant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGrant'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Grant'
+          description: ''
+    delete:
+      operationId: grants_destroy
+      description: Delete a grant by its ID.
+      summary: Delete a grant
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this grant.
+        required: true
+      tags:
+      - grants
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    PatchedGrant:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        teams:
+          type: array
+          items:
+            type: string
+            format: uri
+        name:
+          type: string
+          description: A human-readable name for this grant.
+          maxLength: 255
+        codename:
+          type: string
+          description: The codename for this grant.
+          maxLength: 100
+        field_names:
+          type: object
+          nullable: true
+          description: 'Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{''field_name'': True, ...}`'
+        can_share_keys:
+          type: boolean
+          description: Whether this permission allows the user to share the key(s) assigned to this permission.
+        can_create_records:
+          type: boolean
+          description: Whether this permission allows the user to create records.
+        dataset:
+          type: string
+          format: uri
+          description: The dataset that this grant belongs to.
+        schema:
+          type: string
+          format: uri
+          description: The schema that this grant belongs to.
+    Grant:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        teams:
+          type: array
+          items:
+            type: string
+            format: uri
+        name:
+          type: string
+          description: A human-readable name for this grant.
+          maxLength: 255
+        codename:
+          type: string
+          description: The codename for this grant.
+          maxLength: 100
+        field_names:
+          type: object
+          nullable: true
+          description: 'Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{''field_name'': True, ...}`'
+        can_share_keys:
+          type: boolean
+          description: Whether this permission allows the user to share the key(s) assigned to this permission.
+        can_create_records:
+          type: boolean
+          description: Whether this permission allows the user to create records.
+        dataset:
+          type: string
+          format: uri
+          description: The dataset that this grant belongs to.
+        schema:
+          type: string
+          format: uri
+          description: The schema that this grant belongs to.
+      required:
+      - codename
+      - dataset
+      - id
+      - name
+      - organization
+      - schema
+      - teams
+      - url
+    PaginatedGrantList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Grant'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,977 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts records API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: records
+paths:
+  /api/records/:
+    get:
+      operationId: records_list
+      description: 'List records for the given schema ID. Takes optional pagination parameters
+
+        `limit` and `offset`, as well as an optional query filter `q`.
+
+
+        The response will be a list of record objects.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind records list --schema "<schema-id>"
+
+        ```
+
+
+        #'
+      summary: List records
+      parameters:
+      - in: query
+        name: count_only
+        schema:
+          type: boolean
+        description: 'Return only {"count": N} without records or pagination. Useful for fetching the total count asynchronously after an initial fast query.'
+      - in: query
+        name: include_count
+        schema:
+          type: boolean
+        description: Deprecated. COUNT is now always included by default.
+        deprecated: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: q
+        schema:
+          type: array
+          items:
+            type: string
+        description: Query filter for records.
+        explode: true
+        style: form
+        examples:
+          PhraseSearchQuery:
+            value: a3f1c2d4e5b6078910aabbccddeeff00=phrase:c0ffee00112233,deadbeef445566
+            summary: Phrase search on a text field
+            description: 'Use `HL=phrase:H0,H1,...,Hn` as a `q` parameter to search for a consecutive sequence of tokens in a `text: true` field.  The proxy tokenises the query, derives HMACs, and builds this wire format; callers should not construct it by hand.'
+      - in: query
+        name: schema
+        schema:
+          type: string
+        description: The schema ID that this record belongs to.
+      - in: query
+        name: skip_count
+        schema:
+          type: boolean
+        description: Skip the COUNT(*) query. When true, the response omits the X-Total-Count header and the Link rel="last" header. Useful for faster responses on large result sets.
+      tags:
+      - records
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          headers:
+            X-Total-Count:
+              schema:
+                type: integer
+              description: Total number of records matching the query (omitted when count is skipped).
+            X-Query:
+              schema:
+                type: string
+              description: URL-encoded q parameters echoed back on filtered queries. Use this value to make a follow-up count_only request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRecordList'
+          description: ''
+    post:
+      operationId: records_create
+      description: 'Create a new record with an already encrypted payload. This is the non-porcelain
+
+        endpoint. If you want to create a new record with plaintext data, use the
+
+        `record create` porcelain command or the `records ingest` command with a proxy.
+
+
+        The response will be the newly created record object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind records create --data encrypted-record.json
+
+        ```'
+      summary: Create a new record
+      tags:
+      - records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IndexedRecord'
+            examples:
+              MultipleRecords:
+                value:
+                - - data:
+                      2516cdf1538b273e39bf91e67abff3a0: b94f2c9129a7b95f4003afd3cb73b55e405f7c
+                      1ca62259a4f6aeefa7c54d9b13c5650d: 695d2fe4339e50f5039cfbef464846cf202fc06
+                    hashed_label_map:
+                      2516cdf1538b273e39bf91e67abff3a0:
+                        hashed_value: b4486fe169178ec73d3dfad17227da820b89d27e1994f7
+                        field_schema:
+                          type: string
+                      1ca62259a4f6aeefa7c54d9b13c5650d:
+                        hashed_value: 8d90841201a70611da0b964a743564e035fc
+                        field_schema:
+                          type: number
+                          minimum: 0
+                          maximum: 10
+                    schema: https://demo.blindinsight.io/api/schemas/abcdef012345
+                summary: multiple records
+              RecordWithPhrase-searchableTextField:
+                value:
+                - - data:
+                      a3f1c2d4e5b6078910aabbccddeeff00: <AES-GCM ciphertext of note field>
+                    hashed_label_map:
+                      a3f1c2d4e5b6078910aabbccddeeff00:
+                        entries:
+                        - hashed_value: c0ffee00112233
+                          position: 0
+                        - hashed_value: deadbeef445566
+                          position: 1
+                        - hashed_value: cafebabe778899
+                          position: 2
+                        field_schema:
+                          type: string
+                          text: true
+                    schema: https://demo.blindinsight.io/api/schemas/abcdef012345
+                summary: Text field (phrase search)
+                description: 'A record whose schema contains a `text: true` string field. The proxy tokenises the plaintext, derives per-token HMACs, and sends them as `entries` instead of a single `hashed_value`. The server indexes each token''s position for later phrase queries.'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IndexedRecord'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IndexedRecord'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndexedRecord'
+              examples:
+                MultipleRecords:
+                  value:
+                  - data:
+                      2516cdf1538b273e39bf91e67abff3a0: 961298e17a97e7d0b847b8b743e179b2b
+                      b92e749344f081287b034c57b7a02c77f: 695d2fe4339e50f5039cfbef464846cf202fc06
+                    schema: https://demo.blindinsight.io/api/schemas/abcdef012345
+                    url: https://demo.blindinsight.io/api/records/abcdef012345
+                    owner: https://demo.blindinsight.io/api/users/abcdef012345
+                    id: abcdef012345
+                  summary: multiple records
+          description: ''
+    delete:
+      operationId: records_bulk-destroy
+      description: 'Delete multiple records by their IDs.
+
+
+        The response will be a 204 No Content if successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind records bulk-destroy --id "<record-id>" --id "<record-id>"
+
+        ```'
+      summary: Bulk delete records
+      parameters:
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: string
+        description: An array of record IDs to be deleted.
+        required: true
+        explode: true
+        style: form
+        examples:
+          BulkDestroy:
+            value:
+            - abcdef012345
+            - fedcb0987654
+            summary: bulk destroy
+      tags:
+      - records
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/records/{id}/:
+    get:
+      operationId: records_retrieve
+      description: 'Retrieve a record by its ID.
+
+
+        The response will be the record object.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind records retrieve --id "<record-id>"
+
+        ```'
+      summary: Retrieve a record
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this record.
+        required: true
+      tags:
+      - records
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+          description: ''
+    put:
+      operationId: records_update
+      description: API for records.
+      summary: Update a record
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this record.
+        required: true
+      tags:
+      - records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RecordUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecordUpdate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordUpdate'
+          description: ''
+    patch:
+      operationId: records_partial_update
+      description: Record PATCH semantics are intentionally unsupported.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this record.
+        required: true
+      tags:
+      - records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRecord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRecord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRecord'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+          description: ''
+    delete:
+      operationId: records_destroy
+      description: 'Delete a record by its ID.
+
+
+        The response will be a 204 No Content if successful.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind records destroy --id "<record-id>"
+
+        ```'
+      summary: Delete a record
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this record.
+        required: true
+      tags:
+      - records
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/records/decrypt/:
+    post:
+      operationId: records_decrypt
+      description: '[Blind Insight Proxy] Decrypt data and return records'
+      summary: Decrypt data and return records (only available via proxy)
+      tags:
+      - records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: An array of records to be ingested.
+              items:
+                required:
+                - data
+                - schema
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: The data to be encrypted and stored as a record
+                    additionalProperties:
+                      description: Value for the data labels
+                      anyOf:
+                      - type: string
+                      - type: number
+                      - type: integer
+                    example:
+                      job_function: developer
+                      job_level: greybeard
+                      salary: 1000
+                      productivity: 0.95
+                  schema:
+                    description: The schema URL for the record
+                    type: string
+                    format: uri
+            examples:
+              SingleRecordDecrypt:
+                value:
+                - data:
+                    b92e749344f081287b034c57b7a02c77f: b4486fe169178ec73d3dfad17227da820b89d27e1994f7
+                    961298e17a97e7d0b847b8b743e179b2b: 8d90841201a70611da0b964a743564e035fc
+                    52a1e027e31d4c5bbf126647962822fc1: 6f1374dc5a6314a36f8ef8244c
+                  schema: https://demo.blindinsight.io/api/schemas/abcdef012345
+                summary: single record decrypt
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              description: An array of records to be ingested.
+              items:
+                required:
+                - data
+                - schema
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: The data to be encrypted and stored as a record
+                    additionalProperties:
+                      description: Value for the data labels
+                      anyOf:
+                      - type: string
+                      - type: number
+                      - type: integer
+                    example:
+                      job_function: developer
+                      job_level: greybeard
+                      salary: 1000
+                      productivity: 0.95
+                  schema:
+                    description: The schema URL for the record
+                    type: string
+                    format: uri
+          multipart/form-data:
+            schema:
+              type: array
+              description: An array of records to be ingested.
+              items:
+                required:
+                - data
+                - schema
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: The data to be encrypted and stored as a record
+                    additionalProperties:
+                      description: Value for the data labels
+                      anyOf:
+                      - type: string
+                      - type: number
+                      - type: integer
+                    example:
+                      job_function: developer
+                      job_level: greybeard
+                      salary: 1000
+                      productivity: 0.95
+                  schema:
+                    description: The schema URL for the record
+                    type: string
+                    format: uri
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Record'
+              examples:
+                SingleRecordDecrypt:
+                  value:
+                  - data:
+                      job_function: developer
+                      job_level: greybeard
+                      company: blindinsight
+                    schema: https://demo.blindinsight.io/api/schemas/abcdef012345
+                    url: https://demo.blindinsight.io/api/records/abcdef012345
+                    owner: https://demo.blindinsight.io/api/users/abcdef012345
+                    id: abcdef012345
+                  summary: single record decrypt
+          description: ''
+        '422':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: could not decrypt record
+                  error: Unprocessable entity
+          description: Proxy decrypt failed
+  /api/records/ingest/:
+    post:
+      operationId: records_ingest
+      description: '[Blind Insight Proxy] Ingest data and encrypt it returning the encrypted records'
+      summary: Ingest data and encrypt it (only available via proxy)
+      tags:
+      - records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: An array of records to be ingested.
+              items:
+                required:
+                - data
+                - schema
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: The data to be encrypted and stored as a record
+                    additionalProperties:
+                      description: Value for the data labels
+                      anyOf:
+                      - type: string
+                      - type: number
+                      - type: integer
+                    example:
+                      job_function: developer
+                      job_level: greybeard
+                      salary: 1000
+                      productivity: 0.95
+                  schema:
+                    description: The schema URL for the record
+                    type: string
+                    format: uri
+            examples:
+              ExampleRecordIngest:
+                value:
+                - data:
+                    job_function: developer
+                    job_level: greybeard
+                    company: blindinsight
+                  schema: https://demo.blindinsight.io/api/schemas/abcdef012345
+                - data:
+                    name: Bob
+                    age: 32
+                  schema: https://demo.blindinsight.io/api/schemas/zzzxxx987654
+                summary: example record ingest
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              description: An array of records to be ingested.
+              items:
+                required:
+                - data
+                - schema
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: The data to be encrypted and stored as a record
+                    additionalProperties:
+                      description: Value for the data labels
+                      anyOf:
+                      - type: string
+                      - type: number
+                      - type: integer
+                    example:
+                      job_function: developer
+                      job_level: greybeard
+                      salary: 1000
+                      productivity: 0.95
+                  schema:
+                    description: The schema URL for the record
+                    type: string
+                    format: uri
+          multipart/form-data:
+            schema:
+              type: array
+              description: An array of records to be ingested.
+              items:
+                required:
+                - data
+                - schema
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: The data to be encrypted and stored as a record
+                    additionalProperties:
+                      description: Value for the data labels
+                      anyOf:
+                      - type: string
+                      - type: number
+                      - type: integer
+                    example:
+                      job_function: developer
+                      job_level: greybeard
+                      salary: 1000
+                      productivity: 0.95
+                  schema:
+                    description: The schema URL for the record
+                    type: string
+                    format: uri
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Record'
+              examples:
+                SingleRecord:
+                  value:
+                  - data:
+                      2516cdf1538b273e39bf91e67abff3a0: 961298e17a97e7d0b847b8b743e179b2b
+                      b92e749344f081287b034c57b7a02c77f: 695d2fe4339e50f5039cfbef464846cf202fc06
+                    schema: https://demo.blindinsight.io/api/schemas/abcdef012345
+                    url: https://demo.blindinsight.io/api/records/abcdef012345
+                    owner: https://demo.blindinsight.io/api/users/abcdef012345
+                    id: abcdef012345
+                  summary: single record
+          description: ''
+        '413':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: max record limit of 100 exceeded
+                  error: Request entity too large
+          description: Max record limit exceeded
+        '422':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: could not get schema map
+                  error: Unprocessable entity
+          description: Proxy ingest failed
+  /api/records/search/:
+    post:
+      operationId: records_search
+      description: '[Blind Insight Proxy] Search for records by label and value. If label or value is specified, both must be present. If neither are present, this endpoint does not filter records.'
+      summary: Search for records (only available via proxy)
+      tags:
+      - records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - schema
+              properties:
+                schema:
+                  type: string
+                  description: Schema ID to search within
+                filters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      label:
+                        type: string
+                        description: Label to search for given value
+                      value:
+                        type: string
+                        description: Value to search for given label
+                    required:
+                    - label
+                    - value
+                  description: Array of label/value pairs to filter records
+                limit:
+                  type: integer
+                  description: Maximum number of records to return
+                offset:
+                  type: integer
+                  description: Number of records to skip
+            examples:
+              Search:
+                value:
+                  schema: KycqdSAKzP4wUZ337b6ngb
+                  filters:
+                  - label: job_level
+                    value: greybeard
+                  limit: 10
+                  offset: 0
+                summary: search
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - schema
+              properties:
+                schema:
+                  type: string
+                  description: Schema ID to search within
+                filters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      label:
+                        type: string
+                        description: Label to search for given value
+                      value:
+                        type: string
+                        description: Value to search for given label
+                    required:
+                    - label
+                    - value
+                  description: Array of label/value pairs to filter records
+                limit:
+                  type: integer
+                  description: Maximum number of records to return
+                offset:
+                  type: integer
+                  description: Number of records to skip
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - schema
+              properties:
+                schema:
+                  type: string
+                  description: Schema ID to search within
+                filters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      label:
+                        type: string
+                        description: Label to search for given value
+                      value:
+                        type: string
+                        description: Value to search for given label
+                    required:
+                    - label
+                    - value
+                  description: Array of label/value pairs to filter records
+                limit:
+                  type: integer
+                  description: Maximum number of records to return
+                offset:
+                  type: integer
+                  description: Number of records to skip
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Record'
+              examples:
+                SearchSingleRecordFound:
+                  value:
+                  - data:
+                      02c77f5019095cbdef089d7e469d676daf9b9: 23056ec398be4d3dfad17227da820b89d27e1994f7
+                      179b2b1888f4db01c8203b0be7af5c8b5b83b: 6718c4f45dd6ea0b964a743564e035fc
+                      822fc1e33ea07ea1ddff1ec9aae93da845fee: a3f644f0c206bf8ef8244c
+                    schema: https://demo.blindinsight.io/api/schemas/abcdef012345
+                  summary: search single record found
+          description: ''
+        '422':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  detail: could not search records
+                  error: Unprocessable entity
+          description: Proxy search failed
+components:
+  schemas:
+    IndexedRecord:
+      type: object
+      description: Serializer for creating a Record and creating the schema index values together.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        schema:
+          type: string
+          format: uri
+        hashed_label_map:
+          type: object
+          example:
+            b92e749344f081287b034c57b7a02c77f:
+              hashed_value: b4486fe169178ec73d3dfad17227da820b89d27e1994f7
+              field_schema:
+                type: string
+            961298e17a97e7d0b847b8b743e179b2b:
+              hashed_value: 8d90841201a70611da0b964a743564e035fc
+              field_schema:
+                type: number
+                minimum: 0
+                maximum: 10
+          additionalProperties:
+            type: object
+            properties:
+              field_schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  minimum:
+                    type: number
+                    example: 0
+                  maximum:
+                    type: number
+                    example: 10
+                required:
+                - type
+              hashed_value:
+                type: string
+          writeOnly: true
+        data:
+          type: object
+          description: The data that this record represents.
+      required:
+      - hashed_label_map
+      - id
+      - schema
+      - url
+    RecordUpdate:
+      type: object
+      description: Serializer for replacing a record's encrypted payload and search index.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        schema:
+          type: string
+          format: uri
+        data:
+          type: object
+        hashed_label_map:
+          type: object
+          example:
+            b92e749344f081287b034c57b7a02c77f:
+              hashed_value: b4486fe169178ec73d3dfad17227da820b89d27e1994f7
+              field_schema:
+                type: string
+            961298e17a97e7d0b847b8b743e179b2b:
+              hashed_value: 8d90841201a70611da0b964a743564e035fc
+              field_schema:
+                type: number
+                minimum: 0
+                maximum: 10
+          additionalProperties:
+            type: object
+            properties:
+              field_schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  minimum:
+                    type: number
+                    example: 0
+                  maximum:
+                    type: number
+                    example: 10
+                required:
+                - type
+              hashed_value:
+                type: string
+          writeOnly: true
+      required:
+      - data
+      - hashed_label_map
+      - id
+      - schema
+      - url
+    PatchedRecord:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        schema:
+          type: string
+          format: uri
+        data:
+          type: object
+          description: The data that this record represents.
+    PaginatedRecordList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Record'
+    Record:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        schema:
+          type: string
+          format: uri
+        data:
+          type: object
+          description: The data that this record represents.
+      required:
+      - id
+      - schema
+      - url
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

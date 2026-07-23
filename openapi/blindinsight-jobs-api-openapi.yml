@@ -1,0 +1,162 @@
+openapi: 3.0.3
+info:
+  title: Blind Insight REST accounts jobs API
+  version: 10.22.0
+  description: End-to-end encrypted datastore
+tags:
+- name: jobs
+paths:
+  /api/jobs/{job_id}/:
+    get:
+      operationId: jobs_status
+      description: 'Get the status of a job by its ID.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind jobs status --id "<job-id>"
+
+        ```'
+      summary: Get the status of a job (only available via proxy)
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+          format: uuid
+        description: The job ID to get the status of.
+        required: true
+      tags:
+      - jobs
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  processed:
+                    type: integer
+                  total:
+                    type: integer
+                  current_batch:
+                    type: integer
+                  total_batches:
+                    type: integer
+                  error:
+                    type: string
+          description: Job status
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+          description: Job not found
+  /api/jobs/upload/:
+    post:
+      operationId: jobs_upload
+      description: 'Upload new records to the database in a single request.
+
+
+        **On the command line:**
+
+
+        ```bash
+
+        blind jobs upload --data records.json
+
+        ```'
+      summary: Batch upload new records (only available via proxy)
+      parameters:
+      - in: header
+        name: X-Batch-Size
+        schema:
+          type: integer
+          default: 10
+        description: The number of records to upload in each batch.
+      tags:
+      - jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: An array of records to be ingested.
+              items:
+                required:
+                - data
+                - schema
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: The data to be encrypted and stored as a record
+                    additionalProperties:
+                      description: Value for the data labels
+                      anyOf:
+                      - type: string
+                      - type: number
+                      - type: integer
+                    example:
+                      job_function: developer
+                      job_level: greybeard
+                      salary: 1000
+                      productivity: 0.95
+                  schema:
+                    description: The schema URL for the record
+                    type: string
+                    format: uri
+          text/csv:
+            schema:
+              type: string
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                    format: uuid
+          description: Job ID
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+          description: Bad Request
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
