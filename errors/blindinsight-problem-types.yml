@@ -1,0 +1,62 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/blindinsight-openapi-original.yml
+format: json
+notes: >-
+  Derived from the 4xx/5xx responses declared across 127 operations in the Blind
+  Insight OpenAPI. Errors are returned as application/json (not RFC 9457
+  problem+json). Several codes are Blind Insight / Blind Proxy specific: 412/460
+  guard the resumable TUS file-upload flow, and 422 surfaces client-side
+  encrypt/decrypt failures from the local proxy. HTTP 460 is a non-standard,
+  provider-defined status used for upload checksum mismatch.
+problems:
+- status: 400
+  title: Bad Request
+  meaning: Request payload failed validation (malformed body or field constraints).
+  occurrences: 20
+  example_operation: POST /api/accounts/change-password/
+- status: 404
+  title: Not Found
+  meaning: Referenced resource (job, materials, record, schema, etc.) does not exist.
+  occurrences: 8
+  example_operation: GET /api/jobs/{job_id}/
+- status: 409
+  title: Upload Conflict
+  meaning: Resumable upload conflict — offset or state does not match the server.
+  occurrences: 1
+  example_operation: PATCH /api/files/{id}/
+- status: 412
+  title: Precondition Failed
+  meaning: A required TUS/upload precondition header was missing or invalid.
+  occurrences: 3
+  example_operation: POST /api/files/
+- status: 413
+  title: Request Entity Too Large
+  meaning: Payload exceeds limits (e.g. more than 100 records per ingest request).
+  occurrences: 2
+  example_operation: POST /api/files/
+- status: 415
+  title: Unsupported Media Type
+  meaning: Content-Type is not accepted for this operation.
+  occurrences: 2
+  example_operation: POST /api/files/
+- status: 422
+  title: Unprocessable Entity
+  meaning: Blind Proxy encrypt/decrypt or ingest operation failed client-side.
+  occurrences: 4
+  example_operation: POST /api/records/decrypt/
+- status: 429
+  title: Too Many Requests
+  meaning: Rate limit exceeded (observed on BlindLLM chat/demo endpoints).
+  occurrences: 2
+  example_operation: POST /api/blindllm/chat/
+- status: 460
+  title: Checksum Mismatch
+  meaning: Non-standard provider status — uploaded file checksum did not match.
+  occurrences: 2
+  example_operation: POST /api/files/
+- status: 503
+  title: Service Unavailable
+  meaning: Upstream/model service temporarily unavailable (observed on BlindLLM endpoints).
+  occurrences: 3
+  example_operation: POST /api/blindllm/chat/

@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.blindinsight.io/getting-started/
+notes: >-
+  Blind Insight publishes a hosted demo instance and demo datasets rather than a
+  test-key / test-card sandbox. The Blind Proxy runs locally so all encryption
+  happens client-side against either the demo or a live organization. No published
+  synthetic test credentials or magic values were found (none are invented here).
+surfaces:
+- kind: demo-instance
+  url: https://demo.blindinsight.io/
+  description: Hosted demo instance of the Blind Insight application.
+- kind: demo-datasets
+  url: https://github.com/blind-insight/demo-datasets
+  description: Demo datasets suitable for direct upload into a schema for testing.
+- kind: public-endpoint
+  path: GET /api/status/
+  description: Unauthenticated health/status endpoint for connectivity checks.
+- kind: llm-demo-endpoint
+  path: POST /api/blindllm/demo/
+  description: BlindLLM demo endpoint for trialing model queries over encrypted data.
+proxy:
+  local_url: https://local.blindinsight.io
+  env_override: BI_PROXY_URL
+  description: >-
+    The Blind Proxy is deployed locally and handles encryption/decryption; point
+    BI_PROXY_URL at it to run flows against the demo or a live organization.

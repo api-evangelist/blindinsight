@@ -1,7 +1,29 @@
 aid: blindinsight
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/blindinsight.png
 name: BlindInsight
-description: BlindInsight is a company surfaced as a portfolio company of 500-global and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  BlindInsight (Blind Insight) is an end-to-end encrypted datastore and
+  privacy-preserving data-analysis platform. It lets teams encrypt, ingest,
+  search, and run machine learning and LLM queries over fully encrypted records
+  without ever exposing plaintext, using a locally deployed Blind Proxy that
+  transparently performs client-side encryption and decryption against the cloud
+  REST API. The platform provides schema-constrained encrypted fields, searchable
+  encryption, key sharing and keyring management, role- and team-based access
+  grants, organization and user management, resumable batch ingestion, and a
+  BlindLLM interface for prompting models over protected data — aimed at
+  regulated, compliance-sensitive workloads.
 url: https://raw.githubusercontent.com/api-evangelist/blindinsight/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,15 +33,302 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Security
+- Encryption
+- Privacy
+- Confidential Computing
+- Data
+- Machine Learning
+- Compliance
+- Cryptography
+apis:
+- aid: blindinsight:blindinsight-accounts-api
+  name: BlindInsight accounts API
+  description: The accounts API from BlindInsight — 10 operation(s) for accounts.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-accounts-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-blindllm-api
+  name: BlindInsight blindllm API
+  description: The blindllm API from BlindInsight — 4 operation(s) for blindllm.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - blindllm
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-blindllm-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-blindllm-queries-api
+  name: BlindInsight blindllm-queries API
+  description: The blindllm-queries API from BlindInsight — 2 operation(s) for blindllm-queries.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - blindllm-queries
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-blindllm-queries-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-csrf-api
+  name: BlindInsight csrf API
+  description: The csrf API from BlindInsight — 1 operation(s) for csrf.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - csrf
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-csrf-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-datasets-api
+  name: BlindInsight datasets API
+  description: The datasets API from BlindInsight — 3 operation(s) for datasets.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-datasets-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-delete-jobs-api
+  name: BlindInsight delete-jobs API
+  description: The delete-jobs API from BlindInsight — 1 operation(s) for delete-jobs.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - delete-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-delete-jobs-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-files-api
+  name: BlindInsight files API
+  description: The files API from BlindInsight — 2 operation(s) for files.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - files
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-files-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-grants-api
+  name: BlindInsight grants API
+  description: The grants API from BlindInsight — 2 operation(s) for grants.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - grants
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-grants-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-identities-api
+  name: BlindInsight identities API
+  description: The identities API from BlindInsight — 2 operation(s) for identities.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - identities
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-identities-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-jobs-api
+  name: BlindInsight jobs API
+  description: The jobs API from BlindInsight — 2 operation(s) for jobs.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-jobs-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-materials-api
+  name: BlindInsight materials API
+  description: The materials API from BlindInsight — 8 operation(s) for materials.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - materials
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-materials-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-organizations-api
+  name: BlindInsight organizations API
+  description: The organizations API from BlindInsight — 15 operation(s) for organizations.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-organizations-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-records-api
+  name: BlindInsight records API
+  description: The records API from BlindInsight — 5 operation(s) for records.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - records
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-records-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-requests-api
+  name: BlindInsight requests API
+  description: The requests API from BlindInsight — 4 operation(s) for requests.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - requests
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-requests-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-schemas-api
+  name: BlindInsight schemas API
+  description: The schemas API from BlindInsight — 4 operation(s) for schemas.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-schemas-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-status-api
+  name: BlindInsight status API
+  description: The status API from BlindInsight — 1 operation(s) for status.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - status
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-status-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-token-api
+  name: BlindInsight token API
+  description: The token API from BlindInsight — 3 operation(s) for token.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - token
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-token-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-users-api
+  name: BlindInsight users API
+  description: The users API from BlindInsight — 4 operation(s) for users.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-users-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
+- aid: blindinsight:blindinsight-ws-api
+  name: BlindInsight ws API
+  description: The ws API from BlindInsight — 1 operation(s) for ws.
+  humanURL: https://docs.blindinsight.io/api-reference/
+  baseURL: https://api.app.blindinsight.io
+  tags:
+  - ws
+  properties:
+  - type: OpenAPI
+    url: openapi/blindinsight-ws-api-openapi.yml
+  - type: APIReference
+    url: https://api.app.blindinsight.io/api/docs/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/blindinsight-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/blindinsight-agentic-access.yml
+- type: Authentication
+  url: authentication/blindinsight-authentication.yml
+- type: Packages
+  url: packages/blindinsight-packages.yml
+- type: SDKs
+  url: packages/blindinsight-packages.yml
+- type: CLI
+  url: cli/blindinsight-cli.yml
+- type: ErrorCatalog
+  url: errors/blindinsight-problem-types.yml
+- type: Conventions
+  url: conventions/blindinsight-conventions.yml
+- type: DataModel
+  url: data-model/blindinsight-data-model.yml
+- type: Conformance
+  url: conformance/blindinsight-conformance.yml
+- type: AsyncAPI
+  url: asyncapi/blindinsight-jobs-asyncapi.yml
+- type: MCPServer
+  url: mcp/blindinsight-mcp.yml
+- type: Sandbox
+  url: sandbox/blindinsight-sandbox.yml
+- type: Lifecycle
+  url: lifecycle/blindinsight-lifecycle.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/blindinsight-llms.txt
 - type: Website
   url: https://blindinsight.io
+- type: DeveloperPortal
+  url: https://docs.blindinsight.io/
+- type: Documentation
+  url: https://docs.blindinsight.io/
+- type: APIReference
+  url: https://docs.blindinsight.io/api-reference/
+- type: GettingStarted
+  url: https://docs.blindinsight.io/getting-started/
+- type: SignUp
+  url: https://app.blindinsight.io/
+- type: Login
+  url: https://app.blindinsight.io/
+- type: GitHubOrganization
+  url: https://github.com/blind-insight
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

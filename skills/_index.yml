@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/blindinsight-openapi-original.yml
+skills:
+- file: blindinsight-ingest-encrypted-records.md
+  name: Ingest encrypted records into Blind Insight
+  api: openapi/blindinsight-openapi-original.yml
+  operations: [token_create, datasets_create, schemas_create, records_ingest, jobs_upload, jobs_status, jobs_websocket]
+- file: blindinsight-search-encrypted-data.md
+  name: Search and decrypt Blind Insight records
+  api: openapi/blindinsight-openapi-original.yml
+  operations: [token_create, schemas_list, records_search, records_decrypt, records_list]
+- file: blindinsight-share-keys-and-grant-access.md
+  name: Share keys and grant access in Blind Insight
+  api: openapi/blindinsight-openapi-original.yml
+  operations: [identities_create, grants_create, requests_create, requests_fulfill-list, materials_receive-list, materials_acknowledge_create]

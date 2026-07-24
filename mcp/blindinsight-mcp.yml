@@ -1,0 +1,646 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/blindinsight-openapi-original.yml
+notes: No official hosted/remote MCP server was found. This is a CANDIDATE tool list derived one-tool-per-operation
+  from the published OpenAPI (127 operations); each tool maps to a real operationId. Not an authoritative
+  provider MCP manifest.
+server:
+  name: blindinsight
+  transport: stdio
+tools:
+- name: accounts_change-password
+  description: Change user password
+  method: POST
+  path: /api/accounts/change-password/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_change-password
+- name: accounts_login
+  description: Login a user account
+  method: POST
+  path: /api/accounts/login/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_login
+- name: accounts_logout
+  description: Logout a user account
+  method: POST
+  path: /api/accounts/logout/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_logout
+- name: accounts_profile_retrieve
+  description: Get user profile
+  method: GET
+  path: /api/accounts/profile/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_profile_retrieve
+- name: accounts_profile_create
+  description: Create user profile
+  method: POST
+  path: /api/accounts/profile/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_profile_create
+- name: accounts_profile_update
+  description: Update user profile
+  method: PUT
+  path: /api/accounts/profile/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_profile_update
+- name: accounts_profile_partial-update
+  description: Partially update user profile
+  method: PATCH
+  path: /api/accounts/profile/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_profile_partial-update
+- name: accounts_register
+  description: Register a new user account
+  method: POST
+  path: /api/accounts/register/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_register
+- name: accounts_register-email
+  description: Register user email
+  method: POST
+  path: /api/accounts/register-email/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_register-email
+- name: accounts_reset-password
+  description: Reset user password
+  method: POST
+  path: /api/accounts/reset-password/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_reset-password
+- name: accounts_send-reset-password-link
+  description: Send reset password link
+  method: POST
+  path: /api/accounts/send-reset-password-link/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_send-reset-password-link
+- name: accounts_verify-email
+  description: Verify user email
+  method: POST
+  path: /api/accounts/verify-email/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_verify-email
+- name: accounts_verify-registration
+  description: Verify a new user account
+  method: POST
+  path: /api/accounts/verify-registration/
+  source_operation: openapi/blindinsight-openapi-original.yml#accounts_verify-registration
+- name: blindllm_queries_list
+  description: API for BlindLLM analyst queries.
+  method: GET
+  path: /api/blindllm-queries/
+  source_operation: openapi/blindinsight-openapi-original.yml#blindllm_queries_list
+- name: blindllm_queries_create
+  description: API for BlindLLM analyst queries.
+  method: POST
+  path: /api/blindllm-queries/
+  source_operation: openapi/blindinsight-openapi-original.yml#blindllm_queries_create
+- name: blindllm_queries_retrieve
+  description: API for BlindLLM analyst queries.
+  method: GET
+  path: /api/blindllm-queries/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#blindllm_queries_retrieve
+- name: blindllm_chat_create
+  description: Public BlindLLM demo (marketing site)
+  method: POST
+  path: /api/blindllm/chat/
+  source_operation: openapi/blindinsight-openapi-original.yml#blindllm_chat_create
+- name: blindllm_demo_create
+  description: Public BlindLLM demo (marketing site)
+  method: POST
+  path: /api/blindllm/demo/
+  source_operation: openapi/blindinsight-openapi-original.yml#blindllm_demo_create
+- name: blindllm_inspect_retrieve
+  description: Public BlindLLM schema catalog inspect
+  method: GET
+  path: /api/blindllm/inspect/
+  source_operation: openapi/blindinsight-openapi-original.yml#blindllm_inspect_retrieve
+- name: blindllm_models_retrieve
+  description: Supported BlindLLM model selectors
+  method: GET
+  path: /api/blindllm/models/
+  source_operation: openapi/blindinsight-openapi-original.yml#blindllm_models_retrieve
+- name: csrf_retrieve
+  description: Retrieve a CSRF token
+  method: GET
+  path: /api/csrf/
+  source_operation: openapi/blindinsight-openapi-original.yml#csrf_retrieve
+- name: datasets_list
+  description: Retrieve a list of Dataset objects, with filters
+  method: GET
+  path: /api/datasets/
+  source_operation: openapi/blindinsight-openapi-original.yml#datasets_list
+- name: datasets_create
+  description: Create a new Dataset
+  method: POST
+  path: /api/datasets/
+  source_operation: openapi/blindinsight-openapi-original.yml#datasets_create
+- name: datasets_retrieve
+  description: Retrieve one Dataset object
+  method: GET
+  path: /api/datasets/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#datasets_retrieve
+- name: datasets_update
+  description: Update a Dataset
+  method: PUT
+  path: /api/datasets/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#datasets_update
+- name: datasets_partial_update
+  description: Partially update a Dataset
+  method: PATCH
+  path: /api/datasets/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#datasets_partial_update
+- name: datasets_destroy
+  description: Delete a Dataset
+  method: DELETE
+  path: /api/datasets/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#datasets_destroy
+- name: datasets_schema
+  description: Retrieve a dataset schema by slug
+  method: GET
+  path: /api/datasets/{id}/schema/{slug}/
+  source_operation: openapi/blindinsight-openapi-original.yml#datasets_schema
+- name: delete_job_status
+  description: Get the status of an async delete job
+  method: GET
+  path: /api/delete-jobs/{job_id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#delete_job_status
+- name: files_create
+  description: Create a new upload resource (only available via proxy)
+  method: POST
+  path: /api/files/
+  source_operation: openapi/blindinsight-openapi-original.yml#files_create
+- name: files_patch
+  description: Upload file chunk (only available via proxy)
+  method: PATCH
+  path: /api/files/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#files_patch
+- name: files_delete
+  description: Delete upload (only available via proxy)
+  method: DELETE
+  path: /api/files/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#files_delete
+- name: grants_list
+  description: List all grants
+  method: GET
+  path: /api/grants/
+  source_operation: openapi/blindinsight-openapi-original.yml#grants_list
+- name: grants_create
+  description: Create a new grant
+  method: POST
+  path: /api/grants/
+  source_operation: openapi/blindinsight-openapi-original.yml#grants_create
+- name: grants_retrieve
+  description: Retrieve a single grant
+  method: GET
+  path: /api/grants/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#grants_retrieve
+- name: grants_update
+  description: Update a grant
+  method: PUT
+  path: /api/grants/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#grants_update
+- name: grants_partial-update
+  description: Partially update a grant
+  method: PATCH
+  path: /api/grants/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#grants_partial-update
+- name: grants_destroy
+  description: Delete a grant
+  method: DELETE
+  path: /api/grants/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#grants_destroy
+- name: identities_list
+  description: List Identities
+  method: GET
+  path: /api/identities/
+  source_operation: openapi/blindinsight-openapi-original.yml#identities_list
+- name: identities_create
+  description: Create a new Identity
+  method: POST
+  path: /api/identities/
+  source_operation: openapi/blindinsight-openapi-original.yml#identities_create
+- name: identities_retrieve
+  description: Retrieve a single Identity
+  method: GET
+  path: /api/identities/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#identities_retrieve
+- name: identities_update
+  description: Update an Identity
+  method: PUT
+  path: /api/identities/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#identities_update
+- name: identities_partial-update
+  description: Partially update an Identity
+  method: PATCH
+  path: /api/identities/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#identities_partial-update
+- name: identities_destroy
+  description: Delete an Identity
+  method: DELETE
+  path: /api/identities/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#identities_destroy
+- name: jobs_status
+  description: Get the status of a job (only available via proxy)
+  method: GET
+  path: /api/jobs/{job_id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#jobs_status
+- name: jobs_upload
+  description: Batch upload new records (only available via proxy)
+  method: POST
+  path: /api/jobs/upload/
+  source_operation: openapi/blindinsight-openapi-original.yml#jobs_upload
+- name: materials_list
+  description: List all materials
+  method: GET
+  path: /api/materials/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_list
+- name: materials_create
+  description: Create a new material
+  method: POST
+  path: /api/materials/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_create
+- name: materials_retrieve
+  description: Retrieve a single material
+  method: GET
+  path: /api/materials/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_retrieve
+- name: materials_destroy
+  description: Delete a material
+  method: DELETE
+  path: /api/materials/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_destroy
+- name: materials_acknowledge_create
+  description: Acknowledge receipt of a material
+  method: POST
+  path: /api/materials/{id}/acknowledge/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_acknowledge_create
+- name: materials_proof_create
+  description: Validate a proof for a material
+  method: POST
+  path: /api/materials/{id}/proof/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_proof_create
+- name: materials_receive-detail
+  description: Receive a single material
+  method: POST
+  path: /api/materials/{material_id}/receive/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_receive-detail
+- name: materials_overrides
+  description: List all material overrides
+  method: GET
+  path: /api/materials/overrides/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_overrides
+- name: materials_overrides_delete-list
+  description: Delete all material overrides
+  method: DELETE
+  path: /api/materials/overrides/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_overrides_delete-list
+- name: materials_overrides_delete-detail
+  description: Delete a single material override
+  method: DELETE
+  path: /api/materials/overrides/{key}/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_overrides_delete-detail
+- name: materials_receive-list
+  description: Receive all materials
+  method: POST
+  path: /api/materials/receive/
+  source_operation: openapi/blindinsight-openapi-original.yml#materials_receive-list
+- name: organizations_list
+  description: List organizations
+  method: GET
+  path: /api/organizations/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_list
+- name: organizations_create
+  description: Create organization
+  method: POST
+  path: /api/organizations/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_create
+- name: organizations_retrieve
+  description: Retrieve organization
+  method: GET
+  path: /api/organizations/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_retrieve
+- name: organizations_update
+  description: Update organization
+  method: PUT
+  path: /api/organizations/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_update
+- name: organizations_partial-update
+  description: Partial update organization
+  method: PATCH
+  path: /api/organizations/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_partial-update
+- name: organizations_destroy
+  description: Delete organization
+  method: DELETE
+  path: /api/organizations/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_destroy
+- name: organizations_dataset
+  description: Retrieve organization dataset by slug
+  method: GET
+  path: /api/organizations/{id}/dataset/{slug}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_dataset
+- name: organizations_owner
+  description: Retrieve organization owner
+  method: GET
+  path: /api/organizations/{id}/owner/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_owner
+- name: organizations_audit_logs_list
+  description: List organization audit logs
+  method: GET
+  path: /api/organizations/{organization_id}/audit-logs/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_audit_logs_list
+- name: organizations_audit_logs_retrieve
+  description: Retrieve organization audit log
+  method: GET
+  path: /api/organizations/{organization_id}/audit-logs/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_audit_logs_retrieve
+- name: organizations_invitations_list
+  description: List organization invitations
+  method: GET
+  path: /api/organizations/{organization_id}/invitations/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_invitations_list
+- name: organizations_invitations_create
+  description: Create organization invitation
+  method: POST
+  path: /api/organizations/{organization_id}/invitations/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_invitations_create
+- name: organizations_invitations_retrieve
+  description: Retrieve organization invitation
+  method: GET
+  path: /api/organizations/{organization_id}/invitations/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_invitations_retrieve
+- name: organizations_invitations_update
+  description: Update organization invitation
+  method: PUT
+  path: /api/organizations/{organization_id}/invitations/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_invitations_update
+- name: organizations_invitations_partial-update
+  description: Partial update organization invitation
+  method: PATCH
+  path: /api/organizations/{organization_id}/invitations/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_invitations_partial-update
+- name: organizations_invitations_destroy
+  description: Delete organization invitation
+  method: DELETE
+  path: /api/organizations/{organization_id}/invitations/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_invitations_destroy
+- name: organizations_teams_list
+  description: List all teams
+  method: GET
+  path: /api/organizations/{organization_id}/teams/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_teams_list
+- name: organizations_teams_create
+  description: Create a new team
+  method: POST
+  path: /api/organizations/{organization_id}/teams/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_teams_create
+- name: organizations_teams_retrieve
+  description: Retrieve a single team
+  method: GET
+  path: /api/organizations/{organization_id}/teams/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_teams_retrieve
+- name: organizations_teams_update
+  description: Update a team
+  method: PUT
+  path: /api/organizations/{organization_id}/teams/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_teams_update
+- name: organizations_teams_partial-update
+  description: Partially update a team
+  method: PATCH
+  path: /api/organizations/{organization_id}/teams/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_teams_partial-update
+- name: organizations_teams_destroy
+  description: Delete a team
+  method: DELETE
+  path: /api/organizations/{organization_id}/teams/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_teams_destroy
+- name: organizations_teams_add-member
+  description: Add a member to a team
+  method: POST
+  path: /api/organizations/{organization_id}/teams/{id}/add_member/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_teams_add-member
+- name: organizations_teams_remove-member
+  description: Remove a member from a team
+  method: POST
+  path: /api/organizations/{organization_id}/teams/{id}/remove_member/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_teams_remove-member
+- name: organizations_users_list
+  description: List organization users
+  method: GET
+  path: /api/organizations/{organization_id}/users/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_users_list
+- name: organizations_users_create
+  description: Create organization user
+  method: POST
+  path: /api/organizations/{organization_id}/users/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_users_create
+- name: organizations_users_retrieve
+  description: Retrieve organization user
+  method: GET
+  path: /api/organizations/{organization_id}/users/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_users_retrieve
+- name: organizations_users_update
+  description: Update organization user
+  method: PUT
+  path: /api/organizations/{organization_id}/users/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_users_update
+- name: organizations_users_partial-update
+  description: Partial update organization user
+  method: PATCH
+  path: /api/organizations/{organization_id}/users/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_users_partial-update
+- name: organizations_users_destroy
+  description: Delete organization user
+  method: DELETE
+  path: /api/organizations/{organization_id}/users/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_users_destroy
+- name: organizations_by-slug
+  description: Retrieve organization by slug
+  method: GET
+  path: /api/organizations/by-slug/{slug}/
+  source_operation: openapi/blindinsight-openapi-original.yml#organizations_by-slug
+- name: records_list
+  description: List records
+  method: GET
+  path: /api/records/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_list
+- name: records_create
+  description: Create a new record
+  method: POST
+  path: /api/records/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_create
+- name: records_bulk-destroy
+  description: Bulk delete records
+  method: DELETE
+  path: /api/records/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_bulk-destroy
+- name: records_retrieve
+  description: Retrieve a record
+  method: GET
+  path: /api/records/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_retrieve
+- name: records_update
+  description: Update a record
+  method: PUT
+  path: /api/records/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_update
+- name: records_partial_update
+  description: Record PATCH semantics are intentionally unsupported.
+  method: PATCH
+  path: /api/records/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_partial_update
+- name: records_destroy
+  description: Delete a record
+  method: DELETE
+  path: /api/records/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_destroy
+- name: records_decrypt
+  description: Decrypt data and return records (only available via proxy)
+  method: POST
+  path: /api/records/decrypt/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_decrypt
+- name: records_ingest
+  description: Ingest data and encrypt it (only available via proxy)
+  method: POST
+  path: /api/records/ingest/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_ingest
+- name: records_search
+  description: Search for records (only available via proxy)
+  method: POST
+  path: /api/records/search/
+  source_operation: openapi/blindinsight-openapi-original.yml#records_search
+- name: requests_list
+  description: List all requests
+  method: GET
+  path: /api/requests/
+  source_operation: openapi/blindinsight-openapi-original.yml#requests_list
+- name: requests_create
+  description: Create a new request
+  method: POST
+  path: /api/requests/
+  source_operation: openapi/blindinsight-openapi-original.yml#requests_create
+- name: requests_retrieve
+  description: Retrieve a single request
+  method: GET
+  path: /api/requests/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#requests_retrieve
+- name: requests_update
+  description: Update a request
+  method: PUT
+  path: /api/requests/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#requests_update
+- name: requests_partial-update
+  description: Partially update a request
+  method: PATCH
+  path: /api/requests/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#requests_partial-update
+- name: requests_destroy
+  description: Delete a request
+  method: DELETE
+  path: /api/requests/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#requests_destroy
+- name: requests_fulfill-detail
+  description: Fulfill a single request
+  method: POST
+  path: /api/requests/{request_id}/fulfill/
+  source_operation: openapi/blindinsight-openapi-original.yml#requests_fulfill-detail
+- name: requests_fulfill-list
+  description: Fulfill all requests
+  method: POST
+  path: /api/requests/fulfill/
+  source_operation: openapi/blindinsight-openapi-original.yml#requests_fulfill-list
+- name: schemas_list
+  description: List all schemas
+  method: GET
+  path: /api/schemas/
+  source_operation: openapi/blindinsight-openapi-original.yml#schemas_list
+- name: schemas_create
+  description: Create a new schema
+  method: POST
+  path: /api/schemas/
+  source_operation: openapi/blindinsight-openapi-original.yml#schemas_create
+- name: schemas_retrieve
+  description: Retrieve a single schema
+  method: GET
+  path: /api/schemas/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#schemas_retrieve
+- name: schemas_update
+  description: Update a schema
+  method: PUT
+  path: /api/schemas/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#schemas_update
+- name: schemas_partial-update
+  description: Partially update a schema
+  method: PATCH
+  path: /api/schemas/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#schemas_partial-update
+- name: schemas_destroy
+  description: Delete a schema
+  method: DELETE
+  path: /api/schemas/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#schemas_destroy
+- name: schemas_teams
+  description: List the teams for a schema
+  method: GET
+  path: /api/schemas/{id}/teams/
+  source_operation: openapi/blindinsight-openapi-original.yml#schemas_teams
+- name: schemas_decrypt
+  description: Decrypt a schema (only available via proxy)
+  method: POST
+  path: /api/schemas/decrypt/
+  source_operation: openapi/blindinsight-openapi-original.yml#schemas_decrypt
+- name: status_retrieve
+  description: Retrieve the status of the API
+  method: GET
+  path: /api/status/
+  source_operation: openapi/blindinsight-openapi-original.yml#status_retrieve
+- name: token_create
+  description: Create a new token
+  method: POST
+  path: /api/token/
+  source_operation: openapi/blindinsight-openapi-original.yml#token_create
+- name: token_refresh
+  description: Refresh a token
+  method: POST
+  path: /api/token/refresh/
+  source_operation: openapi/blindinsight-openapi-original.yml#token_refresh
+- name: token_verify
+  description: Verify a token
+  method: POST
+  path: /api/token/verify/
+  source_operation: openapi/blindinsight-openapi-original.yml#token_verify
+- name: users_list
+  description: Retrieve one or more User objects, with filters
+  method: GET
+  path: /api/users/
+  source_operation: openapi/blindinsight-openapi-original.yml#users_list
+- name: users_create
+  description: Create a new User
+  method: POST
+  path: /api/users/
+  source_operation: openapi/blindinsight-openapi-original.yml#users_create
+- name: users_retrieve
+  description: Retrieve one User object
+  method: GET
+  path: /api/users/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#users_retrieve
+- name: users_update
+  description: Update a User
+  method: PUT
+  path: /api/users/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#users_update
+- name: users_partial-update
+  description: Partially update a User
+  method: PATCH
+  path: /api/users/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#users_partial-update
+- name: users_destroy
+  description: Delete a User
+  method: DELETE
+  path: /api/users/{id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#users_destroy
+- name: users_by-name
+  description: Retrieve one User object by name
+  method: GET
+  path: /api/users/by_name/{email}/
+  source_operation: openapi/blindinsight-openapi-original.yml#users_by-name
+- name: users_self
+  description: Retrieve current user
+  method: GET
+  path: /api/users/self/
+  source_operation: openapi/blindinsight-openapi-original.yml#users_self
+- name: jobs_websocket
+  description: Connect to a job status websocket (only available via proxy)
+  method: GET
+  path: /api/ws/jobs/{job_id}/
+  source_operation: openapi/blindinsight-openapi-original.yml#jobs_websocket

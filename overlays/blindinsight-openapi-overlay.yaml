@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Blind Insight REST API
+  version: 1.0.0
+extends: openapi/blindinsight-openapi-original.yml
+x-provenance:
+  generated: '2026-07-18'
+  method: generated
+  source: openapi/blindinsight-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-artifacts:
+      authentication: authentication/blindinsight-authentication.yml
+      conventions: conventions/blindinsight-conventions.yml
+      errors: errors/blindinsight-problem-types.yml
+      data-model: data-model/blindinsight-data-model.yml
+      conformance: conformance/blindinsight-conformance.yml
+      asyncapi: asyncapi/blindinsight-jobs-asyncapi.yml
+      cli: cli/blindinsight-cli.yml
+      sandbox: sandbox/blindinsight-sandbox.yml
+- target: $.servers
+  update:
+  - url: https://api.app.blindinsight.io
+    description: Blind Insight cloud REST API.
+  - url: http://localhost:8080
+    description: Local Blind Proxy (transparent client-side encryption/decryption).

@@ -1,0 +1,50 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/blindinsight-openapi-original.yml
+docs: https://docs.blindinsight.io/api-reference/
+notes: >-
+  Cross-cutting request/response semantics for the Blind Insight REST API. Derived
+  from the OpenAPI plus the published API reference. The API is a Django REST
+  Framework service: trailing-slash resource paths, JSON bodies, limit/offset
+  pagination, and JWT/Basic/Session auth. No idempotency-key contract is documented
+  or present in the spec, so no Idempotency pointer is emitted.
+authentication:
+  styles: [http-basic, jwt-bearer, session-cookie]
+  detail: See authentication/blindinsight-authentication.yml
+  public_endpoints: [GET /api/status/]
+pagination:
+  style: limit-offset
+  params: [limit, offset]
+  response_fields: [count, next, previous, results]
+  detail: Standard DRF LimitOffsetPagination; list responses are Paginated*List envelopes.
+versioning:
+  scheme: unversioned-path
+  current: '10.22.0'
+  detail: Paths are unversioned (/api/...); the API build version is carried in OpenAPI info.version.
+error_envelope:
+  media_type: application/json
+  format: json
+  detail: See errors/blindinsight-problem-types.yml. Not RFC 9457 problem+json.
+idempotency:
+  supported: false
+  detail: No Idempotency-Key header or idempotent-retry contract is documented.
+async_jobs:
+  detail: >-
+    Long-running ingest/upload/delete operations return a job id (X-Job-ID). Poll
+    GET /api/jobs/{job_id}/ or subscribe to the WebSocket channel
+    /api/ws/jobs/{job_id}/ (see asyncapi/) for status: uploading, processing,
+    completed, failed.
+resumable_uploads:
+  protocol: tus
+  version: 1.0.0
+  detail: >-
+    Very large files use the TUS resumable upload protocol via POST /api/files/
+    (create) and PATCH /api/files/{id}/ (send chunks) with Tus-Resumable,
+    Upload-Length, Upload-Offset, and Upload-Metadata headers.
+csrf:
+  detail: Session-authenticated write requests require a CSRF token from GET /api/csrf/.
+encryption_model:
+  detail: >-
+    Field-level encryption is performed client-side by the local Blind Proxy before
+    data reaches the API; searchable encryption supports exact-match on strings and
+    range constraints on integer/number fields defined in the schema.

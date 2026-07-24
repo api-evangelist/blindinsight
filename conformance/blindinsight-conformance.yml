@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/blindinsight-openapi-original.yml
+notes: >-
+  Cross-cutting standards conformance derived from the OpenAPI security schemes,
+  response media types, upload protocol, and pagination. No published third-party
+  compliance certifications (SOC 2 / ISO 27001 / HIPAA / etc.) were found on the
+  site or a trust center, so no `Compliance` pointer is emitted.
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 security scheme; auth is HTTP Basic, JWT Bearer, and session cookie.
+- id: oidc
+  conforms: false
+- id: jwt-bearer
+  conforms: true
+  evidence: securityScheme jwtAuth (type http, scheme bearer, bearerFormat JWT) via POST /api/token/.
+- id: tus-resumable-upload
+  conforms: true
+  evidence: POST /api/files/ + PATCH /api/files/{id}/ use Tus-Resumable 1.0.0 headers.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error responses use application/json, not application/problem+json.
+- id: json-api
+  conforms: false
+- id: pagination
+  conforms: true
+  evidence: DRF limit/offset pagination with count/next/previous/results envelopes.
+- id: openapi-3
+  conforms: true
+  evidence: Publishes OpenAPI 3.0.3 at /api/schema/ with Swagger UI at /api/docs/.

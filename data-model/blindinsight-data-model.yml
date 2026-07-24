@@ -1,0 +1,97 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/blindinsight-openapi-original.yml
+docs: https://docs.blindinsight.io/api-reference/defining-schemas/
+notes: >-
+  Entity-relationship graph derived from the OpenAPI resource paths and the
+  published object reference. Resources are addressed as hyperlinked URLs
+  (e.g. /api/schemas/{id}/), and records reference their schema via a `schema`
+  URL field. Encryption keys are managed as a per-user keyring; access is granted
+  through grants and requests, and members are organized into teams.
+entities:
+- name: Organization
+  path: /api/organizations/{id}/
+  description: Top-level tenant for access control; owns datasets, teams, users, and invitations.
+- name: Team
+  path: /api/organizations/{organization_id}/teams/{id}/
+  description: Group of members within an organization; schemas can be shared to teams.
+- name: User
+  path: /api/users/{id}/
+  description: Account principal; has a profile and one or more identities.
+- name: Identity
+  path: /api/identities/{id}/
+  description: A user's cryptographic identity (public keys / device) used for key sharing.
+- name: Dataset
+  path: /api/datasets/{id}/
+  description: Container holding multiple schemas.
+- name: Schema
+  path: /api/schemas/{id}/
+  description: JSON-Schema definition with Blind Insight encryption constraints per field.
+- name: Record
+  path: /api/records/{id}/
+  description: An encrypted data instance conforming to a schema.
+- name: Job
+  path: /api/jobs/{job_id}/
+  description: Asynchronous ingest/upload task with progress status.
+- name: File
+  path: /api/files/{id}/
+  description: Resumable (TUS) large-file upload that produces an ingest job.
+- name: Grant
+  path: /api/grants/{id}/
+  description: Access grant sharing keys/permissions to a user or team.
+- name: Request
+  path: /api/requests/{id}/
+  description: A pending key/access request that can be fulfilled.
+- name: Material
+  path: /api/materials/{id}/
+  description: Key material exchanged between identities (receive/acknowledge/proof).
+- name: BlindLLMQuery
+  path: /api/blindllm-queries/{id}/
+  description: A query issued to BlindLLM over encrypted data.
+relationships:
+- from: Schema
+  to: Dataset
+  type: belongs_to
+  via: dataset
+- from: Dataset
+  to: Organization
+  type: belongs_to
+  via: organization
+- from: Record
+  to: Schema
+  type: belongs_to
+  via: schema
+- from: Schema
+  to: Record
+  type: has_many
+  via: schema
+- from: Dataset
+  to: Schema
+  type: has_many
+- from: Organization
+  to: Team
+  type: has_many
+- from: Organization
+  to: User
+  type: has_many
+- from: Organization
+  to: Dataset
+  type: has_many
+- from: User
+  to: Identity
+  type: has_many
+- from: Team
+  to: User
+  type: has_many
+  via: members
+- from: File
+  to: Job
+  type: has_one
+  via: job
+- from: Grant
+  to: User
+  type: belongs_to
+  via: user
+- from: Material
+  to: Identity
+  type: belongs_to

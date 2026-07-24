@@ -1,0 +1,59 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  https://api.app.blindinsight.io/api/schema/ (operation descriptions document
+  the equivalent `blind` command for each endpoint) and
+  https://docs.blindinsight.io/getting-started/using-the-blind-proxy/
+name: blind
+description: >-
+  First-party command-line client (`blind`) that ships with the Blind Proxy.
+  Every REST operation in the OpenAPI has a documented `blind <group> <command>`
+  equivalent; commands accept `--data <file.json>` payloads and resource flags
+  such as `--id`, `--user-id`, `--organization-id`, `--schema`, and `--slug`.
+  The proxy transparently encrypts request data and decrypts responses locally.
+install:
+- method: bundled
+  detail: Included with the Blind Proxy download at https://docs.blindinsight.io/download/
+auth:
+  env:
+  - BI_EMAIL
+  - BI_PASSWORD
+  - BI_ORG
+  - BI_PROXY_URL
+command_groups:
+- group: accounts
+  commands: [login, logout, register, register-email, verify-email, verify-registration,
+    change-password, reset-password, send-reset-password-link, profile retrieve,
+    profile create, profile update, profile partial-update]
+- group: token
+  commands: [create, refresh, verify]
+- group: organizations
+  commands: [list, create, retrieve, update, partial-update, destroy, owner, by-slug,
+    dataset, users, invitations, teams]
+- group: users
+  commands: [list, create, retrieve, update, partial-update, destroy, self, by-name]
+- group: identities
+  commands: [list, create, retrieve, update, partial-update, destroy]
+- group: schemas
+  commands: [list, create, retrieve, update, partial-update, destroy, teams]
+- group: datasets
+  commands: [list, create, retrieve, update, partial-update, destroy]
+- group: records
+  commands: [list, create, retrieve, update, destroy, bulk-destroy, ingest, search, decrypt]
+- group: jobs
+  commands: [upload, status, websocket]
+- group: files
+  commands: [create, patch, delete]
+- group: grants
+  commands: [list, create, retrieve, update, partial-update, destroy]
+- group: materials
+  commands: [list, create, retrieve, destroy, receive, acknowledge, proof, overrides]
+- group: requests
+  commands: [list, create, retrieve, update, partial-update, destroy, fulfill]
+key_flows:
+- name: Ingest encrypted records
+  steps: [blind schemas create --data schema.json, blind records ingest --data records.json]
+- name: Batch upload with job monitoring
+  steps: [blind jobs upload --data records.json, blind jobs status --id <job_id>, blind jobs websocket --id <job_id>]
+- name: Search over encrypted data
+  steps: [blind records search --data query.json]

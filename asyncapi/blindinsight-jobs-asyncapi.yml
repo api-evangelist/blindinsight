@@ -1,0 +1,58 @@
+asyncapi: 3.0.0
+info:
+  title: Blind Insight Jobs WebSocket
+  version: 10.22.0
+  description: >-
+    Real-time progress channel for asynchronous Blind Insight ingest/upload jobs.
+    After starting a batch upload (POST /api/jobs/upload/) or a large resumable
+    file upload (POST /api/files/), clients receive an X-Job-Websocket-URL and may
+    subscribe to this channel to stream job progress instead of polling
+    GET /api/jobs/{job_id}/.
+  x-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: >-
+      https://docs.blindinsight.io/api-reference/ingesting-records/ and OpenAPI
+      operation jobs_websocket (GET /api/ws/jobs/{job_id}/)
+servers:
+  proxy:
+    host: localhost:8080
+    protocol: ws
+    description: Local Blind Proxy WebSocket endpoint.
+channels:
+  jobProgress:
+    address: /api/ws/jobs/{job_id}/
+    parameters:
+      job_id:
+        description: The job identifier returned by the upload operation.
+    messages:
+      progress:
+        $ref: '#/components/messages/JobProgress'
+operations:
+  receiveJobProgress:
+    action: receive
+    channel:
+      $ref: '#/channels/jobProgress'
+    summary: Stream progress updates for a running job.
+components:
+  messages:
+    JobProgress:
+      name: JobProgress
+      title: Job progress update
+      payload:
+        $ref: '#/components/schemas/JobProgress'
+  schemas:
+    JobProgress:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [uploading, processing, completed, failed]
+        processed:
+          type: integer
+        total:
+          type: integer
+        current_batch:
+          type: integer
+        total_batches:
+          type: integer

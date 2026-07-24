@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/blind-insight
+notes: >-
+  First-party client tooling published on the Blind Insight GitHub organization.
+  Neither library is currently published to a public package registry (npm/PyPI);
+  both install from source. The `blind` CLI ships with the Blind Proxy download
+  (see cli/blindinsight-cli.yml), not a package registry.
+packages:
+- language: python
+  registry: github
+  name: blind-ml
+  url: https://github.com/blind-insight/blind-ml
+  install: git clone https://github.com/blind-insight/blind-ml && pip install -r requirements.txt
+  license: MIT
+  official: true
+  description: >-
+    Train scikit-learn models on encrypted data using Blind Insight aggregate
+    queries. Authenticates with BI_EMAIL / BI_PASSWORD / BI_ORG against the local
+    Blind Proxy (BI_PROXY_URL). Requires Python 3.11+.
+- language: javascript
+  registry: github
+  name: importer
+  url: https://github.com/blind-insight/importer
+  install: git clone https://github.com/blind-insight/importer
+  official: true
+  description: Blind Insight data import tool for uploading records into encrypted schemas.
