@@ -279,6 +279,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/blindinsight-openapi-overlay.yaml
 - type: DomainSecurity
   url: security/blindinsight-domain-security.yml
 - type: AgenticAccess
