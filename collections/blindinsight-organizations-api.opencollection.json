@@ -1,0 +1,1160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts organizations API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/",
+            "params": [
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the organization"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "The name in all lowercase, suitable for URL identification"
+              },
+              {
+                "name": "stripe_customer_id",
+                "value": "",
+                "type": "query",
+                "description": "Stripe customer id mirrored from settings['stripe']; indexed."
+              },
+              {
+                "name": "users",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Query for a list of all organizations that the currently authenticated user has\naccess to.\n\nThe response will be a list of organization objects.\n\n**On the command line:**\n\n```bash\nblind organizations list\n```"
+        },
+        {
+          "info": {
+            "name": "Create organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/organizations/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new organization. The only required field is `name`. The currently\nauthenticated user will be set as the owner of the organization.\n\nThe response will be the newly created organization object.\n\n**On the command line:**\n\n```bash\nblind organizations create --data '{\"name\": \"Example Organization\"}'\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single organization by its ID.\n\nThe response will be the organization object.\n\n**On the command line:**\n\n```bash\nblind organizations retrieve --id \"<organization-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Update organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/organizations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Replace an organization with the data provided in the request.\n\nThe response will be the updated organization object.\n\n**On the command line:**\n\n```bash\nblind organizations update --id \"<organization-id>\" --data organization.json\n```"
+        },
+        {
+          "info": {
+            "name": "Partial update organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/organizations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update one or more fields of an organization. This does not replace the entire\norganization, it only updates the fields provided in the request.\n\nThe response will be the updated organization object.\n\n**On the command line:**\n\n```bash\nblind organizations partial-update --id \"<organization-id>\" --data organization-update.json\n```"
+        },
+        {
+          "info": {
+            "name": "Delete organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/organizations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete an organization. Note that this does not delete the organization's\nmembers or any associated data.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind organizations destroy --id \"<organization-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve organization dataset by slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:id/dataset/:slug/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single organization dataset by its slug.\n\nThe response is the dataset object.\n\n**On the command line:**\n\n```bash\nblind organizations dataset --id \"<organization-id>\" --slug \"<dataset-slug>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve organization owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:id/owner/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single owner of an organization by its ID.\n\nThe response will be the user object of the owner.\n\n**On the command line:**\n\n```bash\nblind organizations owner --id \"<organization-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "List organization audit logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/audit-logs/",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "* `0` - create\n* `1` - update\n* `2` - delete\n* `3` - access"
+              },
+              {
+                "name": "actor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "actor_email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changes_text",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "content_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "object_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_pk",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "remote_addr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "remote_port",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Return a list of all organization audit logs."
+        },
+        {
+          "info": {
+            "name": "Retrieve organization audit log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/audit-logs/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this log entry."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single organization audit log by its ID."
+        },
+        {
+          "info": {
+            "name": "List organization invitations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/invitations/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Return a list of all organization invitations, including those which have\nalready been accepted.\n\nThe response is a list of invitation objects.\n\n**On the command line:**\n\n```bash\nblind organizations invitations list --organization-id \"<organization-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Create organization invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/invitations/",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Invite a user to join an organization.\n\nThe response is the newly created invitation object.\n\n**On the command line:**\n\n```bash\nblind organizations invitations create --organization-id \"<organization-id>\" --data organization-invitation.json\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve organization invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/invitations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization invitation."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single organization invitation by its ID.\n\nThe response is the invitation object.\n\n**On the command line:**\n\n```bash\nblind organizations invitations retrieve --organization-id \"<organization-id>\" --id \"<invitation-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Update organization invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/invitations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization invitation."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update an organization invitation.\n\nThe response is the updated invitation object.\n\n**On the command line:**\n\n```bash\nblind organizations invitations update --organization-id \"<organization-id>\" --id \"<invitation-id>\" --data organization-invitation.json\n```"
+        },
+        {
+          "info": {
+            "name": "Partial update organization invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/invitations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization invitation."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update one or more fields of an organization invitation. This does not replace\nthe entire invitation, it only updates the fields provided in the request.\n\nThe response is the updated invitation object.\n\n**On the command line:**\n\n```bash\nblind organizations invitations partial-update --organization-id \"<organization-id>\" --id \"<invitation-id>\" --data organization-invitation-update.json\n```"
+        },
+        {
+          "info": {
+            "name": "Delete organization invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/invitations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization invitation."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete an organization invitation.\n\nThe response is a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind organizations invitations destroy --organization-id \"<organization-id>\" --id \"<invitation-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "List all teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/teams/",
+            "params": [
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dataset ID."
+              },
+              {
+                "name": "dataset_slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dataset slug."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "members",
+                "value": "",
+                "type": "query",
+                "description": "The users that are members of this team."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "A human-readable name for this team."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "The organization that this team belongs to."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "Filter by schema ID."
+              },
+              {
+                "name": "schema_slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by schema slug."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "A unique slug for this team."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "List all Team objects that you have access to."
+        },
+        {
+          "info": {
+            "name": "Create a new team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/teams/",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new Team object."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/teams/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this team."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single Team object by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/teams/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this team."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update a Team object by its ID. This completely replaces the object."
+        },
+        {
+          "info": {
+            "name": "Partially update a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/teams/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this team."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Partially update a Team object by its ID. This only replaces the specified fields."
+        },
+        {
+          "info": {
+            "name": "Delete a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/teams/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this team."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a Team object by its ID."
+        },
+        {
+          "info": {
+            "name": "Add a member to a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/teams/:id/add_member/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this team."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Adds a member to a team if you have permissions to manage that team."
+        },
+        {
+          "info": {
+            "name": "Remove a member from a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/teams/:id/remove_member/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this team."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Removes a member from a team if you have permissions to manage that team."
+        },
+        {
+          "info": {
+            "name": "List organization users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/users/",
+            "params": [
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "has_identity",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the organization user has an identity."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_admin",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Return a list of all users of an organization.\n\nThe response is a list of user objects belonging to the organization.\n\n**On the command line:**\n\n```bash\nblind organizations users list --organization-id \"<organization-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Create organization user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/users/",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Add a new user to an organization.\n\nThe response is the newly added user object.\n\n**On the command line:**\n\n```bash\nblind organizations users create --organization-id \"<organization-id>\" --data organization-user.json\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve organization user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization user."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single user of an organization by their ID.\n\nThe response is the user object.\n\n**On the command line:**\n\n```bash\nblind organizations users retrieve --organization-id \"<organization-id>\" --id \"<user-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Update organization user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization user."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Replace a user of an organization with the data provided in the request.\n\nThe response is the updated user object.\n\n**On the command line:**\n\n```bash\nblind organizations users update --organization-id \"<organization-id>\" --id \"<user-id>\" --data organization-user.json\n```"
+        },
+        {
+          "info": {
+            "name": "Partial update organization user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization user."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update one or more fields of a user of an organization. This does not replace\nthe entire user, it only updates the fields provided in the request.\n\nThe response is the updated user object.\n\n**On the command line:**\n\n```bash\nblind organizations users partial-update --organization-id \"<organization-id>\" --id \"<user-id>\" --data organization-user-update.json\n```"
+        },
+        {
+          "info": {
+            "name": "Delete organization user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/organizations/:organization_id/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this organization user."
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a user from an organization.\n\nThe response is a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind organizations users destroy --organization-id \"<organization-id>\" --id \"<user-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve organization by slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/organizations/by-slug/:slug/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single organization by its slug.\n\nThe response will be the organization object.\n\n**On the command line:**\n\n```bash\nblind organizations by-slug --slug \"<organization-slug>\"\n```"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

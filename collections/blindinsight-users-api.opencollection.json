@@ -1,0 +1,275 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts users API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve one or more User objects, with filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/users/",
+            "params": [
+              {
+                "name": "date_joined",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name",
+                "value": "",
+                "type": "query",
+                "description": "First name (optional)"
+              },
+              {
+                "name": "has_identity",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the user has an identity."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query",
+                "description": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+              },
+              {
+                "name": "is_staff",
+                "value": "",
+                "type": "query",
+                "description": "Designates whether the user can log into this admin site."
+              },
+              {
+                "name": "is_superuser",
+                "value": "",
+                "type": "query",
+                "description": "Designates that this user has all permissions without explicitly assigning them."
+              },
+              {
+                "name": "last_login",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name",
+                "value": "",
+                "type": "query",
+                "description": "Last name (optional)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of users. You can filter the list by providing query parameters.\nOnly users that you have access to will be returned, which in practice means\nthey are in the same organization.\n\nThe response will be a list of user objects.\n\n**On the command line:**\n\n```bash\nblind users list\n```"
+        },
+        {
+          "info": {
+            "name": "Create a new User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/users/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new user.\n\nThe response will be the newly created user object.\n\n**On the command line:**\n\n```bash\nblind users create --data user.json\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve one User object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this user."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single user by their ID.\n\nThe response will be the user object.\n\n**On the command line:**\n\n```bash\nblind users retrieve --id \"<user-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Update a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update an entire existing user, replacing all fields.\n\nThe response will be the updated user object.\n\n**On the command line:**\n\n```bash\nblind users update --id \"<user-id>\" --data user.json\n```"
+        },
+        {
+          "info": {
+            "name": "Partially update a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update an existing user with only the specified fields.\n\nThe response will be the updated user object.\n\n**On the command line:**\n\n```bash\nblind users partial-update --id \"<user-id>\" --data user-update.json\n```"
+        },
+        {
+          "info": {
+            "name": "Delete a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this user."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete an existing user by their ID.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind users destroy --id \"<user-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve one User object by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/users/by_name/:email/",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single user by their name (email).\n\nThe response will be the user object.\n\n**On the command line:**\n\n```bash\nblind users by-name --email \"<user-name>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/users/self/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve the currently authenticated user.\n\nThe response will be the user object.\n\n**On the command line:**\n\n```bash\nblind users self\n```"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

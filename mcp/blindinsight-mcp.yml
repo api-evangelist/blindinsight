@@ -644,3 +644,9 @@ tools:
   method: GET
   path: /api/ws/jobs/{job_id}/
   source_operation: openapi/blindinsight-openapi-original.yml#jobs_websocket
+deployment:
+  mode: none
+  verified: derived
+  tools: 127
+  checked: '2026-08-12'
+  source: catalog MCP census

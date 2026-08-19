@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts token API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/token/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new token for the user with the given email and password. On success,\nreturns a JSON web token which can be used in the `Authorization` header to make\nAPI requests.\n\nThe response will be an JSON object with the access and refresh tokens.\n\n**On the command line:**\n\n```bash\nblind token create --data '{\"email\": \"demo@example.com\", \"password\": \"pass1234\"}'\n```"
+        },
+        {
+          "info": {
+            "name": "Refresh a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/token/refresh/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh an existing token. On success, returns a JSON web token which can be\nused in the `Authorization` header to make API requests.\n\nThe response will be an JSON object with the new access token.\n\n**On the command line:**\n\n```bash\nblind token refresh --data '{\"refresh\": \"<refresh-token>\"}'\n```"
+        },
+        {
+          "info": {
+            "name": "Verify a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/token/verify/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify an access or refresh token is valid.\n\nThe response will be an empty object if it is valid, or a 401 unauthorized error\nif it is not.\n\n**On the command line:**\n\n```bash\nblind token verify --data '{\"token\": \"<access-or-refresh-token>\"}'\n```"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

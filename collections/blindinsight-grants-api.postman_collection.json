@@ -1,0 +1,1272 @@
+{
+  "item": [
+    {
+      "id": "1b1c6957-993a-45b1-9e0e-7356113ff018",
+      "name": "grants",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fdfbc78d-c5a0-45d5-beab-6b1eb74f231b",
+          "name": "List all grants",
+          "request": {
+            "name": "List all grants",
+            "description": {
+              "content": "List all grants that you have access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "grants",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "can_create_records",
+                  "value": "<boolean>",
+                  "description": "Whether this permission allows the user to create records."
+                },
+                {
+                  "disabled": false,
+                  "key": "can_share_keys",
+                  "value": "<boolean>",
+                  "description": "Whether this permission allows the user to share the key(s) assigned to this permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "codename",
+                  "value": "<string>",
+                  "description": "The codename for this grant."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset",
+                  "value": "<string>",
+                  "description": "The dataset that this grant belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "A human-readable name for this grant."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "The organization that this grant belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "The schema that this grant belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "teams",
+                  "value": "<string>",
+                  "description": "The team(s) that this grant is assigned to."
+                },
+                {
+                  "disabled": false,
+                  "key": "teams",
+                  "value": "<string>",
+                  "description": "The team(s) that this grant is assigned to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d9599c87-1986-4d9b-96f6-2c54b79333a6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "grants",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "can_create_records",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "can_share_keys",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "codename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "teams",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "teams",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"codename\": \"string\",\n    \"dataset\": \"http://zOCqhqsnmixNFsZaYcgaIRi.jhbF\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"organization\": \"http://dSBI.ptfbNd1rT5iCnPLDs\",\n    \"schema\": \"https://RGHcEq.qjkIgAQ5HiWasG0s.aZIU1zdBZiMsJSawXlTaN9xElrx8sC1fRn\",\n    \"teams\": [\n      \"http://KEYPMaTapAGlxcq.qwkk0LSUBn\",\n      \"https://zhFJNeITAKoyiuSWRQWhnO.xxjQgftAqmICnNH7L,3ZZ6sGehJ8bAgWbaTmUibSTTHz\"\n    ],\n    \"url\": \"https://DICRhMDqFrJxivcnqfciJNiqpVDBh.oinJNP0PoIN1uH5V1RjisPC4.GI20-8OnmYkxFFJPOTNln3e\",\n    \"field_names\": {},\n    \"can_share_keys\": false,\n    \"can_create_records\": true\n  },\n  {\n    \"codename\": \"string\",\n    \"dataset\": \"http://rgNPELpDgAdozzIqrJISOybY.fmCqALe1Q3nZTvWXkq4wm7bWUWX.gbiO58t30\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"organization\": \"https://BvXKFXYNzTMEMZFMduhuYdOyBuJVbwyc.mhwdNKFs\",\n    \"schema\": \"https://PdoQfacJWePkZZAxMNrZwRxRtkcl.gtqYx.-u22DYPA9cAk2dfA31KNPRpmn5elPnaknv4.g-,x\",\n    \"teams\": [\n      \"http://iazTxkJMCIfTOXnGROFSQ.glnGD.afgRdjj1k3jo7b,qxyJGSqSlbYwKtyzMI\",\n      \"http://UUwxzkLrhMWgTKNfsmESgmIx.ubhgYtUFJmm8iIBUtG0\"\n    ],\n    \"url\": \"http://FtsiNKFbHElBvZNvahYAgFOyI.geleBzJwJcX0l-NP2,ljYe\",\n    \"field_names\": {},\n    \"can_share_keys\": true,\n    \"can_create_records\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16f3a8b5-bf73-40d3-b98e-f4b6926fb21a",
+          "name": "Create a new grant",
+          "request": {
+            "name": "Create a new grant",
+            "description": {
+              "content": "Create a new grant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "grants",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "codename",
+                  "value": "<string>",
+                  "description": "(Required) The codename for this grant."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset",
+                  "value": "<uri>",
+                  "description": "(Required) The dataset that this grant belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) A human-readable name for this grant."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>",
+                  "description": "(Required) The schema that this grant belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "teams",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "teams",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "field_names",
+                  "value": "<object>",
+                  "description": "Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{'field_name': True, ...}`"
+                },
+                {
+                  "disabled": false,
+                  "key": "can_share_keys",
+                  "value": "<boolean>",
+                  "description": "Whether this permission allows the user to share the key(s) assigned to this permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "can_create_records",
+                  "value": "<boolean>",
+                  "description": "Whether this permission allows the user to create records."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dc45ea84-38c2-4cf4-8316-7488d38a762e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "grants",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The codename for this grant.",
+                        "type": "text/plain"
+                      },
+                      "key": "codename",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The dataset that this grant belongs to.",
+                        "type": "text/plain"
+                      },
+                      "key": "dataset",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A human-readable name for this grant.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The schema that this grant belongs to.",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "teams",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "teams",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{'field_name': True, ...}`",
+                        "type": "text/plain"
+                      },
+                      "key": "field_names",
+                      "value": "<object>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether this permission allows the user to share the key(s) assigned to this permission.",
+                        "type": "text/plain"
+                      },
+                      "key": "can_share_keys",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether this permission allows the user to create records.",
+                        "type": "text/plain"
+                      },
+                      "key": "can_create_records",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"codename\": \"<string>\",\n  \"dataset\": \"<uri>\",\n  \"name\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"schema\": \"<uri>\",\n  \"teams\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"id\": \"string\",\n  \"url\": \"https://SBbDaaCjZxvLjEAknUYvIAurpGcHQEc.gdsJFx9X5C9f9K7srvZwdre\",\n  \"field_names\": \"<object>\",\n  \"can_share_keys\": \"<boolean>\",\n  \"can_create_records\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ee80634-6cdf-4d55-b03e-39ea862d7bcd",
+          "name": "Retrieve a single grant",
+          "request": {
+            "name": "Retrieve a single grant",
+            "description": {
+              "content": "Retrieve a single grant by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "grants",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this grant."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96f25a0e-39a7-448c-8dad-ee1aaab6325a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "grants",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this grant."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"codename\": \"<string>\",\n  \"dataset\": \"<uri>\",\n  \"name\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"schema\": \"<uri>\",\n  \"teams\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"id\": \"string\",\n  \"url\": \"https://SBbDaaCjZxvLjEAknUYvIAurpGcHQEc.gdsJFx9X5C9f9K7srvZwdre\",\n  \"field_names\": \"<object>\",\n  \"can_share_keys\": \"<boolean>\",\n  \"can_create_records\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8810d4d-e3bb-479d-85fe-211fa577cbdd",
+          "name": "Update a grant",
+          "request": {
+            "name": "Update a grant",
+            "description": {
+              "content": "Update a grant by its ID. This completely replaces the object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "grants",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this grant."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "codename",
+                  "value": "<string>",
+                  "description": "(Required) The codename for this grant."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset",
+                  "value": "<uri>",
+                  "description": "(Required) The dataset that this grant belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) A human-readable name for this grant."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>",
+                  "description": "(Required) The schema that this grant belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "teams",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "teams",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "field_names",
+                  "value": "<object>",
+                  "description": "Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{'field_name': True, ...}`"
+                },
+                {
+                  "disabled": false,
+                  "key": "can_share_keys",
+                  "value": "<boolean>",
+                  "description": "Whether this permission allows the user to share the key(s) assigned to this permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "can_create_records",
+                  "value": "<boolean>",
+                  "description": "Whether this permission allows the user to create records."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "84970797-3d1c-4b8f-83ce-8e3b532b2154",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "grants",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this grant."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The codename for this grant.",
+                        "type": "text/plain"
+                      },
+                      "key": "codename",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The dataset that this grant belongs to.",
+                        "type": "text/plain"
+                      },
+                      "key": "dataset",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A human-readable name for this grant.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The schema that this grant belongs to.",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "teams",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "teams",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{'field_name': True, ...}`",
+                        "type": "text/plain"
+                      },
+                      "key": "field_names",
+                      "value": "<object>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether this permission allows the user to share the key(s) assigned to this permission.",
+                        "type": "text/plain"
+                      },
+                      "key": "can_share_keys",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether this permission allows the user to create records.",
+                        "type": "text/plain"
+                      },
+                      "key": "can_create_records",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"codename\": \"<string>\",\n  \"dataset\": \"<uri>\",\n  \"name\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"schema\": \"<uri>\",\n  \"teams\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"id\": \"string\",\n  \"url\": \"https://SBbDaaCjZxvLjEAknUYvIAurpGcHQEc.gdsJFx9X5C9f9K7srvZwdre\",\n  \"field_names\": \"<object>\",\n  \"can_share_keys\": \"<boolean>\",\n  \"can_create_records\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d38ea25e-3509-44e0-8127-9a184403ec58",
+          "name": "Partially update a grant",
+          "request": {
+            "name": "Partially update a grant",
+            "description": {
+              "content": "Partially update a grant by its ID. This only replaces the specified\nfields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "grants",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this grant."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "teams",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "teams",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "A human-readable name for this grant."
+                },
+                {
+                  "disabled": false,
+                  "key": "codename",
+                  "value": "<string>",
+                  "description": "The codename for this grant."
+                },
+                {
+                  "disabled": false,
+                  "key": "field_names",
+                  "value": "<object>",
+                  "description": "Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{'field_name': True, ...}`"
+                },
+                {
+                  "disabled": false,
+                  "key": "can_share_keys",
+                  "value": "<boolean>",
+                  "description": "Whether this permission allows the user to share the key(s) assigned to this permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "can_create_records",
+                  "value": "<boolean>",
+                  "description": "Whether this permission allows the user to create records."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset",
+                  "value": "<uri>",
+                  "description": "The dataset that this grant belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>",
+                  "description": "The schema that this grant belongs to."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3dca84d4-e1f0-4c6f-8744-3dc51ccd0509",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "grants",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this grant."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "teams",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "teams",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A human-readable name for this grant.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The codename for this grant.",
+                        "type": "text/plain"
+                      },
+                      "key": "codename",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{'field_name': True, ...}`",
+                        "type": "text/plain"
+                      },
+                      "key": "field_names",
+                      "value": "<object>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether this permission allows the user to share the key(s) assigned to this permission.",
+                        "type": "text/plain"
+                      },
+                      "key": "can_share_keys",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Whether this permission allows the user to create records.",
+                        "type": "text/plain"
+                      },
+                      "key": "can_create_records",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The dataset that this grant belongs to.",
+                        "type": "text/plain"
+                      },
+                      "key": "dataset",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The schema that this grant belongs to.",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"codename\": \"<string>\",\n  \"dataset\": \"<uri>\",\n  \"name\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"schema\": \"<uri>\",\n  \"teams\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"id\": \"string\",\n  \"url\": \"https://SBbDaaCjZxvLjEAknUYvIAurpGcHQEc.gdsJFx9X5C9f9K7srvZwdre\",\n  \"field_names\": \"<object>\",\n  \"can_share_keys\": \"<boolean>\",\n  \"can_create_records\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc86d36e-afa9-4abc-b4ce-98b940cf26ae",
+          "name": "Delete a grant",
+          "request": {
+            "name": "Delete a grant",
+            "description": {
+              "content": "Delete a grant by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "grants",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this grant."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b0436217-3564-4323-a4e4-d163e4a3ce10",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "grants",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this grant."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "767e80b6-38c9-4e2c-8a54-a1f6e3d2974a",
+    "name": "Blind Insight REST accounts grants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-to-end encrypted datastore",
+      "type": "text/plain"
+    }
+  }
+}

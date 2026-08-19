@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts identities API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "identities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Identities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/identities/",
+            "params": [
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "query",
+                "description": "The device ID associated with this identity."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "primary_public_key",
+                "value": "",
+                "type": "query",
+                "description": "The primary PGP key for the identity."
+              },
+              {
+                "name": "sub_public_key",
+                "value": "",
+                "type": "query",
+                "description": "The PGP sub-key for the identity."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "List identities, filtered by the given parameters. Takes optional pagination\nparameters.\n\nThe response will be a list of identity objects.\n\n**On the command line:**\n\n```bash\nblind identities list --user-id \"<user_id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Create a new Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/identities/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new identity.\n\nThe response will be the newly created identity object.\n\n**On the command line:**\n\n```bash\nblind identities create --user-id \"<user_id>\" --data identity.json\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/identities/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this identity."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve an identity by its ID.\n\nThe response will be the identity object.\n\n**On the command line:**\n\n```bash\nblind identities retrieve --user-id \"<user_id>\" --id \"<identity_id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Update an Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/identities/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this identity."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update an identity replacing it entirely.\n\nThe response will be the updated identity object.\n\n**On the command line:**\n\n```bash\nblind identities update --user-id \"<user_id>\" --id \"<identity_id>\" --data identity.json\n```"
+        },
+        {
+          "info": {
+            "name": "Partially update an Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/identities/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this identity."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update an identity with only the specified fields.\n\nThe response will be the updated identity object.\n\n**On the command line:**\n\n```bash\nblind identities partial-update --user-id \"<user_id>\" --id \"<identity_id>\" --data identity-update.json\n```"
+        },
+        {
+          "info": {
+            "name": "Delete an Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/identities/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this identity."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete an identity.\n\nThe response will be an empty object with a 204 status.\n\n**On the command line:**\n\n```bash\nblind identities destroy --user-id \"<user_id>\" --id \"<identity_id>\"\n```"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

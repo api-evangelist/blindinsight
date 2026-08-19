@@ -1,0 +1,1618 @@
+{
+  "item": [
+    {
+      "id": "e58f8c48-d5b1-4e67-b188-6c4d42ed783e",
+      "name": "files",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20aa9066-8f37-4034-a91b-dd3603f818c6",
+          "name": "Create a new upload resource (only available via proxy)",
+          "request": {
+            "name": "Create a new upload resource (only available via proxy)",
+            "description": {
+              "content": "Create a new upload resource. The Upload-Length header indicates the size of the entire upload in bytes.\n\n**On the command line:**\n\n```bash\nblind files create --Tus-Resumable 1.0.0  --Upload-Length 1000 --data records.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "files",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Set to 0 if the file size is unknown.",
+                "key": "Content-Length",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                "key": "Tus-Resumable",
+                "value": "1.0.0"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) [required] The size of the entire upload in bytes.",
+                "key": "Upload-Length",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) [required] The upload metadata. Must consist of `filename` and `filetype` keys, separated by commas. The key and value MUST be separated by a space. The value MUST be Base64 encoded. Please see the examples for more information.",
+                "key": "Upload-Metadata",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "file",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "20500221-6434-4f0c-9fdb-a3f7c1b1bef0",
+              "name": "Upload created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to 0 if the file size is unknown.",
+                    "key": "Content-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                    "key": "Tus-Resumable",
+                    "value": "1.0.0"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The size of the entire upload in bytes.",
+                    "key": "Upload-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The upload metadata. Must consist of `filename` and `filetype` keys, separated by commas. The key and value MUST be separated by a space. The value MUST be Base64 encoded. Please see the examples for more information.",
+                    "key": "Upload-Metadata",
+                    "value": "filename ZXhhbXBsZS5jc3Y=, filetype dGV4dC9jc3Y="
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The URL of the upload resource that will be used in PATCH requests.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "key": "Upload-Offset",
+                  "value": "4249",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Upload-Checksum",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e7dee81-ffd1-4922-b260-570ffa805c42",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to 0 if the file size is unknown.",
+                    "key": "Content-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                    "key": "Tus-Resumable",
+                    "value": "1.0.0"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The size of the entire upload in bytes.",
+                    "key": "Upload-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The upload metadata. Must consist of `filename` and `filetype` keys, separated by commas. The key and value MUST be separated by a space. The value MUST be Base64 encoded. Please see the examples for more information.",
+                    "key": "Upload-Metadata",
+                    "value": "filename ZXhhbXBsZS5jc3Y=, filetype dGV4dC9jc3Y="
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a8039bd-826a-497c-9e45-9d2406c99045",
+              "name": "Precondition Failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to 0 if the file size is unknown.",
+                    "key": "Content-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                    "key": "Tus-Resumable",
+                    "value": "1.0.0"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The size of the entire upload in bytes.",
+                    "key": "Upload-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The upload metadata. Must consist of `filename` and `filetype` keys, separated by commas. The key and value MUST be separated by a space. The value MUST be Base64 encoded. Please see the examples for more information.",
+                    "key": "Upload-Metadata",
+                    "value": "filename ZXhhbXBsZS5jc3Y=, filetype dGV4dC9jc3Y="
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8d7eeb9-0a3c-4fb6-a814-3168e3ad0188",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to 0 if the file size is unknown.",
+                    "key": "Content-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                    "key": "Tus-Resumable",
+                    "value": "1.0.0"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The size of the entire upload in bytes.",
+                    "key": "Upload-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The upload metadata. Must consist of `filename` and `filetype` keys, separated by commas. The key and value MUST be separated by a space. The value MUST be Base64 encoded. Please see the examples for more information.",
+                    "key": "Upload-Metadata",
+                    "value": "filename ZXhhbXBsZS5jc3Y=, filetype dGV4dC9jc3Y="
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eabb86f0-e605-4132-a1c9-d06f46c72761",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to 0 if the file size is unknown.",
+                    "key": "Content-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                    "key": "Tus-Resumable",
+                    "value": "1.0.0"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The size of the entire upload in bytes.",
+                    "key": "Upload-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The upload metadata. Must consist of `filename` and `filetype` keys, separated by commas. The key and value MUST be separated by a space. The value MUST be Base64 encoded. Please see the examples for more information.",
+                    "key": "Upload-Metadata",
+                    "value": "filename ZXhhbXBsZS5jc3Y=, filetype dGV4dC9jc3Y="
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "532cf16e-8fa5-411d-8174-8c93c80b9f38",
+              "name": "Checksum Mismatch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to 0 if the file size is unknown.",
+                    "key": "Content-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                    "key": "Tus-Resumable",
+                    "value": "1.0.0"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The size of the entire upload in bytes.",
+                    "key": "Upload-Length",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The upload metadata. Must consist of `filename` and `filetype` keys, separated by commas. The key and value MUST be separated by a space. The value MUST be Base64 encoded. Please see the examples for more information.",
+                    "key": "Upload-Metadata",
+                    "value": "filename ZXhhbXBsZS5jc3Y=, filetype dGV4dC9jc3Y="
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 460,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b70f08d6-dd22-4b5a-980d-9ebd6116858d",
+          "name": "Upload file chunk (only available via proxy)",
+          "request": {
+            "name": "Upload file chunk (only available via proxy)",
+            "description": {
+              "content": "Upload a chunk of a file.\n\n**On the command line:**\n\n```bash\nblind files patch --id \"<upload-id>\" --Upload-Offset 1000 --Upload-Checksum \"b64:checksum\" --data records.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "files",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) [required] The ID of the upload to upload a chunk of."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The base64 encoded checksum of the current chunk.",
+                "key": "Upload-Checksum",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "0",
+                  "value": "<"
+                },
+                {
+                  "disabled": false,
+                  "key": "1",
+                  "value": "b"
+                },
+                {
+                  "disabled": false,
+                  "key": "2",
+                  "value": "i"
+                },
+                {
+                  "disabled": false,
+                  "key": "3",
+                  "value": "n"
+                },
+                {
+                  "disabled": false,
+                  "key": "4",
+                  "value": "a"
+                },
+                {
+                  "disabled": false,
+                  "key": "5",
+                  "value": "r"
+                },
+                {
+                  "disabled": false,
+                  "key": "6",
+                  "value": "y"
+                },
+                {
+                  "disabled": false,
+                  "key": "7",
+                  "value": ">"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9bbb4e35-2cec-4bf3-9c5f-422b3b28463b",
+              "name": "Upload chunk successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to upload a chunk of."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] Must be application/offset+octet-stream",
+                    "key": "Content-Type",
+                    "value": "application/offset+octet-stream"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded checksum of the current chunk.",
+                    "key": "Upload-Checksum",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "0",
+                      "value": "<"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "1",
+                      "value": "b"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "2",
+                      "value": "i"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "3",
+                      "value": "n"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "4",
+                      "value": "a"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "5",
+                      "value": "r"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "6",
+                      "value": "y"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "7",
+                      "value": ">"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) [required] The byte offset at which to continue the upload.",
+                  "key": "Upload-Offset",
+                  "value": "4249"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                  "key": "Tus-Resumable",
+                  "value": "1.0.0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "401d8799-80b2-4f1e-9905-96f1665855fe",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to upload a chunk of."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] Must be application/offset+octet-stream",
+                    "key": "Content-Type",
+                    "value": "application/offset+octet-stream"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded checksum of the current chunk.",
+                    "key": "Upload-Checksum",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "0",
+                      "value": "<"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "1",
+                      "value": "b"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "2",
+                      "value": "i"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "3",
+                      "value": "n"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "4",
+                      "value": "a"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "5",
+                      "value": "r"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "6",
+                      "value": "y"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "7",
+                      "value": ">"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e32565af-d629-4286-9d55-aea87a5b8968",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to upload a chunk of."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] Must be application/offset+octet-stream",
+                    "key": "Content-Type",
+                    "value": "application/offset+octet-stream"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded checksum of the current chunk.",
+                    "key": "Upload-Checksum",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "0",
+                      "value": "<"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "1",
+                      "value": "b"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "2",
+                      "value": "i"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "3",
+                      "value": "n"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "4",
+                      "value": "a"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "5",
+                      "value": "r"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "6",
+                      "value": "y"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "7",
+                      "value": ">"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "398eb9f1-0c67-4de0-81b6-e6240c9d5dbf",
+              "name": "Upload Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to upload a chunk of."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] Must be application/offset+octet-stream",
+                    "key": "Content-Type",
+                    "value": "application/offset+octet-stream"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded checksum of the current chunk.",
+                    "key": "Upload-Checksum",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "0",
+                      "value": "<"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "1",
+                      "value": "b"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "2",
+                      "value": "i"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "3",
+                      "value": "n"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "4",
+                      "value": "a"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "5",
+                      "value": "r"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "6",
+                      "value": "y"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "7",
+                      "value": ">"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4983fa21-d112-48a2-ad3f-d42aec254b93",
+              "name": "Precondition Failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to upload a chunk of."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] Must be application/offset+octet-stream",
+                    "key": "Content-Type",
+                    "value": "application/offset+octet-stream"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded checksum of the current chunk.",
+                    "key": "Upload-Checksum",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "0",
+                      "value": "<"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "1",
+                      "value": "b"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "2",
+                      "value": "i"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "3",
+                      "value": "n"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "4",
+                      "value": "a"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "5",
+                      "value": "r"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "6",
+                      "value": "y"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "7",
+                      "value": ">"
+                    }
+                  ]
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7deed0a8-4c3e-4b0a-a9b3-16f243e947c0",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to upload a chunk of."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] Must be application/offset+octet-stream",
+                    "key": "Content-Type",
+                    "value": "application/offset+octet-stream"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded checksum of the current chunk.",
+                    "key": "Upload-Checksum",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "0",
+                      "value": "<"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "1",
+                      "value": "b"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "2",
+                      "value": "i"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "3",
+                      "value": "n"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "4",
+                      "value": "a"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "5",
+                      "value": "r"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "6",
+                      "value": "y"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "7",
+                      "value": ">"
+                    }
+                  ]
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3eec0701-2dd4-41ae-8f88-d7604656e852",
+              "name": "Checksum Mismatch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to upload a chunk of."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] Must be application/offset+octet-stream",
+                    "key": "Content-Type",
+                    "value": "application/offset+octet-stream"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded checksum of the current chunk.",
+                    "key": "Upload-Checksum",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "0",
+                      "value": "<"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "1",
+                      "value": "b"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "2",
+                      "value": "i"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "3",
+                      "value": "n"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "4",
+                      "value": "a"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "5",
+                      "value": "r"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "6",
+                      "value": "y"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "7",
+                      "value": ">"
+                    }
+                  ]
+                }
+              },
+              "code": 460,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "307e4f1e-6f80-4699-b92f-637b60fd0336",
+          "name": "Delete upload (only available via proxy)",
+          "request": {
+            "name": "Delete upload (only available via proxy)",
+            "description": {
+              "content": "Delete an upload resource.\n\n**On the command line:**\n\n```bash\nblind files delete --id \"<upload-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "files",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) [required] The ID of the upload to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                "key": "Tus-Resumable",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a84baf90-f81b-4c2b-93f5-b7816f016651",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                    "key": "Tus-Resumable",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b94bcd95-9429-4913-b76d-db40b7ead1df",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) [required] The ID of the upload to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) [required] The TUS version to use (default: 1.0.0).",
+                    "key": "Tus-Resumable",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "42725a5d-304f-4fda-b7c2-0f8d79ddd2b0",
+    "name": "Blind Insight REST accounts files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-to-end encrypted datastore",
+      "type": "text/plain"
+    }
+  }
+}

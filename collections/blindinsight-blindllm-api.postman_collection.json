@@ -1,0 +1,837 @@
+{
+  "item": [
+    {
+      "id": "a7ba029f-4afb-484a-8c22-9f1c3f37f004",
+      "name": "blindllm",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49a03432-c61d-4681-8b6a-ad18af30ab23",
+          "name": "Public BlindLLM demo (marketing site)",
+          "request": {
+            "name": "Public BlindLLM demo (marketing site)",
+            "description": {
+              "content": "Anonymous, IP-rate-limited demo endpoint used by blindinsight.com to drive the homepage chat experience. Runs the orchestrator against a single configured demo organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blindllm",
+                "chat",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "prompt",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "client_proxy",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "demo_user_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8183c625-8fd8-4fc1-b225-26ea51172b08",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "chat",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "client_proxy",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "demo_user_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"answer\": \"string\",\n  \"client_proxy\": \"string\",\n  \"data_mode\": \"string\",\n  \"duration_ms\": 8498,\n  \"fallback\": true,\n  \"fallback_reason\": \"string\",\n  \"model\": \"string\",\n  \"ok\": true,\n  \"request_id\": \"string\",\n  \"schemas_queried\": [\n    \"string\",\n    \"string\"\n  ],\n  \"used_tool\": \"string\",\n  \"provider_error\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6ca8f3a-781b-44ce-916c-41aa70471e70",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "chat",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "client_proxy",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "demo_user_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96172e7d-ba73-40e7-8b50-35ac0cadc7f4",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "chat",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "client_proxy",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "demo_user_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5acbba52-cf2f-49da-a42c-84a3855a1b1f",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "chat",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "client_proxy",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "demo_user_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5f3e871-7495-403c-9beb-64b71ae6415e",
+          "name": "Public BlindLLM demo (marketing site)",
+          "request": {
+            "name": "Public BlindLLM demo (marketing site)",
+            "description": {
+              "content": "Anonymous, IP-rate-limited demo endpoint used by blindinsight.com to drive the homepage chat experience. Runs the orchestrator against a single configured demo organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blindllm",
+                "demo",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "prompt",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "client_proxy",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "demo_user_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d3a392e1-1c69-469e-a673-6ed9a5147cfe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "demo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "client_proxy",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "demo_user_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"answer\": \"string\",\n  \"client_proxy\": \"string\",\n  \"data_mode\": \"string\",\n  \"duration_ms\": 133,\n  \"fallback\": false,\n  \"fallback_reason\": \"string\",\n  \"model\": \"string\",\n  \"ok\": false,\n  \"request_id\": \"string\",\n  \"schemas_queried\": [\n    \"string\",\n    \"string\"\n  ],\n  \"used_tool\": \"string\",\n  \"provider_error\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92e01768-1781-4403-b410-a1ab623ad6b6",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "demo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "client_proxy",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "demo_user_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60b39e19-e427-4faf-8210-7f143c2aabdf",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "demo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "client_proxy",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "demo_user_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3859e91f-8419-4c78-8df5-02df344bd1b3",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "demo",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "client_proxy",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "demo_user_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc10895d-5688-4e5e-a75b-f8af59f9af38",
+          "name": "Public BlindLLM schema catalog inspect",
+          "request": {
+            "name": "Public BlindLLM schema catalog inspect",
+            "description": {
+              "content": "Returns the demo organization's derived Dataset/Schema catalog so blindinsight.com can render /datasets inspect and /schemas inspect without a duplicated static catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blindllm",
+                "inspect",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "9a4937df-2c37-48e5-8f8c-0fbc5a7a5da9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "inspect",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"catalog_snapshot_at\": \"string\",\n  \"datasets\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80337e2c-6b75-4f29-9145-e0420159ca8a",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "inspect",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92acf0a1-d2af-4245-ae3d-dfa8bd29c157",
+          "name": "Supported BlindLLM model selectors",
+          "request": {
+            "name": "Supported BlindLLM model selectors",
+            "description": {
+              "content": "Lists the provider selector ids accepted by BlindLLM demo endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blindllm",
+                "models",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "0c8a394a-c1fa-4cd2-a38f-7c3b06bf3093",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm",
+                    "models",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ee9973c0-19ba-4f9f-a701-54b3b35a7f1e",
+    "name": "Blind Insight REST accounts blindllm API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-to-end encrypted datastore",
+      "type": "text/plain"
+    }
+  }
+}

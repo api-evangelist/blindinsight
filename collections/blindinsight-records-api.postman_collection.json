@@ -1,0 +1,1873 @@
+{
+  "item": [
+    {
+      "id": "a64ba657-6c1e-4458-a0d0-c945d8455a21",
+      "name": "records",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc0c909e-ca00-454d-a644-79440c7cbcf6",
+          "name": "List records",
+          "request": {
+            "name": "List records",
+            "description": {
+              "content": "List records for the given schema ID. Takes optional pagination parameters\n`limit` and `offset`, as well as an optional query filter `q`.\n\nThe response will be a list of record objects.\n\n**On the command line:**\n\n```bash\nblind records list --schema \"<schema-id>\"\n```\n\n#",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count_only",
+                  "value": "<boolean>",
+                  "description": "Return only {\"count\": N} without records or pagination. Useful for fetching the total count asynchronously after an initial fast query."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_count",
+                  "value": "<boolean>",
+                  "description": "Deprecated. COUNT is now always included by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Query filter for records."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Query filter for records."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "The schema ID that this record belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip_count",
+                  "value": "<boolean>",
+                  "description": "Skip the COUNT(*) query. When true, the response omits the X-Total-Count header and the Link rel=\"last\" header. Useful for faster responses on large result sets."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7dc20741-00fd-40c8-8283-4d7fe35a0360",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count_only",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip_count",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total number of records matching the query (omitted when count is skipped).",
+                  "key": "X-Total-Count",
+                  "value": "7905"
+                },
+                {
+                  "disabled": false,
+                  "description": "URL-encoded q parameters echoed back on filtered queries. Use this value to make a follow-up count_only request.",
+                  "key": "X-Query",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"schema\": \"http://ceDVxwyUUGbboIagfOH.exfujti89KMd4temyZbT.HcdYqDcrTZdH5Gtu.D7FxHldYEP\",\n    \"url\": \"https://hPUJVSzBQAPEGqZ.cprsYezYkVFJVzCEW,fN+i.0LvKlLkJxat.6m\",\n    \"data\": {}\n  },\n  {\n    \"id\": \"string\",\n    \"schema\": \"https://XjSLntLYMWl.phSUS2TDxhBr.vI0gvU\",\n    \"url\": \"http://SoTEVrFixGYZKU.frZhXbG8Orzakc\",\n    \"data\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae2d2e59-ce3c-49ad-8fdf-ddb0987b5764",
+          "name": "Create a new record",
+          "request": {
+            "name": "Create a new record",
+            "description": {
+              "content": "Create a new record with an already encrypted payload. This is the non-porcelain\nendpoint. If you want to create a new record with plaintext data, use the\n`record create` porcelain command or the `records ingest` command with a proxy.\n\nThe response will be the newly created record object.\n\n**On the command line:**\n\n```bash\nblind records create --data encrypted-record.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "hashed_label_map",
+                  "value": "{\"key_0\":{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"},\"key_1\":{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"},\"key_2\":{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"},\"key_3\":{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"}}"
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<object>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hashed_label_map",
+                  "value": "{\"key_0\":{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"},\"key_1\":{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"}}"
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<object>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "143b86aa-c081-4409-b84a-24df7c3ad6b0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "hashed_label_map",
+                      "value": "{\"b92e749344f081287b034c57b7a02c77f\":{\"hashed_value\":\"b4486fe169178ec73d3dfad17227da820b89d27e1994f7\",\"field_schema\":{\"type\":\"string\"}},\"961298e17a97e7d0b847b8b743e179b2b\":{\"hashed_value\":\"8d90841201a70611da0b964a743564e035fc\",\"field_schema\":{\"type\":\"number\",\"minimum\":0,\"maximum\":10}}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "<object>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "hashed_label_map",
+                      "value": "{\"b92e749344f081287b034c57b7a02c77f\":{\"hashed_value\":\"b4486fe169178ec73d3dfad17227da820b89d27e1994f7\",\"field_schema\":{\"type\":\"string\"}},\"961298e17a97e7d0b847b8b743e179b2b\":{\"hashed_value\":\"8d90841201a70611da0b964a743564e035fc\",\"field_schema\":{\"type\":\"number\",\"minimum\":0,\"maximum\":10}}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "<object>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": {\n      \"2516cdf1538b273e39bf91e67abff3a0\": \"961298e17a97e7d0b847b8b743e179b2b\",\n      \"b92e749344f081287b034c57b7a02c77f\": \"695d2fe4339e50f5039cfbef464846cf202fc06\"\n    },\n    \"schema\": \"https://demo.blindinsight.io/api/schemas/abcdef012345\",\n    \"url\": \"https://demo.blindinsight.io/api/records/abcdef012345\",\n    \"owner\": \"https://demo.blindinsight.io/api/users/abcdef012345\",\n    \"id\": \"abcdef012345\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6de2f4be-835c-4ba7-a6d8-b942d21bec1f",
+          "name": "Bulk delete records",
+          "request": {
+            "name": "Bulk delete records",
+            "description": {
+              "content": "Delete multiple records by their IDs.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind records bulk-destroy --id \"<record-id>\" --id \"<record-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) An array of record IDs to be deleted."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) An array of record IDs to be deleted."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "822bfef6-8fde-44d2-b65d-627825028124",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "abcdef012345"
+                    },
+                    {
+                      "key": "id",
+                      "value": "fedcb0987654"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c296c04-2ff2-4a38-96c0-59fe7e24840e",
+          "name": "Retrieve a record",
+          "request": {
+            "name": "Retrieve a record",
+            "description": {
+              "content": "Retrieve a record by its ID.\n\nThe response will be the record object.\n\n**On the command line:**\n\n```bash\nblind records retrieve --id \"<record-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6832f565-7051-4199-bf63-159847e88ee4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"schema\": \"http://FVMimqa.uxrwXPIt2FY3HBppN6tqTQ0G4ZE7ZtqTc9iiTQoSb7Uy3fZBEUM-Y34bPcHDM,Zq2\",\n  \"url\": \"http://nFZLjNLNJNKVaMUj.yuh2HdZLKez2ss6y4Zh21+HHqV2dC3J.JiQlsHhhCO6rM29bt\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02af224c-3067-4ea3-85ce-6685030048ec",
+          "name": "Update a record",
+          "request": {
+            "name": "Update a record",
+            "description": {
+              "content": "API for records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<object>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_2",
+                  "value": "{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_3",
+                  "value": "{\"field_schema\":{\"type\":\"<string>\",\"minimum\":\"<number>\",\"maximum\":\"<number>\"},\"hashed_value\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c3440da6-4ed3-4ac0-bd3c-b3a7f5c3720a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "<object>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "b92e749344f081287b034c57b7a02c77f",
+                      "value": "{\"hashed_value\":\"b4486fe169178ec73d3dfad17227da820b89d27e1994f7\",\"field_schema\":{\"type\":\"string\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "961298e17a97e7d0b847b8b743e179b2b",
+                      "value": "{\"hashed_value\":\"8d90841201a70611da0b964a743564e035fc\",\"field_schema\":{\"type\":\"number\",\"minimum\":0,\"maximum\":10}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"<object>\",\n  \"schema\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"http://qUOSPAawzfjkQehMdjVyo.shW1G3ubFj2oatCx9x9JlbZwQGqdi.oYQ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2705ae6-9a67-409f-9732-5ced618bd0c6",
+          "name": "records partial update",
+          "request": {
+            "name": "records partial update",
+            "description": {
+              "content": "Record PATCH semantics are intentionally unsupported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<object>",
+                  "description": "The data that this record represents."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "466902bc-e667-4d35-a5c4-87fc55c25b56",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The data that this record represents.",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "<object>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"schema\": \"http://FVMimqa.uxrwXPIt2FY3HBppN6tqTQ0G4ZE7ZtqTc9iiTQoSb7Uy3fZBEUM-Y34bPcHDM,Zq2\",\n  \"url\": \"http://nFZLjNLNJNKVaMUj.yuh2HdZLKez2ss6y4Zh21+HHqV2dC3J.JiQlsHhhCO6rM29bt\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5aa9e6ca-c21b-4bd8-a2b2-e6518dcf60f0",
+          "name": "Delete a record",
+          "request": {
+            "name": "Delete a record",
+            "description": {
+              "content": "Delete a record by its ID.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind records destroy --id \"<record-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this record."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2132b3a-8e3a-4be1-995f-83159e718ae5",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5df67e9f-f44c-4f77-9071-9190f3a0479c",
+          "name": "Decrypt data and return records (only available via proxy)",
+          "request": {
+            "name": "Decrypt data and return records (only available via proxy)",
+            "description": {
+              "content": "[Blind Insight Proxy] Decrypt data and return records",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                "decrypt",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\",\"key_2\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\",\"key_2\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52bed6ca-512d-4981-bc91-b7a0dec895e4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    "decrypt",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": {\n      \"job_function\": \"developer\",\n      \"job_level\": \"greybeard\",\n      \"company\": \"blindinsight\"\n    },\n    \"schema\": \"https://demo.blindinsight.io/api/schemas/abcdef012345\",\n    \"url\": \"https://demo.blindinsight.io/api/records/abcdef012345\",\n    \"owner\": \"https://demo.blindinsight.io/api/users/abcdef012345\",\n    \"id\": \"abcdef012345\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "343ab18f-7166-4a20-a07e-3981b63e5f42",
+              "name": "Proxy decrypt failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    "decrypt",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"could not decrypt record\",\n  \"error\": \"Unprocessable entity\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71884303-2701-47dd-9e87-af0c6d07389a",
+          "name": "Ingest data and encrypt it (only available via proxy)",
+          "request": {
+            "name": "Ingest data and encrypt it (only available via proxy)",
+            "description": {
+              "content": "[Blind Insight Proxy] Ingest data and encrypt it returning the encrypted records",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                "ingest",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\",\"key_2\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\",\"key_2\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<uri>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "69d7a017-a552-4e6d-8a1d-df626300cf01",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    "ingest",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": {\n      \"2516cdf1538b273e39bf91e67abff3a0\": \"961298e17a97e7d0b847b8b743e179b2b\",\n      \"b92e749344f081287b034c57b7a02c77f\": \"695d2fe4339e50f5039cfbef464846cf202fc06\"\n    },\n    \"schema\": \"https://demo.blindinsight.io/api/schemas/abcdef012345\",\n    \"url\": \"https://demo.blindinsight.io/api/records/abcdef012345\",\n    \"owner\": \"https://demo.blindinsight.io/api/users/abcdef012345\",\n    \"id\": \"abcdef012345\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3574ab6e-9004-46ef-bf35-aac8fab40c52",
+              "name": "Max record limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    "ingest",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"max record limit of 100 exceeded\",\n  \"error\": \"Request entity too large\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8b6d7cd-8033-43b2-ab98-ef22210a025c",
+              "name": "Proxy ingest failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    "ingest",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "data",
+                      "value": "{\"key_0\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "schema",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"could not get schema map\",\n  \"error\": \"Unprocessable entity\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf999cfb-f318-4ba0-a028-f19b260e045b",
+          "name": "Search for records (only available via proxy)",
+          "request": {
+            "name": "Search for records (only available via proxy)",
+            "description": {
+              "content": "[Blind Insight Proxy] Search for records by label and value. If label or value is specified, both must be present. If neither are present, this endpoint does not filter records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "records",
+                "search",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "(Required) Schema ID to search within"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "{\"label\":\"<string>\",\"value\":\"<string>\"}",
+                  "description": "Array of label/value pairs to filter records"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "{\"label\":\"<string>\",\"value\":\"<string>\"}",
+                  "description": "Array of label/value pairs to filter records"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of records to skip"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2322dd55-7918-4c6e-8104-0d6d0987c5ef",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    "search",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Schema ID to search within",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Array of label/value pairs to filter records",
+                        "type": "text/plain"
+                      },
+                      "key": "filters",
+                      "value": "{\"label\":\"<string>\",\"value\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Array of label/value pairs to filter records",
+                        "type": "text/plain"
+                      },
+                      "key": "filters",
+                      "value": "{\"label\":\"<string>\",\"value\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum number of records to return",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of records to skip",
+                        "type": "text/plain"
+                      },
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": {\n      \"02c77f5019095cbdef089d7e469d676daf9b9\": \"23056ec398be4d3dfad17227da820b89d27e1994f7\",\n      \"179b2b1888f4db01c8203b0be7af5c8b5b83b\": \"6718c4f45dd6ea0b964a743564e035fc\",\n      \"822fc1e33ea07ea1ddff1ec9aae93da845fee\": \"a3f644f0c206bf8ef8244c\"\n    },\n    \"schema\": \"https://demo.blindinsight.io/api/schemas/abcdef012345\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ee20eac-d62e-4338-891d-92f4fa3089e3",
+              "name": "Proxy search failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "records",
+                    "search",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Schema ID to search within",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Array of label/value pairs to filter records",
+                        "type": "text/plain"
+                      },
+                      "key": "filters",
+                      "value": "{\"label\":\"<string>\",\"value\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Array of label/value pairs to filter records",
+                        "type": "text/plain"
+                      },
+                      "key": "filters",
+                      "value": "{\"label\":\"<string>\",\"value\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Maximum number of records to return",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of records to skip",
+                        "type": "text/plain"
+                      },
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"could not search records\",\n  \"error\": \"Unprocessable entity\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "51dae199-5760-49ba-9867-02ca94b9ff9e",
+    "name": "Blind Insight REST accounts records API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-to-end encrypted datastore",
+      "type": "text/plain"
+    }
+  }
+}

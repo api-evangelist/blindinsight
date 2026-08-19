@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts jobs API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the status of a job (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/jobs/:job_id/",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "The job ID to get the status of."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the status of a job by its ID.\n\n**On the command line:**\n\n```bash\nblind jobs status --id \"<job-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Batch upload new records (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/jobs/upload/",
+            "headers": [
+              {
+                "name": "X-Batch-Size",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Upload new records to the database in a single request.\n\n**On the command line:**\n\n```bash\nblind jobs upload --data records.json\n```"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

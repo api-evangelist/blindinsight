@@ -1,0 +1,287 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Change user password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/change-password/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Change the password of the currently authenticated user. The `old_password`\nfield must match the currently set password. The `password` and\n`password_confirm` fields must match.\n\nThe response will be a detail message indicating if the password change was\nsuccessful.\n\n**On the command line:**\n\n```bash\nblind accounts change-password --data password-change.json\n```"
+        },
+        {
+          "info": {
+            "name": "Login a user account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/login/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Log in a user using their email and password. On success, returns a JSON web\ntoken which should be included in the `Authorization` header for all subsequent\nAPI requests in client implementations.\n\nThe response will be a detail message indicating if the login was successful.\n\n**On the command line:**\n\n```bash\nblind accounts login --data login.json\n```"
+        },
+        {
+          "info": {
+            "name": "Logout a user account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/logout/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Log out the currently authenticated user. This simply invalidates the JSON web\ntoken used.\n\nThis is separate from the porcelain `blind logout` command which removes stored\ncredentials on the local machine.\n\nThe response will be a detail message indicating if the logout was successful.\n\n**On the command line:**\n\n```bash\nblind accounts logout\n```"
+        },
+        {
+          "info": {
+            "name": "Get user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/accounts/profile/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve the profile of the currently authenticated user.\n\nThe response will be the profile object.\n\n**On the command line:**\n\n```bash\nblind accounts profile retrieve\n```"
+        },
+        {
+          "info": {
+            "name": "Create user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/profile/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a profile for the currently authenticated user. This is useful if you\ndon't have a profile yet, or if you want to edit an existing profile.\n\nThe response will be the newly created profile object.\n\n**On the command line:**\n\n```bash\nblind accounts profile create --data profile.json\n```"
+        },
+        {
+          "info": {
+            "name": "Update user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/accounts/profile/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Replace the currently authenticated user's profile with the data provided in\nthe request. Fields not specified in the request will be dropped.\n\nThe response will be the updated profile object.\n\n**On the command line:**\n\n```bash\nblind accounts profile update --data profile.json\n```"
+        },
+        {
+          "info": {
+            "name": "Partially update user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/accounts/profile/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update one or more fields of the currently authenticated user's profile. This\ndoes not replace the entire profile, it only updates the fields provided in\nthe request.\n\nThe response will be the updated profile object.\n\n**On the command line:**\n\n```bash\nblind accounts profile partial-update --data profile-update.json\n```"
+        },
+        {
+          "info": {
+            "name": "Register a new user account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/register/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "This endpoint registers a new user. The user will receive an email with a link to activate their account.\n\nThis will also create a new Organization for the user. The user will be the owner of the organization.\n\nSee the [user registration](https://docs.blindinsight.io/) documentation for more information.\n\nThe response will be the newly created user object.\n\n**On the command line:**\n\nYou can supply record data on standard input with the `--data -` or write it to\na file and give the `--data <filen"
+        },
+        {
+          "info": {
+            "name": "Register user email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/register-email/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Register a new email address for the currently authenticated user. This is\nuseful if the user wants to change email addresses associated with\ntheir account.\n\nThe new email must be verified before it is associated with the account.\n\nThe response will be a detail message indicating if the email was registered.\n\n**On the command line:**\n\n```bash\nblind accounts register-email --data '{\"email\": \"demo-example@example.com\"}'\n```"
+        },
+        {
+          "info": {
+            "name": "Reset user password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/reset-password/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Reset the password of the given user using the provided signature and timestamp.\n\nThis endpoint is generally only used by an administrator to reset a user's\npassword.\n\nThe response will be a detail message indicating if the password reset was\nsuccessful.\n\n**On the command line:**\n\n```bash\nblind accounts reset-password --data reset-password.json\n```"
+        },
+        {
+          "info": {
+            "name": "Send reset password link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/send-reset-password-link/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Send a password reset link email to the user with the given email address. This\nendpoint does not require the user to have activated their account yet.\n\nThe response will be a detail message indicating if the reset link was sent.\n\n**On the command line:**\n\n```bash\nblind accounts send-reset-password-link --data '{\"email\": \"demo@example.com\"}'\n```"
+        },
+        {
+          "info": {
+            "name": "Verify user email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/verify-email/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Verify the authenticated user's email address. This is useful if you want to\nautomate onboarding of users within your organization.\n\nThe response will be a detail message indicating if the verification was\nsuccessful.\n\n**On the command line:**\n\n```bash\nblind accounts verify-email --data verification.json\n```"
+        },
+        {
+          "info": {
+            "name": "Verify a new user account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/accounts/verify-registration/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "This endpoint verifies a new user with their user ID, a timestamp, and a signature. These values must come from the received verification email.\n\nThe response will be a detail message indicating if the verification was successful.\n\n**On the command line:**\n\n```bash\nblind accounts verify-registration --data registration.json\n```"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

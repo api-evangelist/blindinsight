@@ -1,0 +1,5113 @@
+{
+  "item": [
+    {
+      "id": "7847ee39-41eb-49b7-adcb-783164a7c597",
+      "name": "organizations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5787360-eb15-47d2-b9b6-5fae9dcfe867",
+          "name": "List organizations",
+          "request": {
+            "name": "List organizations",
+            "description": {
+              "content": "Query for a list of all organizations that the currently authenticated user has\naccess to.\n\nThe response will be a list of organization objects.\n\n**On the command line:**\n\n```bash\nblind organizations list\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "created",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "modified",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the organization"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "The name in all lowercase, suitable for URL identification"
+                },
+                {
+                  "disabled": false,
+                  "key": "stripe_customer_id",
+                  "value": "<string>",
+                  "description": "Stripe customer id mirrored from settings['stripe']; indexed."
+                },
+                {
+                  "disabled": false,
+                  "key": "users",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "users",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a3c6f5e-b3c4-45fe-959f-83fb42ae7947",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "modified",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stripe_customer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "users",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "users",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created\": \"2017-11-10T22:46:27.352Z\",\n    \"id\": \"string\",\n    \"modified\": \"2017-07-13T10:05:50.247Z\",\n    \"name\": \"string\",\n    \"organization_users\": [\n      \"http://IVDFEjpJlgfOvtKqSAghKrGnBfwouUiVU.jyqoRYYWqfAGnNgLLc0TDrGjHZzicBiF2LQqbkVIOXZGfqYX7fqs.p\",\n      \"https://jWuTwOrbdABvGwN.eaarGHVY.HwZGrqLV8NMbRl,PdDio9HlP5oaTZYdGVx,lFZc-,,sfbzmxG4eeh\"\n    ],\n    \"owner\": \"http://EcHHINHSsMehrbiJvDhBieelbmBqzgO.clS\",\n    \"slug\": \"aU8BjTkZ8\",\n    \"subscription\": {\n      \"slug\": \"scale\",\n      \"display_name\": \"string\",\n      \"active\": true\n    },\n    \"url\": \"https://rXvGEbyOgDEHNDWGyJrWHLPThBBY.qrhH18IzMyrSf5FOjw\",\n    \"is_active\": true,\n    \"stripe_customer_id\": \"string\"\n  },\n  {\n    \"created\": \"2017-12-17T16:29:45.441Z\",\n    \"id\": \"string\",\n    \"modified\": \"2016-04-10T10:04:04.870Z\",\n    \"name\": \"string\",\n    \"organization_users\": [\n      \"http://jcvdYFFqJARVvAnFZfqfPuqrK.poyuC4wB1vC.Y,qOo4BUGuPs18ww9IihPdEg+6C\",\n      \"http://TPiAGOBpVOBdMnAqBpRVdanviNXkmKlMU.hphmq8nRcjM9KDKGkVj,4KOBheAdBEFICbKd6X4NgeL6V,-HQ2b,\"\n    ],\n    \"owner\": \"https://cGptQlWaLByZIL.wgajWQ4oRHlU5IAB4pErbIt1PUcAD5KCcAfglQ.Zhh+M1S57hbqiKC5i85tS+G7\",\n    \"slug\": \"pOvIr6A\",\n    \"subscription\": {\n      \"slug\": \"enterprise\",\n      \"display_name\": \"string\",\n      \"active\": true\n    },\n    \"url\": \"http://GKLLWbZUvhIEiKgDCwyEhax.aqQryKg6TJZF+\",\n    \"is_active\": false,\n    \"stripe_customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc4dedc3-0be6-4fee-91d8-5b8bb6d59750",
+          "name": "Create organization",
+          "request": {
+            "name": "Create organization",
+            "description": {
+              "content": "Create a new organization. The only required field is `name`. The currently\nauthenticated user will be set as the owner of the organization.\n\nThe response will be the newly created organization object.\n\n**On the command line:**\n\n```bash\nblind organizations create --data '{\"name\": \"Example Organization\"}'\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) A human-readable name for this organization"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "stripe_session_id",
+                  "value": "<string>",
+                  "description": "Stripe Checkout Session ID to attach a subscription at org creation."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "stripe_customer_id",
+                  "value": "<string>",
+                  "description": "Stripe customer id mirrored from settings['stripe']; indexed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b2f68a1-0a76-4a3f-a851-de0f3ba417b8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A human-readable name for this organization",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "owner",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Stripe Checkout Session ID to attach a subscription at org creation.",
+                        "type": "text/plain"
+                      },
+                      "key": "stripe_session_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Stripe customer id mirrored from settings['stripe']; indexed.",
+                        "type": "text/plain"
+                      },
+                      "key": "stripe_customer_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"string\",\n  \"url\": \"http://iCCbd.ogiJEyyWmJO6c+WpUTYECpSXv3+\",\n  \"owner\": \"<uri>\",\n  \"organization_users\": [\n    \"https://DWkkrWvNNdgOJfdwvZpDaMWGYCYbUf.zarfO83KI9\",\n    \"http://cFakFTl.pgrdEY7achk.e-mpnF9m9HMlWB4uXdfWqG05pQI1byvmyNbwaB0z\"\n  ],\n  \"subscription\": {\n    \"slug\": \"none\",\n    \"display_name\": \"string\",\n    \"active\": false\n  },\n  \"is_active\": \"<boolean>\",\n  \"created\": \"2010-05-14T02:47:05.425Z\",\n  \"modified\": \"1957-09-22T23:14:12.857Z\",\n  \"slug\": \"xmx0mW\",\n  \"stripe_customer_id\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0ab79bf-21b5-4790-a157-0f4498dc2fc6",
+          "name": "Retrieve organization",
+          "request": {
+            "name": "Retrieve organization",
+            "description": {
+              "content": "Retrieve a single organization by its ID.\n\nThe response will be the organization object.\n\n**On the command line:**\n\n```bash\nblind organizations retrieve --id \"<organization-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "50222d81-9f19-47d2-96f9-c5fa264e3e9e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1979-01-16T06:04:21.795Z\",\n  \"id\": \"string\",\n  \"modified\": \"1949-09-15T21:57:43.248Z\",\n  \"name\": \"string\",\n  \"organization_users\": [\n    \"http://lDXFTcIMHF.ewrkRXJi0TooyHyaVTH4\",\n    \"http://AgDsFqMzuKZ.cdjHFyevfqyx5cT-9bWgcPOfJGQIR3WC+thIER8-5kLTbqfP1cY.BD2YP\"\n  ],\n  \"owner\": \"https://cZidpHZdVPNbvIMtvCzeauw.jfohbRmkn9+j5gVVA3POG9GYfmeycmnHVl3y4\",\n  \"slug\": \"bAEnehYmjyV\",\n  \"subscription\": {\n    \"slug\": \"none\",\n    \"display_name\": \"string\",\n    \"active\": true\n  },\n  \"url\": \"https://mFUSdnotZOjSkjhSAHsOdn.vfE6\",\n  \"is_active\": true,\n  \"stripe_customer_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e699e72-cb21-4085-9567-d245f1e0e4ff",
+          "name": "Update organization",
+          "request": {
+            "name": "Update organization",
+            "description": {
+              "content": "Replace an organization with the data provided in the request.\n\nThe response will be the updated organization object.\n\n**On the command line:**\n\n```bash\nblind organizations update --id \"<organization-id>\" --data organization.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) A human-readable name for this organization"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "A unique ID used to identify this organization"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "stripe_customer_id",
+                  "value": "<string>",
+                  "description": "Stripe customer id mirrored from settings['stripe']; indexed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32eac4f5-6f72-41a5-acc3-826098cfd7fc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A human-readable name for this organization",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "owner",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A unique ID used to identify this organization",
+                        "type": "text/plain"
+                      },
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Stripe customer id mirrored from settings['stripe']; indexed.",
+                        "type": "text/plain"
+                      },
+                      "key": "stripe_customer_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"owner\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"http://UFmStlDDTRQrHuLEfuKFlLTOcN.epifKfZ1plyV,1V\",\n  \"organization_users\": [\n    \"http://cJWlWCyUhVEmOjbnd.fqpD+zTef,xjUQqV1Q,xSj2rr9inPnh9MgPW7NStsHxN\",\n    \"https://tfNNZtCLLlFbZPVSfAOUZjrMaKv.tgfuHr\"\n  ],\n  \"subscription\": {\n    \"slug\": \"enterprise\",\n    \"display_name\": \"string\",\n    \"active\": false\n  },\n  \"slug\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"created\": \"1948-03-15T17:41:01.367Z\",\n  \"modified\": \"1954-12-14T02:48:33.884Z\",\n  \"stripe_customer_id\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60958113-f672-430e-94c7-4cf11125e4d0",
+          "name": "Partial update organization",
+          "request": {
+            "name": "Partial update organization",
+            "description": {
+              "content": "Update one or more fields of an organization. This does not replace the entire\norganization, it only updates the fields provided in the request.\n\nThe response will be the updated organization object.\n\n**On the command line:**\n\n```bash\nblind organizations partial-update --id \"<organization-id>\" --data organization-update.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "owner",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "A unique ID used to identify this organization"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "A human-readable name for this organization"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "stripe_customer_id",
+                  "value": "<string>",
+                  "description": "Stripe customer id mirrored from settings['stripe']; indexed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f4e44a3c-43bf-443a-a17b-f3a223926a64",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "owner",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A unique ID used to identify this organization",
+                        "type": "text/plain"
+                      },
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A human-readable name for this organization",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Stripe customer id mirrored from settings['stripe']; indexed.",
+                        "type": "text/plain"
+                      },
+                      "key": "stripe_customer_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"owner\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://uOoBUD.uqHJKnHCmiUSpC\",\n  \"organization_users\": [\n    \"http://RCcK.vvmUY5BK7jNqIPgiL,6.6F\",\n    \"https://lOCBQXZRDVdgcwosWnheluA.khrqc8WVXbmcf5tieoT-welKPF2b\"\n  ],\n  \"subscription\": {\n    \"slug\": \"enterprise\",\n    \"display_name\": \"string\",\n    \"active\": true\n  },\n  \"slug\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"created\": \"1977-02-05T03:24:36.621Z\",\n  \"modified\": \"1985-01-18T11:34:50.678Z\",\n  \"stripe_customer_id\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63dc50e9-54c9-4628-965e-970dd82f9c20",
+          "name": "Delete organization",
+          "request": {
+            "name": "Delete organization",
+            "description": {
+              "content": "Delete an organization. Note that this does not delete the organization's\nmembers or any associated data.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind organizations destroy --id \"<organization-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "51c1c612-cd7b-45d4-8fb7-037bc50ceb8b",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fac3fa58-f38e-4dd5-ad1f-6f0b4120bf0d",
+          "name": "Retrieve organization dataset by slug",
+          "request": {
+            "name": "Retrieve organization dataset by slug",
+            "description": {
+              "content": "Retrieve a single organization dataset by its slug.\n\nThe response is the dataset object.\n\n**On the command line:**\n\n```bash\nblind organizations dataset --id \"<organization-id>\" --slug \"<dataset-slug>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":id",
+                "dataset",
+                ":slug",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b7432dab-4035-4543-9967-e3caea767b58",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":id",
+                    "dataset",
+                    ":slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1979-01-16T06:04:21.795Z\",\n  \"id\": \"string\",\n  \"modified\": \"1949-09-15T21:57:43.248Z\",\n  \"name\": \"string\",\n  \"organization_users\": [\n    \"http://lDXFTcIMHF.ewrkRXJi0TooyHyaVTH4\",\n    \"http://AgDsFqMzuKZ.cdjHFyevfqyx5cT-9bWgcPOfJGQIR3WC+thIER8-5kLTbqfP1cY.BD2YP\"\n  ],\n  \"owner\": \"https://cZidpHZdVPNbvIMtvCzeauw.jfohbRmkn9+j5gVVA3POG9GYfmeycmnHVl3y4\",\n  \"slug\": \"bAEnehYmjyV\",\n  \"subscription\": {\n    \"slug\": \"none\",\n    \"display_name\": \"string\",\n    \"active\": true\n  },\n  \"url\": \"https://mFUSdnotZOjSkjhSAHsOdn.vfE6\",\n  \"is_active\": true,\n  \"stripe_customer_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15884dac-6d6d-4e8e-a054-8964813c31d1",
+          "name": "Retrieve organization owner",
+          "request": {
+            "name": "Retrieve organization owner",
+            "description": {
+              "content": "Retrieve a single owner of an organization by its ID.\n\nThe response will be the user object of the owner.\n\n**On the command line:**\n\n```bash\nblind organizations owner --id \"<organization-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":id",
+                "owner",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a041f58-8275-442e-ac5b-bba4723d2f06",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":id",
+                    "owner",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1979-01-16T06:04:21.795Z\",\n  \"id\": \"string\",\n  \"modified\": \"1949-09-15T21:57:43.248Z\",\n  \"name\": \"string\",\n  \"organization_users\": [\n    \"http://lDXFTcIMHF.ewrkRXJi0TooyHyaVTH4\",\n    \"http://AgDsFqMzuKZ.cdjHFyevfqyx5cT-9bWgcPOfJGQIR3WC+thIER8-5kLTbqfP1cY.BD2YP\"\n  ],\n  \"owner\": \"https://cZidpHZdVPNbvIMtvCzeauw.jfohbRmkn9+j5gVVA3POG9GYfmeycmnHVl3y4\",\n  \"slug\": \"bAEnehYmjyV\",\n  \"subscription\": {\n    \"slug\": \"none\",\n    \"display_name\": \"string\",\n    \"active\": true\n  },\n  \"url\": \"https://mFUSdnotZOjSkjhSAHsOdn.vfE6\",\n  \"is_active\": true,\n  \"stripe_customer_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21a210e9-1ddf-4fb4-acf2-02f41b457c96",
+          "name": "List organization audit logs",
+          "request": {
+            "name": "List organization audit logs",
+            "description": {
+              "content": "Return a list of all organization audit logs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "audit-logs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<integer>",
+                  "description": "* `0` - create\n* `1` - update\n* `2` - delete\n* `3` - access"
+                },
+                {
+                  "disabled": false,
+                  "key": "actor",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "actor_email",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "changes_text",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "content_type",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "object_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "object_pk",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "object_repr",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "remote_addr",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "remote_port",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e7d00ec8-a223-462f-8a93-b435cd8a5420",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "audit-logs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "actor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actor_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "changes_text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_type",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "object_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "object_pk",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "object_repr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "remote_addr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remote_port",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"action\": 3,\n    \"id\": 7399,\n    \"model\": \"string\",\n    \"object_pk\": \"string\",\n    \"object_repr\": \"string\",\n    \"changes_text\": \"string\",\n    \"changes\": {},\n    \"cid\": \"string\",\n    \"remote_addr\": \"string\",\n    \"remote_port\": 1195547866,\n    \"timestamp\": \"2001-01-10T18:35:09.868Z\",\n    \"actor_email\": \"string\",\n    \"actor\": \"string\"\n  },\n  {\n    \"action\": 0,\n    \"id\": 3184,\n    \"model\": \"string\",\n    \"object_pk\": \"string\",\n    \"object_repr\": \"string\",\n    \"changes_text\": \"string\",\n    \"changes\": {},\n    \"cid\": \"string\",\n    \"remote_addr\": \"string\",\n    \"remote_port\": 117335549,\n    \"timestamp\": \"1995-01-23T21:14:11.211Z\",\n    \"actor_email\": \"string\",\n    \"actor\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9e3daaa-7463-45d9-85c9-f3b278a9c559",
+          "name": "Retrieve organization audit log",
+          "request": {
+            "name": "Retrieve organization audit log",
+            "description": {
+              "content": "Retrieve a single organization audit log by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "audit-logs",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this log entry."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6affdb03-d268-4230-a98f-e4f9b83e7e47",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "audit-logs",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this log entry."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action\": 0,\n  \"id\": 1132,\n  \"model\": \"string\",\n  \"object_pk\": \"string\",\n  \"object_repr\": \"string\",\n  \"changes_text\": \"string\",\n  \"changes\": {},\n  \"cid\": \"string\",\n  \"remote_addr\": \"string\",\n  \"remote_port\": 671204357,\n  \"timestamp\": \"2001-11-26T07:27:08.646Z\",\n  \"actor_email\": \"string\",\n  \"actor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "975d34e6-344e-4cdc-8607-8d942c2b1cf7",
+          "name": "List organization invitations",
+          "request": {
+            "name": "List organization invitations",
+            "description": {
+              "content": "Return a list of all organization invitations, including those which have\nalready been accepted.\n\nThe response is a list of invitation objects.\n\n**On the command line:**\n\n```bash\nblind organizations invitations list --organization-id \"<organization-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "invitations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0e434643-e70d-4e78-9ce6-8b16ccbcd105",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "invitations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created\": \"1995-05-01T10:22:51.310Z\",\n    \"guid\": \"5b57f592-a23e-f2dd-1feb-e89ebb25f1f8\",\n    \"id\": \"string\",\n    \"invited_by\": \"https://EretgpKglxNIbzHWhDepmkikd.kgRu+fqGo3WPacXgYsikHuFAtXmcYqEQe\",\n    \"invitee_identifier\": \"string\",\n    \"modified\": \"1988-02-28T23:25:10.543Z\",\n    \"organization\": \"http://HBhbYmdJBeiZatqetgOF.ymdCAqHU5gV9qSWk,0U+tzbNzWPWsjIYlpc,aA1VY5in8eXYONbuBKoWPH3zkxLiG1b\",\n    \"url\": \"http://APFNHqbcAjGePDJZqbyUnhICmEDQ.ltujJJXZKk\",\n    \"invitee\": \"http://gQLoSXbrlhejPd.uroWkTT8d+lokrB5OXyWsWvAlOf+yh3\"\n  },\n  {\n    \"created\": \"1973-05-28T06:06:22.354Z\",\n    \"guid\": \"3757010b-be4e-757a-6cbe-f943b1d363dd\",\n    \"id\": \"string\",\n    \"invited_by\": \"http://CiskBrQSSfjd.dmezMpz62zfSNo8BXPiVW4sgG,V36T2xR+DF.VvcLSdURoTuEEPLRX,guvuK\",\n    \"invitee_identifier\": \"string\",\n    \"modified\": \"1993-10-06T03:29:45.726Z\",\n    \"organization\": \"http://FjSoJWHDTGGtNEhNGHzfMNky.jgZKROA3O+LJl2yOVTG2DDE7hTW8uPETqbjKDlwUjn3EWvzwhAz\",\n    \"url\": \"http://VIOsFDDcYWOtmLarGWoDamlCGKxbmDo.xnnbciOcqSlX4BB\",\n    \"invitee\": \"http://JFFpGdzzSqpKzfRuLgTDSBXDaNuYlBpnY.ureN88PCAtR0H.Aey29rjzHQi4LkLqKAyoE\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5024a969-9524-4ff1-b87f-57b2d13cce59",
+          "name": "Create organization invitation",
+          "request": {
+            "name": "Create organization invitation",
+            "description": {
+              "content": "Invite a user to join an organization.\n\nThe response is the newly created invitation object.\n\n**On the command line:**\n\n```bash\nblind organizations invitations create --organization-id \"<organization-id>\" --data organization-invitation.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "invitations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_admin",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "46ff6258-c322-4b20-aabd-024608381bd0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "invitations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_admin",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"https://yrqxrjVOKzKdCycHJHwNwQyrK.uxfh9KKfArQVhRA.bKRu9Y29JfvDMpSannt4xbYXsvYoPD2P,hF\",\n  \"organization\": \"<uri>\",\n  \"created\": \"2011-04-23T13:11:43.802Z\",\n  \"modified\": \"1980-01-23T20:37:05.053Z\",\n  \"is_admin\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84d708ee-9f71-4a55-ade4-05069e246a9d",
+          "name": "Retrieve organization invitation",
+          "request": {
+            "name": "Retrieve organization invitation",
+            "description": {
+              "content": "Retrieve a single organization invitation by its ID.\n\nThe response is the invitation object.\n\n**On the command line:**\n\n```bash\nblind organizations invitations retrieve --organization-id \"<organization-id>\" --id \"<invitation-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "invitations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization invitation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e4f75676-969a-4b1a-a0bd-86651e16fb60",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "invitations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization invitation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1957-06-21T08:29:31.179Z\",\n  \"guid\": \"78b2ba6f-8c9d-9f4c-3076-de308ae0b05b\",\n  \"id\": \"string\",\n  \"invited_by\": \"https://MpzBeivFUIrwKUTkkbXcWHoqVreJOUS.ncuyi6swO2yAGXhiTP+eWWMlOP5v4dXJK9tCvIbbmzeFCjQhKlcKrLz0RyEcDhbZGMFV8Ajh81D\",\n  \"invitee_identifier\": \"string\",\n  \"modified\": \"1965-05-02T23:03:43.348Z\",\n  \"organization\": \"http://fxOhEMRppUTDenPlEllSLNZwJCgXOwsK.xbyaMGyNMue2ag2+Mr9,SCmFLBPeN9bqVFddgUjKzuffUq3j\",\n  \"url\": \"https://hpNWqVgY.xowyiVWZHOzGDXCikd-6ma3imUkBAyFqZVytz+f5m1hPqul+Ce843-qe,n\",\n  \"invitee\": \"https://cfossnKfhtQG.rwiVnFzVbyq-FRybMdWwSrDJJBuuwwQ+HoyLW4inXPoh\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69e6480f-72ca-4d00-9914-9db218b182b2",
+          "name": "Update organization invitation",
+          "request": {
+            "name": "Update organization invitation",
+            "description": {
+              "content": "Update an organization invitation.\n\nThe response is the updated invitation object.\n\n**On the command line:**\n\n```bash\nblind organizations invitations update --organization-id \"<organization-id>\" --id \"<invitation-id>\" --data organization-invitation.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "invitations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization invitation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "invited_by",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "invitee_identifier",
+                  "value": "<string>",
+                  "description": "(Required) The contact identifier for the invitee, email, phone number, social media handle, etc."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "invitee",
+                  "value": "<uri>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "516afe2a-6eb2-4320-914d-da7a89502edf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "invitations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization invitation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invited_by",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The contact identifier for the invitee, email, phone number, social media handle, etc.",
+                        "type": "text/plain"
+                      },
+                      "key": "invitee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "invitee",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invited_by\": \"<uri>\",\n  \"invitee_identifier\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"http://sdUkjjqKugBcqpshJsKIUEzTPEDCduje.ajgk,SrvX,SeWMuZhBCh4J9wgUiVGuXjlSfSZJl\",\n  \"guid\": \"74514df6-2fda-03a3-ab43-8819d98f6150\",\n  \"created\": \"1988-05-13T10:22:24.456Z\",\n  \"modified\": \"1953-01-17T04:39:25.894Z\",\n  \"invitee\": \"<uri>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a21b185-f10a-40ef-bf93-7efdf317f4c4",
+          "name": "Partial update organization invitation",
+          "request": {
+            "name": "Partial update organization invitation",
+            "description": {
+              "content": "Update one or more fields of an organization invitation. This does not replace\nthe entire invitation, it only updates the fields provided in the request.\n\nThe response is the updated invitation object.\n\n**On the command line:**\n\n```bash\nblind organizations invitations partial-update --organization-id \"<organization-id>\" --id \"<invitation-id>\" --data organization-invitation-update.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "invitations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization invitation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "invitee_identifier",
+                  "value": "<string>",
+                  "description": "The contact identifier for the invitee, email, phone number, social media handle, etc."
+                },
+                {
+                  "disabled": false,
+                  "key": "invited_by",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "invitee",
+                  "value": "<uri>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8c72457-3d46-466f-b063-fb3d8c8b0cea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "invitations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization invitation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The contact identifier for the invitee, email, phone number, social media handle, etc.",
+                        "type": "text/plain"
+                      },
+                      "key": "invitee_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "invited_by",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "invitee",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invited_by\": \"<uri>\",\n  \"invitee_identifier\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"http://sdUkjjqKugBcqpshJsKIUEzTPEDCduje.ajgk,SrvX,SeWMuZhBCh4J9wgUiVGuXjlSfSZJl\",\n  \"guid\": \"74514df6-2fda-03a3-ab43-8819d98f6150\",\n  \"created\": \"1988-05-13T10:22:24.456Z\",\n  \"modified\": \"1953-01-17T04:39:25.894Z\",\n  \"invitee\": \"<uri>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99b76b98-53e7-4e3d-a46c-f39743278d72",
+          "name": "Delete organization invitation",
+          "request": {
+            "name": "Delete organization invitation",
+            "description": {
+              "content": "Delete an organization invitation.\n\nThe response is a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind organizations invitations destroy --organization-id \"<organization-id>\" --id \"<invitation-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "invitations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization invitation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d0c7a07a-8795-43d9-8497-ccce1525c062",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "invitations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization invitation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84fd1072-b5dc-4bfc-bd6c-6ab43e0e2ee3",
+          "name": "List all teams",
+          "request": {
+            "name": "List all teams",
+            "description": {
+              "content": "List all Team objects that you have access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "teams",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataset",
+                  "value": "<string>",
+                  "description": "Filter by dataset ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset_slug",
+                  "value": "<string>",
+                  "description": "Filter by dataset slug."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "members",
+                  "value": "<string>",
+                  "description": "The users that are members of this team."
+                },
+                {
+                  "disabled": false,
+                  "key": "members",
+                  "value": "<string>",
+                  "description": "The users that are members of this team."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "A human-readable name for this team."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "The organization that this team belongs to."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "Filter by schema ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema_slug",
+                  "value": "<string>",
+                  "description": "Filter by schema slug."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "A unique slug for this team."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1d2d79a8-415c-42d4-8f80-daa04d69275e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "teams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataset_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "members",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "members",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "schema_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"members\": [\n      \"https://CYKTocumNDfNmcQhJlHAPDdChBJ.qqlHTDFJHr8hpqVrP.pkPmLFM9iaO6PfXsWybnOrryN5cj8c5GH9ejIDGqTeow\",\n      \"https://DrkQHahv.feiuROR7k8eHk0-jYdxgfC6IxnTminwGJ2eHGKn8OdGzKtDN.zxt6qgMuTSSdlj\"\n    ],\n    \"name\": \"string\",\n    \"organization\": \"http://hQiseLYcpV.fgWk8XktYaxP1zV\",\n    \"url\": \"https://gMmdHOzHJiYwUEnujApdXTCBFcWYtaYZp.plnY0c2v6VhoZvpGAz\",\n    \"slug\": \"Om4\"\n  },\n  {\n    \"id\": \"string\",\n    \"members\": [\n      \"https://zQpticslqEVRoNxhCXqntjAISjai.mhwpVpvvBHdmM+eoUA\",\n      \"http://JBAFXIHVTeaqB.txiBRLL3YqIsrcEHSA9tfQY08GjXPQ7NjHe.QKapKkcC\"\n    ],\n    \"name\": \"string\",\n    \"organization\": \"https://buoFKV.rcj0i7KPAbAO4cBaw6yR,b.0zv-dH8MiaERXL4\",\n    \"url\": \"https://wLnhVfrHkoG.iszmWVMPkhaY9ihSAB948lEiFRHjtMVp337MCgrgqe4xJc0\",\n    \"slug\": \"irbQcRh4\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ab7c8d0-a83f-4e1b-80e5-5d45a5cd7cc3",
+          "name": "Create a new team",
+          "request": {
+            "name": "Create a new team",
+            "description": {
+              "content": "Create a new Team object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "teams",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "members",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "members",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) A human-readable name for this team."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "A unique slug for this team."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3beed2f7-0ef1-44ba-a95f-52b43747c60a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "teams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "members",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "members",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A human-readable name for this team.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A unique slug for this team.",
+                        "type": "text/plain"
+                      },
+                      "key": "slug",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"name\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://PuQ.isoR5AmhCh+\",\n  \"slug\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31e8ac8f-8857-42b4-ac76-67cfa8f4c96b",
+          "name": "Retrieve a single team",
+          "request": {
+            "name": "Retrieve a single team",
+            "description": {
+              "content": "Retrieve a single Team object by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "teams",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this team."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a8aa38fc-2aa2-46fa-937f-007df09502f5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "teams",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this team."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"name\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://PuQ.isoR5AmhCh+\",\n  \"slug\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "488663b7-a419-4b51-ad72-add54dc04b73",
+          "name": "Update a team",
+          "request": {
+            "name": "Update a team",
+            "description": {
+              "content": "Update a Team object by its ID. This completely replaces the object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "teams",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this team."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "members",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "members",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) A human-readable name for this team."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "A unique slug for this team."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ff17b216-bcf1-424a-b83c-3f1244270e8a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "teams",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this team."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "members",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "members",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A human-readable name for this team.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A unique slug for this team.",
+                        "type": "text/plain"
+                      },
+                      "key": "slug",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"name\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://PuQ.isoR5AmhCh+\",\n  \"slug\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f65fa770-25f3-4963-9ae3-fe116144016f",
+          "name": "Partially update a team",
+          "request": {
+            "name": "Partially update a team",
+            "description": {
+              "content": "Partially update a Team object by its ID. This only replaces the specified fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "teams",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this team."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "members",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "members",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "A human-readable name for this team."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "A unique slug for this team."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "67d1df18-b0a2-4499-82e1-b8fd0e15eb77",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "teams",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this team."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "members",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "members",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A human-readable name for this team.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A unique slug for this team.",
+                        "type": "text/plain"
+                      },
+                      "key": "slug",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"name\": \"<string>\",\n  \"organization\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://PuQ.isoR5AmhCh+\",\n  \"slug\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bf09822-3ef5-45ba-b2b2-ce02319db0c3",
+          "name": "Delete a team",
+          "request": {
+            "name": "Delete a team",
+            "description": {
+              "content": "Delete a Team object by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "teams",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this team."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c972d416-5673-4e0f-bb8e-f31b0136870e",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "teams",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this team."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b89fc9ec-8078-4203-a474-c535c6c6156a",
+          "name": "Add a member to a team",
+          "request": {
+            "name": "Add a member to a team",
+            "description": {
+              "content": "Adds a member to a team if you have permissions to manage that team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "teams",
+                ":id",
+                "add_member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this team."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "272bb580-c0f2-4c87-8476-834d13a7885f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "teams",
+                    ":id",
+                    "add_member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this team."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebfe36e1-d4ca-4409-a3a7-43f738930b9b",
+          "name": "Remove a member from a team",
+          "request": {
+            "name": "Remove a member from a team",
+            "description": {
+              "content": "Removes a member from a team if you have permissions to manage that team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "teams",
+                ":id",
+                "remove_member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this team."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eff2041f-e827-47bf-8db0-6b919ececffa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "teams",
+                    ":id",
+                    "remove_member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this team."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9208c94-c569-4ba0-ba8a-ec171a410962",
+          "name": "List organization users",
+          "request": {
+            "name": "List organization users",
+            "description": {
+              "content": "Return a list of all users of an organization.\n\nThe response is a list of user objects belonging to the organization.\n\n**On the command line:**\n\n```bash\nblind organizations users list --organization-id \"<organization-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "created",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "has_identity",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the organization user has an identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_admin",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "modified",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3fb764d3-0d8b-47de-ad2d-5254f8cb0134",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "has_identity",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_admin",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "modified",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created\": \"2023-05-27T02:04:04.813Z\",\n    \"id\": \"string\",\n    \"modified\": \"1977-09-02T11:23:10.999Z\",\n    \"organization\": \"https://wwMufbRjFE.inPmiNcIeYNWuB\",\n    \"url\": \"http://KR.ndyLDcZ9pjpGf6xFM+WrnfehUevIZoASFG5GZtPR0nnkJwMpi-,z-6\",\n    \"user\": \"https://KBxRwoHGxSKNeiCZkvsaLJZqI.xckbCk6qv1y+,ePLSI,Zl.,R\",\n    \"is_admin\": true\n  },\n  {\n    \"created\": \"1986-11-15T08:44:04.712Z\",\n    \"id\": \"string\",\n    \"modified\": \"2005-03-19T20:09:13.972Z\",\n    \"organization\": \"https://bjENWduioKmEtrEoSMLMkVwVprXkbDYjl.fuaOUqwaQVOtX9,tqKu380\",\n    \"url\": \"http://LRCRfTgQRNuufbWCTrXRfjYlmCpKAr.uohVASyI1SgALbvh,ybNRpNX9W1pUyQSZz\",\n    \"user\": \"http://KAMVOvPXzphzpPVfOmGvjfNUdCNN.rmFqoEWwTWfXnUQX+PZUCUR+Guk,1RkB\",\n    \"is_admin\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fce321dd-1233-431f-9228-acf8ef02bc4d",
+          "name": "Create organization user",
+          "request": {
+            "name": "Create organization user",
+            "description": {
+              "content": "Add a new user to an organization.\n\nThe response is the newly added user object.\n\n**On the command line:**\n\n```bash\nblind organizations users create --organization-id \"<organization-id>\" --data organization-user.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_admin",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f9ba5de3-f99b-4480-a785-d9c2a7a70f6f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "organization",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_admin",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"http://gcPGsWjhhP.npqiNHQL4XuYW3KYF21FgyDUzApKZqozZzRDo4cg-D9lBR\",\n  \"organization\": \"<uri>\",\n  \"created\": \"1971-05-20T05:41:26.063Z\",\n  \"modified\": \"2022-06-21T13:50:31.648Z\",\n  \"is_admin\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d3148e3-2f32-4c75-9cd5-3fd6e8f9c176",
+          "name": "Retrieve organization user",
+          "request": {
+            "name": "Retrieve organization user",
+            "description": {
+              "content": "Retrieve a single user of an organization by their ID.\n\nThe response is the user object.\n\n**On the command line:**\n\n```bash\nblind organizations users retrieve --organization-id \"<organization-id>\" --id \"<user-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization user."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d69ecd3a-2208-4f0b-87bc-06175a4626c8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization user."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1977-01-15T01:02:43.803Z\",\n  \"id\": \"string\",\n  \"modified\": \"2021-04-17T19:44:43.210Z\",\n  \"organization\": \"https://uDztBXygIwRD.bqBdZckRK92ZghgAsUq,h0srv2MtNFBVnp\",\n  \"url\": \"http://wNpqLGRAIObKbXDi.ylWBWksFfnuszUwx9tT1ZiGV1XG4ido6n.wW.cpxYUzAK\",\n  \"user\": \"http://KqFiYUwkEHUnLpAErftOFvjACoY.jhsNwFM\",\n  \"is_admin\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bda9e2e-165f-43b8-81d6-04378e76ebd8",
+          "name": "Update organization user",
+          "request": {
+            "name": "Update organization user",
+            "description": {
+              "content": "Replace a user of an organization with the data provided in the request.\n\nThe response is the updated user object.\n\n**On the command line:**\n\n```bash\nblind organizations users update --organization-id \"<organization-id>\" --id \"<user-id>\" --data organization-user.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization user."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "is_admin",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0451bf4d-695a-4eec-9bcc-b99e97569f3e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization user."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "is_admin",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"http://jBpbmjSaiTZKdO.jrjnzv6D,mkLnt1W65Knz7vrjJaN3gBMVju90jZ4c1UxE\",\n  \"organization\": \"http://lOrpgZfKeSvMKxQLCEHElyoFn.uaW82AC+CCjvOAts\",\n  \"created\": \"1981-04-23T04:14:50.893Z\",\n  \"modified\": \"1949-12-19T00:48:27.526Z\",\n  \"is_admin\": \"<boolean>\",\n  \"user\": \"http://izyXTZ.uwxJJCGx2TmRLPNf7HWvnXNoclPq4h1P+3+0DtPDGCv1fjkuojt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8adbabf-7779-439d-aa03-de480029f0d9",
+          "name": "Partial update organization user",
+          "request": {
+            "name": "Partial update organization user",
+            "description": {
+              "content": "Update one or more fields of a user of an organization. This does not replace\nthe entire user, it only updates the fields provided in the request.\n\nThe response is the updated user object.\n\n**On the command line:**\n\n```bash\nblind organizations users partial-update --organization-id \"<organization-id>\" --id \"<user-id>\" --data organization-user-update.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization user."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "is_admin",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "13fea111-94b1-49f2-8895-7205f2b13296",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization user."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "is_admin",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"http://jBpbmjSaiTZKdO.jrjnzv6D,mkLnt1W65Knz7vrjJaN3gBMVju90jZ4c1UxE\",\n  \"organization\": \"http://lOrpgZfKeSvMKxQLCEHElyoFn.uaW82AC+CCjvOAts\",\n  \"created\": \"1981-04-23T04:14:50.893Z\",\n  \"modified\": \"1949-12-19T00:48:27.526Z\",\n  \"is_admin\": \"<boolean>\",\n  \"user\": \"http://izyXTZ.uwxJJCGx2TmRLPNf7HWvnXNoclPq4h1P+3+0DtPDGCv1fjkuojt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8aed7e1-429d-4d01-9a87-9f1ee00ba0bf",
+          "name": "Delete organization user",
+          "request": {
+            "name": "Delete organization user",
+            "description": {
+              "content": "Delete a user from an organization.\n\nThe response is a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind organizations users destroy --organization-id \"<organization-id>\" --id \"<user-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                ":organization_id",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this organization user."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6dd2aab3-6037-4bdc-8492-bb761a7001d7",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    ":organization_id",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this organization user."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48ab1ea1-f846-4fb1-ae86-3067f7b6f1cb",
+          "name": "Retrieve organization by slug",
+          "request": {
+            "name": "Retrieve organization by slug",
+            "description": {
+              "content": "Retrieve a single organization by its slug.\n\nThe response will be the organization object.\n\n**On the command line:**\n\n```bash\nblind organizations by-slug --slug \"<organization-slug>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "organizations",
+                "by-slug",
+                ":slug",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b271ea04-d813-4825-b2eb-05b295550af3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "organizations",
+                    "by-slug",
+                    ":slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1979-01-16T06:04:21.795Z\",\n  \"id\": \"string\",\n  \"modified\": \"1949-09-15T21:57:43.248Z\",\n  \"name\": \"string\",\n  \"organization_users\": [\n    \"http://lDXFTcIMHF.ewrkRXJi0TooyHyaVTH4\",\n    \"http://AgDsFqMzuKZ.cdjHFyevfqyx5cT-9bWgcPOfJGQIR3WC+thIER8-5kLTbqfP1cY.BD2YP\"\n  ],\n  \"owner\": \"https://cZidpHZdVPNbvIMtvCzeauw.jfohbRmkn9+j5gVVA3POG9GYfmeycmnHVl3y4\",\n  \"slug\": \"bAEnehYmjyV\",\n  \"subscription\": {\n    \"slug\": \"none\",\n    \"display_name\": \"string\",\n    \"active\": true\n  },\n  \"url\": \"https://mFUSdnotZOjSkjhSAHsOdn.vfE6\",\n  \"is_active\": true,\n  \"stripe_customer_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a4ab70af-b2b9-4f77-8f20-90d0c2120b75",
+    "name": "Blind Insight REST accounts organizations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-to-end encrypted datastore",
+      "type": "text/plain"
+    }
+  }
+}

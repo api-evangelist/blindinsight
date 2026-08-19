@@ -1,0 +1,416 @@
+{
+  "item": [
+    {
+      "id": "26c3854a-bfe1-4719-a68c-7a860364b3fb",
+      "name": "blindllm-queries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae32bc4a-99f0-4bdb-91fe-49f11caaddd7",
+          "name": "blindllm queries list",
+          "request": {
+            "name": "blindllm queries list",
+            "description": {
+              "content": "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blindllm-queries",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1a3ed454-a9ee-477b-a055-c67b49963dec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm-queries",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created\": \"2012-09-09T07:09:32.800Z\",\n    \"created_by\": \"string\",\n    \"data_mode\": \"proxy\",\n    \"duration_ms\": 1805,\n    \"fallback\": false,\n    \"fallback_reason\": \"string\",\n    \"hints\": {},\n    \"id\": \"string\",\n    \"organization\": \"string\",\n    \"prompt\": \"string\",\n    \"response\": \"string\",\n    \"schemas_queried\": {},\n    \"tool_payload\": {},\n    \"url\": \"https://BWEa.kckGOX9ItslMtgSyWsCbY\",\n    \"used_tool\": \"string\"\n  },\n  {\n    \"created\": \"1948-10-05T04:46:31.659Z\",\n    \"created_by\": \"string\",\n    \"data_mode\": \"proxy\",\n    \"duration_ms\": 181,\n    \"fallback\": false,\n    \"fallback_reason\": \"string\",\n    \"hints\": {},\n    \"id\": \"string\",\n    \"organization\": \"string\",\n    \"prompt\": \"string\",\n    \"response\": \"string\",\n    \"schemas_queried\": {},\n    \"tool_payload\": {},\n    \"url\": \"http://orkvgcIiyjTDK.llynasdPBVTV4DGHVfyPT4SV2JaFYWuc+TYb9eHvOUtBWmutaS9GC2u0zX,dFT32Awg3RU\",\n    \"used_tool\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c9dc221-6bf0-4454-a811-1143947d0545",
+          "name": "blindllm queries create",
+          "request": {
+            "name": "blindllm queries create",
+            "description": {
+              "content": "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blindllm-queries",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "prompt",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83dc4e8c-9f2a-470d-8e2d-a0f9dc63f2da",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm-queries",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "model",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organization\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"model\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f45dc07e-6dd5-4529-a20d-37116a420b97",
+          "name": "blindllm queries retrieve",
+          "request": {
+            "name": "blindllm queries retrieve",
+            "description": {
+              "content": "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blindllm-queries",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this Blind LLM query."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b69c42b0-9e4a-41fb-8c62-04fd4d6ae2b5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blindllm-queries",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this Blind LLM query."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"2017-07-18T23:01:44.753Z\",\n  \"created_by\": \"string\",\n  \"data_mode\": \"proxy\",\n  \"duration_ms\": 4590,\n  \"fallback\": true,\n  \"fallback_reason\": \"string\",\n  \"hints\": {},\n  \"id\": \"string\",\n  \"organization\": \"string\",\n  \"prompt\": \"string\",\n  \"response\": \"string\",\n  \"schemas_queried\": {},\n  \"tool_payload\": {},\n  \"url\": \"https://jFwQnuPYZUvTUf.wdgOcQKsaxcK.hZPCZ48N,cOJ3xbHY,vK5KJEJ8zIvNElylInXaqn,C\",\n  \"used_tool\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5b161ea9-efa2-4548-aa98-bca153783a8f",
+    "name": "Blind Insight REST accounts blindllm-queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-to-end encrypted datastore",
+      "type": "text/plain"
+    }
+  }
+}

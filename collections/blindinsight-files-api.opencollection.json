@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts files API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new upload resource (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/files/",
+            "headers": [
+              {
+                "name": "Content-Length",
+                "value": ""
+              },
+              {
+                "name": "Tus-Resumable",
+                "value": ""
+              },
+              {
+                "name": "Upload-Length",
+                "value": ""
+              },
+              {
+                "name": "Upload-Metadata",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new upload resource. The Upload-Length header indicates the size of the entire upload in bytes.\n\n**On the command line:**\n\n```bash\nblind files create --Tus-Resumable 1.0.0  --Upload-Length 1000 --data records.json\n```"
+        },
+        {
+          "info": {
+            "name": "Upload file chunk (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/files/:id/",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "Upload-Checksum",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "[required] The ID of the upload to upload a chunk of."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Upload a chunk of a file.\n\n**On the command line:**\n\n```bash\nblind files patch --id \"<upload-id>\" --Upload-Offset 1000 --Upload-Checksum \"b64:checksum\" --data records.json\n```"
+        },
+        {
+          "info": {
+            "name": "Delete upload (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/files/:id/",
+            "headers": [
+              {
+                "name": "Tus-Resumable",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "[required] The ID of the upload to delete."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete an upload resource.\n\n**On the command line:**\n\n```bash\nblind files delete --id \"<upload-id>\"\n```"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

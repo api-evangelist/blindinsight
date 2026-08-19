@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts ws API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ws",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Connect to a job status websocket (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/ws/jobs/:job_id/",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "The job ID to get the status of."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Connect to a job status websocket by its ID.\n\n**On the command line:**\n\n```bash\nblind jobs websocket --id \"<job-id>\"\n```"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1414 @@
+{
+  "item": [
+    {
+      "id": "9143f03c-a7e7-4b19-bdd5-014429997cd6",
+      "name": "users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d35a481-b867-4515-99e3-8f1bd3f90672",
+          "name": "Retrieve one or more User objects, with filters",
+          "request": {
+            "name": "Retrieve one or more User objects, with filters",
+            "description": {
+              "content": "Retrieve a list of users. You can filter the list by providing query parameters.\nOnly users that you have access to will be returned, which in practice means\nthey are in the same organization.\n\nThe response will be a list of user objects.\n\n**On the command line:**\n\n```bash\nblind users list\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date_joined",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "First name (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "has_identity",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the user has an identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_staff",
+                  "value": "<boolean>",
+                  "description": "Designates whether the user can log into this admin site."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_superuser",
+                  "value": "<boolean>",
+                  "description": "Designates that this user has all permissions without explicitly assigning them."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_login",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "Last name (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3a4a609-15da-4b0e-ab75-49bf2d47205c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_joined",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "has_identity",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "is_staff",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "is_superuser",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "last_login",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"email\": \"iENiJmrbk1rtBj@wJukitTsfsWfsNXEuzcNbE.us\",\n    \"has_identity\": false,\n    \"id\": \"string\",\n    \"url\": \"http://egmUZwklHMELTodPPZcsZbvoNwYC.pmghIwbCuGDUWnlMoSa3mq\",\n    \"last_login\": \"2018-02-23T07:55:25.369Z\",\n    \"is_superuser\": false,\n    \"is_staff\": false,\n    \"is_active\": true,\n    \"date_joined\": \"1987-03-22T07:47:42.338Z\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"settings\": {}\n  },\n  {\n    \"email\": \"yc3CV@SwxeuzZ.ivd\",\n    \"has_identity\": false,\n    \"id\": \"string\",\n    \"url\": \"http://qUpAugtnbybxorQJgkTopmfFCmYJZwTXe.mevQSmg2eM0wbQrtBNTMMnImRVHXLi0dFHZUBKLR58DN8P93hyDxmT75oIMcccvCBrhJtwMsYjn9z2CUhzMu36dy\",\n    \"last_login\": \"2023-11-15T14:43:31.431Z\",\n    \"is_superuser\": true,\n    \"is_staff\": false,\n    \"is_active\": false,\n    \"date_joined\": \"2005-08-22T12:57:09.051Z\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"settings\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7495fca6-d8ee-4548-b8b9-9f7a6aede671",
+          "name": "Create a new User",
+          "request": {
+            "name": "Create a new User",
+            "description": {
+              "content": "Create a new user.\n\nThe response will be the newly created user object.\n\n**On the command line:**\n\n```bash\nblind users create --data user.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "last_login",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_superuser",
+                  "value": "<boolean>",
+                  "description": "Designates that this user has all permissions without explicitly assigning them."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_staff",
+                  "value": "<boolean>",
+                  "description": "Designates whether the user can log into this admin site."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_joined",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "First name (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "Last name (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "settings",
+                  "value": "<object>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd706980-44d0-4af4-9897-9eefa579fe47",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "last_login",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates that this user has all permissions without explicitly assigning them.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_superuser",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates whether the user can log into this admin site.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_staff",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "date_joined",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "First name (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Last name (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "settings",
+                      "value": "<object>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<email>\",\n  \"id\": \"string\",\n  \"url\": \"http://PFIyDZRlhPZAVvXnzGNYHpaJFhIUB.tcwSSRzilbMhRstlrgx4g4oCa56q+dK2\",\n  \"has_identity\": true,\n  \"last_login\": \"<dateTime>\",\n  \"is_superuser\": \"<boolean>\",\n  \"is_staff\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"date_joined\": \"<dateTime>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"settings\": \"<object>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49a597a0-b470-4dd9-b0e5-ec8583cc8382",
+          "name": "Retrieve one User object",
+          "request": {
+            "name": "Retrieve one User object",
+            "description": {
+              "content": "Retrieve a single user by their ID.\n\nThe response will be the user object.\n\n**On the command line:**\n\n```bash\nblind users retrieve --id \"<user-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a842683-fccb-4e63-b9f6-c5976d299201",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<email>\",\n  \"id\": \"string\",\n  \"url\": \"http://PFIyDZRlhPZAVvXnzGNYHpaJFhIUB.tcwSSRzilbMhRstlrgx4g4oCa56q+dK2\",\n  \"has_identity\": true,\n  \"last_login\": \"<dateTime>\",\n  \"is_superuser\": \"<boolean>\",\n  \"is_staff\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"date_joined\": \"<dateTime>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"settings\": \"<object>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10bba871-4860-4204-b569-f6bcbe4c9a1e",
+          "name": "Update a User",
+          "request": {
+            "name": "Update a User",
+            "description": {
+              "content": "Update an entire existing user, replacing all fields.\n\nThe response will be the updated user object.\n\n**On the command line:**\n\n```bash\nblind users update --id \"<user-id>\" --data user.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "last_login",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_superuser",
+                  "value": "<boolean>",
+                  "description": "Designates that this user has all permissions without explicitly assigning them."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_staff",
+                  "value": "<boolean>",
+                  "description": "Designates whether the user can log into this admin site."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_joined",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "First name (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "Last name (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "settings",
+                  "value": "<object>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ce8ff493-fa7c-4b71-b4d0-1d264d02522e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "last_login",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates that this user has all permissions without explicitly assigning them.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_superuser",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates whether the user can log into this admin site.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_staff",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "date_joined",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "First name (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Last name (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "settings",
+                      "value": "<object>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<email>\",\n  \"id\": \"string\",\n  \"url\": \"http://PFIyDZRlhPZAVvXnzGNYHpaJFhIUB.tcwSSRzilbMhRstlrgx4g4oCa56q+dK2\",\n  \"has_identity\": true,\n  \"last_login\": \"<dateTime>\",\n  \"is_superuser\": \"<boolean>\",\n  \"is_staff\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"date_joined\": \"<dateTime>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"settings\": \"<object>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e71fb3a-38d0-42b5-bc7a-5ac472cfe764",
+          "name": "Partially update a User",
+          "request": {
+            "name": "Partially update a User",
+            "description": {
+              "content": "Update an existing user with only the specified fields.\n\nThe response will be the updated user object.\n\n**On the command line:**\n\n```bash\nblind users partial-update --id \"<user-id>\" --data user-update.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "last_login",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_superuser",
+                  "value": "<boolean>",
+                  "description": "Designates that this user has all permissions without explicitly assigning them."
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_staff",
+                  "value": "<boolean>",
+                  "description": "Designates whether the user can log into this admin site."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_joined",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "First name (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "Last name (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "settings",
+                  "value": "<object>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "20471ef2-d9b8-4029-817b-756d312814d0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "last_login",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates that this user has all permissions without explicitly assigning them.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_superuser",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates whether the user can log into this admin site.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_staff",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "date_joined",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "First name (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Last name (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "settings",
+                      "value": "<object>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<email>\",\n  \"id\": \"string\",\n  \"url\": \"http://PFIyDZRlhPZAVvXnzGNYHpaJFhIUB.tcwSSRzilbMhRstlrgx4g4oCa56q+dK2\",\n  \"has_identity\": true,\n  \"last_login\": \"<dateTime>\",\n  \"is_superuser\": \"<boolean>\",\n  \"is_staff\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"date_joined\": \"<dateTime>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"settings\": \"<object>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "483e4e4b-e40c-4dec-8e7c-23444f13388e",
+          "name": "Delete a User",
+          "request": {
+            "name": "Delete a User",
+            "description": {
+              "content": "Delete an existing user by their ID.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind users destroy --id \"<user-id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this user."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ae6e4da4-98af-4ea3-9952-d2dcb979df99",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e707d547-a435-45b0-bd68-401979c88ee5",
+          "name": "Retrieve one User object by name",
+          "request": {
+            "name": "Retrieve one User object by name",
+            "description": {
+              "content": "Retrieve a single user by their name (email).\n\nThe response will be the user object.\n\n**On the command line:**\n\n```bash\nblind users by-name --email \"<user-name>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                "by_name",
+                ":email",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "email",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b0d5ccaf-10d7-4b6f-97b6-d66fd6ba83d5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "by_name",
+                    ":email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<email>\",\n  \"id\": \"string\",\n  \"url\": \"http://PFIyDZRlhPZAVvXnzGNYHpaJFhIUB.tcwSSRzilbMhRstlrgx4g4oCa56q+dK2\",\n  \"has_identity\": true,\n  \"last_login\": \"<dateTime>\",\n  \"is_superuser\": \"<boolean>\",\n  \"is_staff\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"date_joined\": \"<dateTime>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"settings\": \"<object>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c88bf6e-acce-4184-86fb-4b3b7c4d97cf",
+          "name": "Retrieve current user",
+          "request": {
+            "name": "Retrieve current user",
+            "description": {
+              "content": "Retrieve the currently authenticated user.\n\nThe response will be the user object.\n\n**On the command line:**\n\n```bash\nblind users self\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                "self",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "df049920-97f4-4794-92b1-2a0fe07d7e83",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "self",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<email>\",\n  \"id\": \"string\",\n  \"url\": \"http://PFIyDZRlhPZAVvXnzGNYHpaJFhIUB.tcwSSRzilbMhRstlrgx4g4oCa56q+dK2\",\n  \"has_identity\": true,\n  \"last_login\": \"<dateTime>\",\n  \"is_superuser\": \"<boolean>\",\n  \"is_staff\": \"<boolean>\",\n  \"is_active\": \"<boolean>\",\n  \"date_joined\": \"<dateTime>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"settings\": \"<object>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4a97b46c-0df3-4ed9-8ab2-5af661f7eadd",
+    "name": "Blind Insight REST accounts users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-to-end encrypted datastore",
+      "type": "text/plain"
+    }
+  }
+}

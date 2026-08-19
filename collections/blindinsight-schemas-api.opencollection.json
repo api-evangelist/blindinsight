@@ -1,0 +1,253 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts schemas API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/schemas/",
+            "params": [
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "query",
+                "description": "The dataset that this schema belongs to."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "A longer description of the schema."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "A human-readable name for this schema."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "A unique slug for this schema."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "List all schemas, filtered by the given parameters. Takes optional pagination\nparameters `limit` and `offset`.\n\nThe response will be a list of schema objects.\n\n**On the command line:**\n\n```bash\nblind schemas list\n```"
+        },
+        {
+          "info": {
+            "name": "Create a new schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/schemas/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new schema.\n\nThe response will be the newly created schema object.\n\n**On the command line:**\n\n```bash\nblind schemas create --data schema.json\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/schemas/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this schema."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single schema by its ID.\n\nThe response will be the schema object.\n\n**On the command line:**\n\n```bash\nblind schemas retrieve --id \"<schema-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Update a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/schemas/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this schema."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update an existing schema by its ID, replacing the entire schema.\n\nThe response will be the updated schema object.\n\n**On the command line:**\n\n```bash\nblind schemas update --id \"<schema-id>\" --data schema.json\n```"
+        },
+        {
+          "info": {
+            "name": "Partially update a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/schemas/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this schema."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update an existing schema with only the specified fields.\n\nThe response will be the updated schema object.\n\n**On the command line:**\n\n```bash\nblind schemas partial-update --id \"<schema-id>\" --data schema-update.json\n```"
+        },
+        {
+          "info": {
+            "name": "Delete a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/schemas/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this schema."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete an existing schema by its ID.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind schemas destroy --id \"<schema-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "List the teams for a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/schemas/:id/teams/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this schema."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "List the teams for a schema.\n\n**On the command line:**\n\n```bash\nblind schemas teams --id \"<schema-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Decrypt a schema (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/schemas/decrypt/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "[Blind Insight Proxy] Decrypt a schema and return a hashed schema"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

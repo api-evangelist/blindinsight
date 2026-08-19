@@ -1,0 +1,231 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts grants API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "grants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all grants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/grants/",
+            "params": [
+              {
+                "name": "can_create_records",
+                "value": "",
+                "type": "query",
+                "description": "Whether this permission allows the user to create records."
+              },
+              {
+                "name": "can_share_keys",
+                "value": "",
+                "type": "query",
+                "description": "Whether this permission allows the user to share the key(s) assigned to this permission."
+              },
+              {
+                "name": "codename",
+                "value": "",
+                "type": "query",
+                "description": "The codename for this grant."
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "query",
+                "description": "The dataset that this grant belongs to."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "A human-readable name for this grant."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "The organization that this grant belongs to."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "The schema that this grant belongs to."
+              },
+              {
+                "name": "teams",
+                "value": "",
+                "type": "query",
+                "description": "The team(s) that this grant is assigned to."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "List all grants that you have access to."
+        },
+        {
+          "info": {
+            "name": "Create a new grant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/grants/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new grant."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single grant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/grants/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this grant."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a single grant by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a grant",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/grants/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this grant."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update a grant by its ID. This completely replaces the object."
+        },
+        {
+          "info": {
+            "name": "Partially update a grant",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/grants/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this grant."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Partially update a grant by its ID. This only replaces the specified\nfields."
+        },
+        {
+          "info": {
+            "name": "Delete a grant",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/grants/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this grant."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a grant by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,296 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts records API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/records/",
+            "params": [
+              {
+                "name": "count_only",
+                "value": "",
+                "type": "query",
+                "description": "Return only {\"count\": N} without records or pagination. Useful for fetching the total count asynchronously after an initial fast query."
+              },
+              {
+                "name": "include_count",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated. COUNT is now always included by default."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Query filter for records."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "The schema ID that this record belongs to."
+              },
+              {
+                "name": "skip_count",
+                "value": "",
+                "type": "query",
+                "description": "Skip the COUNT(*) query. When true, the response omits the X-Total-Count header and the Link rel=\"last\" header. Useful for faster responses on large result sets."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "List records for the given schema ID. Takes optional pagination parameters\n`limit` and `offset`, as well as an optional query filter `q`.\n\nThe response will be a list of record objects.\n\n**On the command line:**\n\n```bash\nblind records list --schema \"<schema-id>\"\n```\n\n#"
+        },
+        {
+          "info": {
+            "name": "Create a new record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/records/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new record with an already encrypted payload. This is the non-porcelain\nendpoint. If you want to create a new record with plaintext data, use the\n`record create` porcelain command or the `records ingest` command with a proxy.\n\nThe response will be the newly created record object.\n\n**On the command line:**\n\n```bash\nblind records create --data encrypted-record.json\n```"
+        },
+        {
+          "info": {
+            "name": "Bulk delete records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/records/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "An array of record IDs to be deleted."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete multiple records by their IDs.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind records bulk-destroy --id \"<record-id>\" --id \"<record-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Retrieve a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/records/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this record."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a record by its ID.\n\nThe response will be the record object.\n\n**On the command line:**\n\n```bash\nblind records retrieve --id \"<record-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Update a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/records/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this record."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "API for records."
+        },
+        {
+          "info": {
+            "name": "records_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/records/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this record."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Record PATCH semantics are intentionally unsupported."
+        },
+        {
+          "info": {
+            "name": "Delete a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/records/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this record."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a record by its ID.\n\nThe response will be a 204 No Content if successful.\n\n**On the command line:**\n\n```bash\nblind records destroy --id \"<record-id>\"\n```"
+        },
+        {
+          "info": {
+            "name": "Decrypt data and return records (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/records/decrypt/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "[Blind Insight Proxy] Decrypt data and return records"
+        },
+        {
+          "info": {
+            "name": "Ingest data and encrypt it (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/records/ingest/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "[Blind Insight Proxy] Ingest data and encrypt it returning the encrypted records"
+        },
+        {
+          "info": {
+            "name": "Search for records (only available via proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/records/search/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "[Blind Insight Proxy] Search for records by label and value. If label or value is specified, both must be present. If neither are present, this endpoint does not filter records."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

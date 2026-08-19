@@ -1,0 +1,961 @@
+{
+  "item": [
+    {
+      "id": "5d4e1305-2175-443c-922d-3d1d47a96b69",
+      "name": "identities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f57c430-a6e9-4d57-87d7-5246ac21779c",
+          "name": "List Identities",
+          "request": {
+            "name": "List Identities",
+            "description": {
+              "content": "List identities, filtered by the given parameters. Takes optional pagination\nparameters.\n\nThe response will be a list of identity objects.\n\n**On the command line:**\n\n```bash\nblind identities list --user-id \"<user_id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "identities",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>",
+                  "description": "The device ID associated with this identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "primary_public_key",
+                  "value": "<string>",
+                  "description": "The primary PGP key for the identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "sub_public_key",
+                  "value": "<string>",
+                  "description": "The PGP sub-key for the identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f467d00f-4d39-44ba-8081-4139b675a66a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "identities",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "primary_public_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sub_public_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"device_id\": \"string\",\n    \"id\": \"string\",\n    \"primary_public_key\": \"string\",\n    \"sub_public_key\": \"string\",\n    \"url\": \"https://RiHSW.rkajwwQ,UMCtiTf5MMs.yacZDkSYHiEbrKPOpztgh+ls7nzdmQ.htyrWI2AtZKWi-31aftRD7RoRad\",\n    \"user\": \"http://IPbLRRrGgfvmoidtdFnYnNFDxYtRo.xbpC50C2xDX7bp6YhYeqpZhO1BBWnlPLDwx6kSws7iOV-oqfopph.v1iMI17JTyiFC1k\"\n  },\n  {\n    \"device_id\": \"string\",\n    \"id\": \"string\",\n    \"primary_public_key\": \"string\",\n    \"sub_public_key\": \"string\",\n    \"url\": \"https://PWGnjbdnVESh.hijhSGDbaRk+oVUg8MwiqywTm3ejv7KdggpLJn5tk4Sie9uG1ferVVhy,naHZxUpjO6\",\n    \"user\": \"http://RRydFplmaEkezwMlQ.xhqoC2-VJs5sCX4LtEDuzh+Ead9IL.WZk\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00027662-5d5b-46a9-82c3-ca0e90574b22",
+          "name": "Create a new Identity",
+          "request": {
+            "name": "Create a new Identity",
+            "description": {
+              "content": "Create a new identity.\n\nThe response will be the newly created identity object.\n\n**On the command line:**\n\n```bash\nblind identities create --user-id \"<user_id>\" --data identity.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "identities",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>",
+                  "description": "(Required) The device ID associated with this identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "primary_public_key",
+                  "value": "<string>",
+                  "description": "(Required) The primary PGP key for the identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "sub_public_key",
+                  "value": "<string>",
+                  "description": "(Required) The PGP sub-key for the identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f1b1814-5080-4f09-968f-49fb743345d9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "identities",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The device ID associated with this identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "device_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The primary PGP key for the identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "primary_public_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The PGP sub-key for the identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "sub_public_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"device_id\": \"<string>\",\n  \"primary_public_key\": \"<string>\",\n  \"sub_public_key\": \"<string>\",\n  \"user\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://LsYk.fdfs1BJgwiFPG9w9JeNjJfXgQyUBIFueYB-jZfv33.2jjdh7I\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e023240e-5ab2-4efa-b592-5729516c5ea7",
+          "name": "Retrieve a single Identity",
+          "request": {
+            "name": "Retrieve a single Identity",
+            "description": {
+              "content": "Retrieve an identity by its ID.\n\nThe response will be the identity object.\n\n**On the command line:**\n\n```bash\nblind identities retrieve --user-id \"<user_id>\" --id \"<identity_id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "identities",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this identity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6603c83a-26a6-44dd-b090-d02694bdd297",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "identities",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"device_id\": \"<string>\",\n  \"primary_public_key\": \"<string>\",\n  \"sub_public_key\": \"<string>\",\n  \"user\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://LsYk.fdfs1BJgwiFPG9w9JeNjJfXgQyUBIFueYB-jZfv33.2jjdh7I\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b076ad0-18dc-4f5f-991b-1669b7b82455",
+          "name": "Update an Identity",
+          "request": {
+            "name": "Update an Identity",
+            "description": {
+              "content": "Update an identity replacing it entirely.\n\nThe response will be the updated identity object.\n\n**On the command line:**\n\n```bash\nblind identities update --user-id \"<user_id>\" --id \"<identity_id>\" --data identity.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "identities",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this identity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>",
+                  "description": "(Required) The device ID associated with this identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "primary_public_key",
+                  "value": "<string>",
+                  "description": "(Required) The primary PGP key for the identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "sub_public_key",
+                  "value": "<string>",
+                  "description": "(Required) The PGP sub-key for the identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "811a615d-4083-4344-81ff-3ea3a7a93a4f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "identities",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The device ID associated with this identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "device_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The primary PGP key for the identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "primary_public_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The PGP sub-key for the identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "sub_public_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"device_id\": \"<string>\",\n  \"primary_public_key\": \"<string>\",\n  \"sub_public_key\": \"<string>\",\n  \"user\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://LsYk.fdfs1BJgwiFPG9w9JeNjJfXgQyUBIFueYB-jZfv33.2jjdh7I\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52155a70-a4c1-4fae-aca0-c3dd2f204ae3",
+          "name": "Partially update an Identity",
+          "request": {
+            "name": "Partially update an Identity",
+            "description": {
+              "content": "Update an identity with only the specified fields.\n\nThe response will be the updated identity object.\n\n**On the command line:**\n\n```bash\nblind identities partial-update --user-id \"<user_id>\" --id \"<identity_id>\" --data identity-update.json\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "identities",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this identity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>",
+                  "description": "The device ID associated with this identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "primary_public_key",
+                  "value": "<string>",
+                  "description": "The primary PGP key for the identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "sub_public_key",
+                  "value": "<string>",
+                  "description": "The PGP sub-key for the identity."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4c35137a-e050-4e11-ac23-52f017eed26c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "identities",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "user",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The device ID associated with this identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "device_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The primary PGP key for the identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "primary_public_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The PGP sub-key for the identity.",
+                        "type": "text/plain"
+                      },
+                      "key": "sub_public_key",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"device_id\": \"<string>\",\n  \"primary_public_key\": \"<string>\",\n  \"sub_public_key\": \"<string>\",\n  \"user\": \"<uri>\",\n  \"id\": \"string\",\n  \"url\": \"https://LsYk.fdfs1BJgwiFPG9w9JeNjJfXgQyUBIFueYB-jZfv33.2jjdh7I\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "114cd4ed-49e1-47c7-85ad-b7ac430a9e5a",
+          "name": "Delete an Identity",
+          "request": {
+            "name": "Delete an Identity",
+            "description": {
+              "content": "Delete an identity.\n\nThe response will be an empty object with a 204 status.\n\n**On the command line:**\n\n```bash\nblind identities destroy --user-id \"<user_id>\" --id \"<identity_id>\"\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "identities",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying this identity."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f97ab74c-b7a4-4d8d-9722-d8008122c435",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "identities",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying this identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e2b97c81-f721-449a-9b57-07a223dfee82",
+    "name": "Blind Insight REST accounts identities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-to-end encrypted datastore",
+      "type": "text/plain"
+    }
+  }
+}

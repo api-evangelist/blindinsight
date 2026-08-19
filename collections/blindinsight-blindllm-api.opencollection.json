@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts blindllm API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "blindllm",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Public BlindLLM demo (marketing site)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/blindllm/chat/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Anonymous, IP-rate-limited demo endpoint used by blindinsight.com to drive the homepage chat experience. Runs the orchestrator against a single configured demo organization."
+        },
+        {
+          "info": {
+            "name": "Public BlindLLM demo (marketing site)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/blindllm/demo/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Anonymous, IP-rate-limited demo endpoint used by blindinsight.com to drive the homepage chat experience. Runs the orchestrator against a single configured demo organization."
+        },
+        {
+          "info": {
+            "name": "Public BlindLLM schema catalog inspect",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/blindllm/inspect/"
+          },
+          "docs": "Returns the demo organization's derived Dataset/Schema catalog so blindinsight.com can render /datasets inspect and /schemas inspect without a duplicated static catalog."
+        },
+        {
+          "info": {
+            "name": "Supported BlindLLM model selectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/blindllm/models/"
+          },
+          "docs": "Lists the provider selector ids accepted by BlindLLM demo endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

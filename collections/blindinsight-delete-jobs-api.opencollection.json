@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blind Insight REST accounts delete-jobs API",
+    "version": "10.22.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "delete-jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the status of an async delete job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/delete-jobs/:job_id/",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "The Celery task ID returned by the delete endpoint."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Poll the progress of a large schema or dataset delete that was queued as a background Celery task. This endpoint is not intercepted by the Blind Insight proxy and is safe to call directly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
