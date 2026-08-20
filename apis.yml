@@ -41,6 +41,16 @@ tags:
 - Privacy
 - Confidential Computing
 - Data
+- Machine-Learning
+- Compliance
+- Cryptography
+tags_raw:
+- Company
+- Security
+- Encryption
+- Privacy
+- Confidential Computing
+- Data
 - Machine Learning
 - Compliance
 - Cryptography
@@ -51,6 +61,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Account
+  tags_raw:
   - accounts
   properties:
   - type: OpenAPI
@@ -87,6 +99,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - CSRF
+  tags_raw:
   - csrf
   properties:
   - type: OpenAPI
@@ -99,6 +113,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Datasets
+  tags_raw:
   - datasets
   properties:
   - type: OpenAPI
@@ -123,6 +139,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - File
+  tags_raw:
   - files
   properties:
   - type: OpenAPI
@@ -135,6 +153,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Grants
+  tags_raw:
   - grants
   properties:
   - type: OpenAPI
@@ -147,6 +167,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Identities
+  tags_raw:
   - identities
   properties:
   - type: OpenAPI
@@ -159,6 +181,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Job
+  tags_raw:
   - jobs
   properties:
   - type: OpenAPI
@@ -171,6 +195,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Materials
+  tags_raw:
   - materials
   properties:
   - type: OpenAPI
@@ -183,6 +209,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Organization
+  tags_raw:
   - organizations
   properties:
   - type: OpenAPI
@@ -195,6 +223,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Records
+  tags_raw:
   - records
   properties:
   - type: OpenAPI
@@ -207,6 +237,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Requests
+  tags_raw:
   - requests
   properties:
   - type: OpenAPI
@@ -219,6 +251,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Schemas
+  tags_raw:
   - schemas
   properties:
   - type: OpenAPI
@@ -231,6 +265,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Status
+  tags_raw:
   - status
   properties:
   - type: OpenAPI
@@ -243,6 +279,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Token
+  tags_raw:
   - token
   properties:
   - type: OpenAPI
@@ -255,6 +293,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -267,6 +307,8 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
+  - Ws
+  tags_raw:
   - ws
   properties:
   - type: OpenAPI
