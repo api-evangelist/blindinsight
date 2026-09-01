@@ -111,7 +111,7 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
-  - csrf
+  - CSRF
   tags_raw:
   - csrf
   properties:
@@ -165,7 +165,7 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
-  - grants
+  - Grants
   tags_raw:
   - grants
   properties:
@@ -207,7 +207,7 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
-  - materials
+  - Materials
   tags_raw:
   - materials
   properties:
@@ -319,7 +319,7 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
-  - ws
+  - Ws
   tags_raw:
   - ws
   properties:
