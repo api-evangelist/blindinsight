@@ -265,7 +265,7 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
-  - Schemas
+  - Schema
   tags_raw:
   - schemas
   properties:
@@ -293,7 +293,7 @@ apis:
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
   tags:
-  - Token
+  - Tokens
   tags_raw:
   - token
   properties:
