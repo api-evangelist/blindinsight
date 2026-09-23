@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts identities API
+  title: Blind Insight REST Identities API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: identities
+- name: Identities
 paths:
   /api/identities/:
     get:
@@ -22,7 +22,7 @@ paths:
 
         ```bash
 
-        blind identities list --user-id "<user_id>"
+        blind identities list --user-id ""
 
         ```'
       summary: List Identities
@@ -63,7 +63,7 @@ paths:
         schema:
           type: string
       tags:
-      - identities
+      - Identities
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -88,12 +88,12 @@ paths:
 
         ```bash
 
-        blind identities create --user-id "<user_id>" --data identity.json
+        blind identities create --user-id "" --data identity.json
 
         ```'
       summary: Create a new Identity
       tags:
-      - identities
+      - Identities
       requestBody:
         content:
           application/json:
@@ -131,7 +131,7 @@ paths:
 
         ```bash
 
-        blind identities retrieve --user-id "<user_id>" --id "<identity_id>"
+        blind identities retrieve --user-id "" --id ""
 
         ```'
       summary: Retrieve a single Identity
@@ -143,7 +143,7 @@ paths:
         description: A unique value identifying this identity.
         required: true
       tags:
-      - identities
+      - Identities
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -168,7 +168,7 @@ paths:
 
         ```bash
 
-        blind identities update --user-id "<user_id>" --id "<identity_id>" --data identity.json
+        blind identities update --user-id "" --id "" --data identity.json
 
         ```'
       summary: Update an Identity
@@ -180,7 +180,7 @@ paths:
         description: A unique value identifying this identity.
         required: true
       tags:
-      - identities
+      - Identities
       requestBody:
         content:
           application/json:
@@ -217,7 +217,7 @@ paths:
 
         ```bash
 
-        blind identities partial-update --user-id "<user_id>" --id "<identity_id>" --data identity-update.json
+        blind identities partial-update --user-id "" --id "" --data identity-update.json
 
         ```'
       summary: Partially update an Identity
@@ -229,7 +229,7 @@ paths:
         description: A unique value identifying this identity.
         required: true
       tags:
-      - identities
+      - Identities
       requestBody:
         content:
           application/json:
@@ -265,7 +265,7 @@ paths:
 
         ```bash
 
-        blind identities destroy --user-id "<user_id>" --id "<identity_id>"
+        blind identities destroy --user-id "" --id ""
 
         ```'
       summary: Delete an Identity
@@ -277,7 +277,7 @@ paths:
         description: A unique value identifying this identity.
         required: true
       tags:
-      - identities
+      - Identities
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -318,6 +318,10 @@ components:
       - sub_public_key
       - url
       - user
+    PaginatedIdentityList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Identity'
     PatchedIdentity:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -342,10 +346,6 @@ components:
         sub_public_key:
           type: string
           description: The PGP sub-key for the identity.
-    PaginatedIdentityList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Identity'
   securitySchemes:
     basicAuth:
       type: http

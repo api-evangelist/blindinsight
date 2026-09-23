@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts token API
+  title: Blind Insight REST Token API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: token
+- name: Token
 paths:
   /api/token/:
     post:
@@ -29,7 +29,7 @@ paths:
         ```'
       summary: Create a new token
       tags:
-      - token
+      - Token
       requestBody:
         content:
           application/json:
@@ -65,12 +65,12 @@ paths:
 
         ```bash
 
-        blind token refresh --data ''{"refresh": "<refresh-token>"}''
+        blind token refresh --data ''{"refresh": ""}''
 
         ```'
       summary: Refresh a token
       tags:
-      - token
+      - Token
       requestBody:
         content:
           application/json:
@@ -106,12 +106,12 @@ paths:
 
         ```bash
 
-        blind token verify --data ''{"token": "<access-or-refresh-token>"}''
+        blind token verify --data ''{"token": ""}''
 
         ```'
       summary: Verify a token
       tags:
-      - token
+      - Token
       requestBody:
         content:
           application/json:
@@ -133,26 +133,6 @@ paths:
           description: ''
 components:
   schemas:
-    TokenVerify:
-      type: object
-      properties:
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - token
-    TokenRefresh:
-      type: object
-      properties:
-        access:
-          type: string
-          readOnly: true
-        refresh:
-          type: string
-          writeOnly: true
-      required:
-      - access
-      - refresh
     TokenObtainPair:
       type: object
       properties:
@@ -173,6 +153,26 @@ components:
       - email
       - password
       - refresh
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+    TokenVerify:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - token
   securitySchemes:
     basicAuth:
       type: http

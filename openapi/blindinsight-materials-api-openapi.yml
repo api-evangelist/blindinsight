@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts materials API
+  title: Blind Insight REST Materials API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: materials
+- name: Materials
 paths:
   /api/materials/:
     get:
@@ -66,7 +66,7 @@ paths:
           type: string
         description: The identity that uploaded this material.
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -83,7 +83,7 @@ paths:
       description: Create a new material.
       summary: Create a new material
       tags:
-      - materials
+      - Materials
       requestBody:
         content:
           application/json:
@@ -120,7 +120,7 @@ paths:
         description: A unique value identifying this material.
         required: true
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -144,7 +144,7 @@ paths:
         description: A unique value identifying this material.
         required: true
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -157,7 +157,7 @@ paths:
       operationId: materials_acknowledge_create
       description: 'Mark the underlying request as received. Replaces the deprecated
 
-        side-effect on `GET /materials/<id>/`, which mutated state on a read.'
+        side-effect on `GET /materials//`, which mutated state on a read.'
       summary: Acknowledge receipt of a material
       parameters:
       - in: path
@@ -167,7 +167,7 @@ paths:
         description: A unique value identifying this material.
         required: true
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -192,7 +192,7 @@ paths:
         description: A unique value identifying this material.
         required: true
       tags:
-      - materials
+      - Materials
       requestBody:
         content:
           application/json:
@@ -230,7 +230,7 @@ paths:
         description: The material ID to receive.
         required: true
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -281,7 +281,7 @@ paths:
       description: '[Blind Insight Proxy] List all material overrides'
       summary: List all material overrides
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -317,7 +317,7 @@ paths:
       description: '[Blind Insight Proxy] Delete all material overrides'
       summary: Delete all material overrides
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -357,7 +357,7 @@ paths:
         description: The key of the material override to delete.
         required: true
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -394,7 +394,7 @@ paths:
       description: '[Blind Insight Proxy] Receive all materials'
       summary: Receive all materials
       tags:
-      - materials
+      - Materials
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -485,6 +485,10 @@ components:
       - request
       - uploaded_by
       - url
+    PaginatedMaterialList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Material'
     MaterialProof:
       type: object
       description: Proof for a material.
@@ -497,10 +501,6 @@ components:
           minLength: 64
       required:
       - proof
-    PaginatedMaterialList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Material'
   securitySchemes:
     basicAuth:
       type: http

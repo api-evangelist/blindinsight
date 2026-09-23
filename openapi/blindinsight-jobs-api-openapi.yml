@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts jobs API
+  title: Blind Insight REST Jobs API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: jobs
+- name: Jobs
 paths:
   /api/jobs/{job_id}/:
     get:
@@ -17,7 +17,7 @@ paths:
 
         ```bash
 
-        blind jobs status --id "<job-id>"
+        blind jobs status --id ""
 
         ```'
       summary: Get the status of a job (only available via proxy)
@@ -30,7 +30,7 @@ paths:
         description: The job ID to get the status of.
         required: true
       tags:
-      - jobs
+      - Jobs
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -88,7 +88,7 @@ paths:
           default: 10
         description: The number of records to upload in each batch.
       tags:
-      - jobs
+      - Jobs
       requestBody:
         content:
           application/json:

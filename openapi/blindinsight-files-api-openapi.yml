@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts files API
+  title: Blind Insight REST Files API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: files
+- name: Files
 paths:
   /api/files/:
     post:
@@ -17,7 +17,7 @@ paths:
 
         ```bash
 
-        blind files create --Tus-Resumable 1.0.0  --Upload-Length 1000 --data records.json
+        blind files create --Tus-Resumable 1.0.0 --Upload-Length 1000 --data records.json
 
         ```'
       summary: Create a new upload resource (only available via proxy)
@@ -51,7 +51,7 @@ paths:
             value: filename ZXhhbXBsZS5jc3Y=, filetype dGV4dC9jc3Y=
             summary: Metadata with filename 'example.csv' and filetype 'text/csv'
       tags:
-      - files
+      - Files
       requestBody:
         content:
           application/json:
@@ -102,7 +102,7 @@ paths:
 
         ```bash
 
-        blind files patch --id "<upload-id>" --Upload-Offset 1000 --Upload-Checksum "b64:checksum" --data records.json
+        blind files patch --id "" --Upload-Offset 1000 --Upload-Checksum "b64:checksum" --data records.json
 
         ```'
       summary: Upload file chunk (only available via proxy)
@@ -126,7 +126,7 @@ paths:
         description: '[required] The ID of the upload to upload a chunk of.'
         required: true
       tags:
-      - files
+      - Files
       requestBody:
         content:
           application/json:
@@ -183,7 +183,7 @@ paths:
 
         ```bash
 
-        blind files delete --id "<upload-id>"
+        blind files delete --id ""
 
         ```'
       summary: Delete upload (only available via proxy)
@@ -201,7 +201,7 @@ paths:
         description: '[required] The ID of the upload to delete.'
         required: true
       tags:
-      - files
+      - Files
       security:
       - cookieAuth: []
       - basicAuth: []

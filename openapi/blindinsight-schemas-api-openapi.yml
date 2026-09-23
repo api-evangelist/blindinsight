@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts schemas API
+  title: Blind Insight REST Schemas API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: schemas
+- name: Schemas
 paths:
   /api/schemas/:
     get:
@@ -64,7 +64,7 @@ paths:
           type: string
         description: A unique slug for this schema.
       tags:
-      - schemas
+      - Schemas
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -94,7 +94,7 @@ paths:
         ```'
       summary: Create a new schema
       tags:
-      - schemas
+      - Schemas
       requestBody:
         content:
           application/json:
@@ -132,7 +132,7 @@ paths:
 
         ```bash
 
-        blind schemas retrieve --id "<schema-id>"
+        blind schemas retrieve --id ""
 
         ```'
       summary: Retrieve a single schema
@@ -144,7 +144,7 @@ paths:
         description: A unique value identifying this schema.
         required: true
       tags:
-      - schemas
+      - Schemas
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -169,7 +169,7 @@ paths:
 
         ```bash
 
-        blind schemas update --id "<schema-id>" --data schema.json
+        blind schemas update --id "" --data schema.json
 
         ```'
       summary: Update a schema
@@ -181,7 +181,7 @@ paths:
         description: A unique value identifying this schema.
         required: true
       tags:
-      - schemas
+      - Schemas
       requestBody:
         content:
           application/json:
@@ -218,7 +218,7 @@ paths:
 
         ```bash
 
-        blind schemas partial-update --id "<schema-id>" --data schema-update.json
+        blind schemas partial-update --id "" --data schema-update.json
 
         ```'
       summary: Partially update a schema
@@ -230,7 +230,7 @@ paths:
         description: A unique value identifying this schema.
         required: true
       tags:
-      - schemas
+      - Schemas
       requestBody:
         content:
           application/json:
@@ -266,7 +266,7 @@ paths:
 
         ```bash
 
-        blind schemas destroy --id "<schema-id>"
+        blind schemas destroy --id ""
 
         ```'
       summary: Delete a schema
@@ -278,7 +278,7 @@ paths:
         description: A unique value identifying this schema.
         required: true
       tags:
-      - schemas
+      - Schemas
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -297,7 +297,7 @@ paths:
 
         ```bash
 
-        blind schemas teams --id "<schema-id>"
+        blind schemas teams --id ""
 
         ```'
       summary: List the teams for a schema
@@ -309,7 +309,7 @@ paths:
         description: A unique value identifying this schema.
         required: true
       tags:
-      - schemas
+      - Schemas
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -327,7 +327,7 @@ paths:
       description: '[Blind Insight Proxy] Decrypt a schema and return a hashed schema'
       summary: Decrypt a schema (only available via proxy)
       tags:
-      - schemas
+      - Schemas
       requestBody:
         content:
           application/json:
@@ -450,10 +450,6 @@ paths:
           description: Proxy decrypt failed
 components:
   schemas:
-    PaginatedSchemaList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Schema'
     PatchedSchema:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -519,6 +515,10 @@ components:
       - id
       - name
       - url
+    PaginatedSchemaList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Schema'
   securitySchemes:
     basicAuth:
       type: http

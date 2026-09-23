@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts users API
+  title: Blind Insight REST Users API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: users
+- name: Users
 paths:
   /api/users/:
     get:
@@ -94,7 +94,7 @@ paths:
         schema:
           type: integer
       tags:
-      - users
+      - Users
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -124,7 +124,7 @@ paths:
         ```'
       summary: Create a new User
       tags:
-      - users
+      - Users
       requestBody:
         content:
           application/json:
@@ -162,7 +162,7 @@ paths:
 
         ```bash
 
-        blind users retrieve --id "<user-id>"
+        blind users retrieve --id ""
 
         ```'
       summary: Retrieve one User object
@@ -174,7 +174,7 @@ paths:
         description: A unique value identifying this user.
         required: true
       tags:
-      - users
+      - Users
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -199,7 +199,7 @@ paths:
 
         ```bash
 
-        blind users update --id "<user-id>" --data user.json
+        blind users update --id "" --data user.json
 
         ```'
       summary: Update a User
@@ -211,7 +211,7 @@ paths:
         description: A unique value identifying this user.
         required: true
       tags:
-      - users
+      - Users
       requestBody:
         content:
           application/json:
@@ -248,7 +248,7 @@ paths:
 
         ```bash
 
-        blind users partial-update --id "<user-id>" --data user-update.json
+        blind users partial-update --id "" --data user-update.json
 
         ```'
       summary: Partially update a User
@@ -260,7 +260,7 @@ paths:
         description: A unique value identifying this user.
         required: true
       tags:
-      - users
+      - Users
       requestBody:
         content:
           application/json:
@@ -296,7 +296,7 @@ paths:
 
         ```bash
 
-        blind users destroy --id "<user-id>"
+        blind users destroy --id ""
 
         ```'
       summary: Delete a User
@@ -308,7 +308,7 @@ paths:
         description: A unique value identifying this user.
         required: true
       tags:
-      - users
+      - Users
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -330,7 +330,7 @@ paths:
 
         ```bash
 
-        blind users by-name --email "<user-name>"
+        blind users by-name --email ""
 
         ```'
       summary: Retrieve one User object by name
@@ -341,7 +341,7 @@ paths:
           type: string
         required: true
       tags:
-      - users
+      - Users
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -372,7 +372,7 @@ paths:
         ```'
       summary: Retrieve current user
       tags:
-      - users
+      - Users
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -401,9 +401,10 @@ components:
           type: boolean
           readOnly: true
         last_login:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         is_superuser:
           type: boolean
           title: Superuser status
@@ -454,9 +455,10 @@ components:
           type: boolean
           readOnly: true
         last_login:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         is_superuser:
           type: boolean
           title: Superuser status

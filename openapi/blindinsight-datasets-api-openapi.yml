@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts datasets API
+  title: Blind Insight REST Datasets API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: datasets
+- name: Datasets
 paths:
   /api/datasets/:
     get:
@@ -49,7 +49,7 @@ paths:
           type: string
         description: A unique slug for this dataset.
       tags:
-      - datasets
+      - Datasets
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -66,7 +66,7 @@ paths:
       description: Create a new dataset.
       summary: Create a new Dataset
       tags:
-      - datasets
+      - Datasets
       requestBody:
         content:
           application/json:
@@ -103,7 +103,7 @@ paths:
         description: A unique value identifying this dataset.
         required: true
       tags:
-      - datasets
+      - Datasets
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -127,7 +127,7 @@ paths:
         description: A unique value identifying this dataset.
         required: true
       tags:
-      - datasets
+      - Datasets
       requestBody:
         content:
           application/json:
@@ -163,7 +163,7 @@ paths:
         description: A unique value identifying this dataset.
         required: true
       tags:
-      - datasets
+      - Datasets
       requestBody:
         content:
           application/json:
@@ -198,7 +198,7 @@ paths:
         description: A unique value identifying this dataset.
         required: true
       tags:
-      - datasets
+      - Datasets
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -225,7 +225,7 @@ paths:
           pattern: ^[-a-zA-Z0-9_]+$
         required: true
       tags:
-      - datasets
+      - Datasets
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -243,33 +243,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Dataset'
-    PatchedDataset:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        name:
-          type: string
-          description: A human-readable name for this dataset.
-          maxLength: 127
-        slug:
-          type: string
-          description: A unique slug for this dataset.
-          maxLength: 127
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          description: A longer description of the dataset.
-          maxLength: 255
     Dataset:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -302,6 +275,33 @@ components:
       - name
       - organization
       - url
+    PatchedDataset:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        name:
+          type: string
+          description: A human-readable name for this dataset.
+          maxLength: 127
+        slug:
+          type: string
+          description: A unique slug for this dataset.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          description: A longer description of the dataset.
+          maxLength: 255
   securitySchemes:
     basicAuth:
       type: http

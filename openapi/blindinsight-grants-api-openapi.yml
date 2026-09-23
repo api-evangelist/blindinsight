@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts grants API
+  title: Blind Insight REST Grants API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: grants
+- name: Grants
 paths:
   /api/grants/:
     get:
@@ -73,7 +73,7 @@ paths:
         explode: true
         style: form
       tags:
-      - grants
+      - Grants
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -90,7 +90,7 @@ paths:
       description: Create a new grant.
       summary: Create a new grant
       tags:
-      - grants
+      - Grants
       requestBody:
         content:
           application/json:
@@ -127,7 +127,7 @@ paths:
         description: A unique value identifying this grant.
         required: true
       tags:
-      - grants
+      - Grants
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -151,7 +151,7 @@ paths:
         description: A unique value identifying this grant.
         required: true
       tags:
-      - grants
+      - Grants
       requestBody:
         content:
           application/json:
@@ -189,7 +189,7 @@ paths:
         description: A unique value identifying this grant.
         required: true
       tags:
-      - grants
+      - Grants
       requestBody:
         content:
           application/json:
@@ -224,7 +224,7 @@ paths:
         description: A unique value identifying this grant.
         required: true
       tags:
-      - grants
+      - Grants
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -262,8 +262,9 @@ components:
           description: The codename for this grant.
           maxLength: 100
         field_names:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           description: 'Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{''field_name'': True, ...}`'
         can_share_keys:
           type: boolean
@@ -307,8 +308,9 @@ components:
           description: The codename for this grant.
           maxLength: 100
         field_names:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           description: 'Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{''field_name'': True, ...}`'
         can_share_keys:
           type: boolean

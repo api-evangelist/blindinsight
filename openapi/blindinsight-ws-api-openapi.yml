@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts ws API
+  title: Blind Insight REST Ws API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: ws
+- name: Ws
 paths:
   /api/ws/jobs/{job_id}/:
     get:
@@ -17,7 +17,7 @@ paths:
 
         ```bash
 
-        blind jobs websocket --id "<job-id>"
+        blind jobs websocket --id ""
 
         ```'
       summary: Connect to a job status websocket (only available via proxy)
@@ -30,7 +30,7 @@ paths:
         description: The job ID to get the status of.
         required: true
       tags:
-      - ws
+      - Ws
       security:
       - cookieAuth: []
       - basicAuth: []

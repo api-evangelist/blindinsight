@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts blindllm API
+  title: Blind Insight REST Blindllm API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
@@ -119,27 +119,6 @@ components:
       required:
       - catalog_snapshot_at
       - datasets
-    BlindLLMDemoRequest:
-      type: object
-      description: Public demo request — prompt plus an optional model selector.
-      properties:
-        prompt:
-          type: string
-          maxLength: 1000
-        model:
-          type: string
-          default: ''
-          maxLength: 64
-        client_proxy:
-          type: string
-          default: ''
-          maxLength: 64
-        demo_user_id:
-          type: string
-          default: ''
-          maxLength: 128
-      required:
-      - prompt
     BlindLLMDemoResponse:
       type: object
       description: Public demo response — slim subset of `BlindLLMQuery`.
@@ -149,8 +128,9 @@ components:
         answer:
           type: string
         used_tool:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         schemas_queried:
           type: array
           items:
@@ -158,13 +138,15 @@ components:
         fallback:
           type: boolean
         fallback_reason:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         provider_error:
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties:
             type: string
-          nullable: true
         data_mode:
           type: string
         duration_ms:
@@ -187,6 +169,27 @@ components:
       - request_id
       - schemas_queried
       - used_tool
+    BlindLLMDemoRequest:
+      type: object
+      description: Public demo request — prompt plus an optional model selector.
+      properties:
+        prompt:
+          type: string
+          maxLength: 1000
+        model:
+          type: string
+          default: ''
+          maxLength: 64
+        client_proxy:
+          type: string
+          default: ''
+          maxLength: 64
+        demo_user_id:
+          type: string
+          default: ''
+          maxLength: 128
+      required:
+      - prompt
   securitySchemes:
     basicAuth:
       type: http

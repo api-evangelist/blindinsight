@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts blindllm-queries API
+  title: Blind Insight REST Blindllm Queries API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
@@ -9,7 +9,18 @@ paths:
   /api/blindllm-queries/:
     get:
       operationId: blindllm_queries_list
-      description: "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials."
+      description: 'API for BlindLLM analyst queries.
+
+
+        list: Returns prior queries scoped to the user''s organizations.
+
+        retrieve: One query by id.
+
+        create: Run an analyst query against the org''s encrypted data via
+
+        the configured Cloud Proxy. Falls back to deterministic mock
+
+        tool handlers when the org has no `blindllm` proxy credentials.'
       parameters:
       - name: limit
         required: false
@@ -36,9 +47,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedBlindLLMQueryList'
           description: ''
+      summary: Blindllm queries list
+      x-summary-source: derived
     post:
       operationId: blindllm_queries_create
-      description: "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials."
+      description: 'API for BlindLLM analyst queries.
+
+
+        list: Returns prior queries scoped to the user''s organizations.
+
+        retrieve: One query by id.
+
+        create: Run an analyst query against the org''s encrypted data via
+
+        the configured Cloud Proxy. Falls back to deterministic mock
+
+        tool handlers when the org has no `blindllm` proxy credentials.'
       tags:
       - blindllm-queries
       requestBody:
@@ -64,10 +88,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/BlindLLMQueryCreate'
           description: ''
+      summary: Blindllm queries create
+      x-summary-source: derived
   /api/blindllm-queries/{id}/:
     get:
       operationId: blindllm_queries_retrieve
-      description: "API for BlindLLM analyst queries.\n\nlist:     Returns prior queries scoped to the user's organizations.\nretrieve: One query by id.\ncreate:   Run an analyst query against the org's encrypted data via\n          the configured Cloud Proxy. Falls back to deterministic mock\n          tool handlers when the org has no `blindllm` proxy credentials."
+      description: 'API for BlindLLM analyst queries.
+
+
+        list: Returns prior queries scoped to the user''s organizations.
+
+        retrieve: One query by id.
+
+        create: Run an analyst query against the org''s encrypted data via
+
+        the configured Cloud Proxy. Falls back to deterministic mock
+
+        tool handlers when the org has no `blindllm` proxy credentials.'
       parameters:
       - in: path
         name: id
@@ -88,20 +125,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/BlindLLMQuery'
           description: ''
+      summary: Blindllm queries retrieve
+      x-summary-source: derived
 components:
   schemas:
-    PaginatedBlindLLMQueryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/BlindLLMQuery'
-    DataModeEnum:
-      enum:
-      - proxy
-      - mock
-      type: string
-      description: '* `proxy` - proxy
+    BlindLLMQueryCreate:
+      type: object
+      description: 'Write-side serializer — caller supplies `organization` + `prompt`.
 
-        * `mock` - mock'
+
+        `@<slug>` mentions in the prompt are parsed server-side into `hints`.
+
+        Optional `model` selects the LLM provider (openai / anthropic / gemini).'
+      properties:
+        organization:
+          type: string
+        prompt:
+          type: string
+          maxLength: 4000
+        model:
+          type: string
+          default: ''
+          maxLength: 64
+      required:
+      - organization
+      - prompt
     BlindLLMQuery:
       type: object
       description: Read-side serializer for `BlindLLMQuery`.
@@ -162,9 +210,10 @@ components:
 
             * `mock` - mock'
         duration_ms:
-          type: integer
+          type:
+          - integer
+          - 'null'
           readOnly: true
-          nullable: true
           description: Total orchestrator wall-clock duration in milliseconds.
         created:
           type: string
@@ -186,27 +235,18 @@ components:
       - tool_payload
       - url
       - used_tool
-    BlindLLMQueryCreate:
-      type: object
-      description: 'Write-side serializer — caller supplies `organization` + `prompt`.
+    PaginatedBlindLLMQueryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BlindLLMQuery'
+    DataModeEnum:
+      enum:
+      - proxy
+      - mock
+      type: string
+      description: '* `proxy` - proxy
 
-
-        `@<slug>` mentions in the prompt are parsed server-side into `hints`.
-
-        Optional `model` selects the LLM provider (openai / anthropic / gemini).'
-      properties:
-        organization:
-          type: string
-        prompt:
-          type: string
-          maxLength: 4000
-        model:
-          type: string
-          default: ''
-          maxLength: 64
-      required:
-      - organization
-      - prompt
+        * `mock` - mock'
   securitySchemes:
     basicAuth:
       type: http

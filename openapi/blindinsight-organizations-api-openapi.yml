@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts organizations API
+  title: Blind Insight REST Organizations API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
-- name: organizations
+- name: Organizations
 paths:
   /api/organizations/:
     get:
@@ -81,7 +81,7 @@ paths:
         explode: true
         style: form
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -113,7 +113,7 @@ paths:
         ```'
       summary: Create organization
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -151,7 +151,7 @@ paths:
 
         ```bash
 
-        blind organizations retrieve --id "<organization-id>"
+        blind organizations retrieve --id ""
 
         ```'
       summary: Retrieve organization
@@ -163,7 +163,7 @@ paths:
         description: A unique value identifying this organization.
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -188,7 +188,7 @@ paths:
 
         ```bash
 
-        blind organizations update --id "<organization-id>" --data organization.json
+        blind organizations update --id "" --data organization.json
 
         ```'
       summary: Update organization
@@ -200,7 +200,7 @@ paths:
         description: A unique value identifying this organization.
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -239,7 +239,7 @@ paths:
 
         ```bash
 
-        blind organizations partial-update --id "<organization-id>" --data organization-update.json
+        blind organizations partial-update --id "" --data organization-update.json
 
         ```'
       summary: Partial update organization
@@ -251,7 +251,7 @@ paths:
         description: A unique value identifying this organization.
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -289,7 +289,7 @@ paths:
 
         ```bash
 
-        blind organizations destroy --id "<organization-id>"
+        blind organizations destroy --id ""
 
         ```'
       summary: Delete organization
@@ -301,7 +301,7 @@ paths:
         description: A unique value identifying this organization.
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -323,7 +323,7 @@ paths:
 
         ```bash
 
-        blind organizations dataset --id "<organization-id>" --slug "<dataset-slug>"
+        blind organizations dataset --id "" --slug ""
 
         ```'
       summary: Retrieve organization dataset by slug
@@ -341,7 +341,7 @@ paths:
           pattern: ^[-a-zA-Z0-9_]+$
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -367,7 +367,7 @@ paths:
 
         ```bash
 
-        blind organizations owner --id "<organization-id>"
+        blind organizations owner --id ""
 
         ```'
       summary: Retrieve organization owner
@@ -379,7 +379,7 @@ paths:
         description: A unique value identifying this organization.
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -476,7 +476,7 @@ paths:
           type: string
           format: date-time
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -506,7 +506,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -534,7 +534,7 @@ paths:
 
         ```bash
 
-        blind organizations invitations list --organization-id "<organization-id>"
+        blind organizations invitations list --organization-id ""
 
         ```'
       summary: List organization invitations
@@ -557,7 +557,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -582,7 +582,7 @@ paths:
 
         ```bash
 
-        blind organizations invitations create --organization-id "<organization-id>" --data organization-invitation.json
+        blind organizations invitations create --organization-id "" --data organization-invitation.json
 
         ```'
       summary: Create organization invitation
@@ -593,7 +593,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -631,7 +631,7 @@ paths:
 
         ```bash
 
-        blind organizations invitations retrieve --organization-id "<organization-id>" --id "<invitation-id>"
+        blind organizations invitations retrieve --organization-id "" --id ""
 
         ```'
       summary: Retrieve organization invitation
@@ -648,7 +648,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -673,7 +673,7 @@ paths:
 
         ```bash
 
-        blind organizations invitations update --organization-id "<organization-id>" --id "<invitation-id>" --data organization-invitation.json
+        blind organizations invitations update --organization-id "" --id "" --data organization-invitation.json
 
         ```'
       summary: Update organization invitation
@@ -690,7 +690,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -729,7 +729,7 @@ paths:
 
         ```bash
 
-        blind organizations invitations partial-update --organization-id "<organization-id>" --id "<invitation-id>" --data organization-invitation-update.json
+        blind organizations invitations partial-update --organization-id "" --id "" --data organization-invitation-update.json
 
         ```'
       summary: Partial update organization invitation
@@ -746,7 +746,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -782,7 +782,7 @@ paths:
 
         ```bash
 
-        blind organizations invitations destroy --organization-id "<organization-id>" --id "<invitation-id>"
+        blind organizations invitations destroy --organization-id "" --id ""
 
         ```'
       summary: Delete organization invitation
@@ -799,7 +799,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -880,7 +880,7 @@ paths:
           type: string
         description: A unique slug for this team.
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -904,7 +904,7 @@ paths:
           description: The organization that this team belongs to.
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -947,7 +947,7 @@ paths:
           description: The organization that this team belongs to.
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -977,7 +977,7 @@ paths:
           description: The organization that this team belongs to.
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -1019,7 +1019,7 @@ paths:
           description: The organization that this team belongs to.
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -1060,7 +1060,7 @@ paths:
           description: The organization that this team belongs to.
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -1087,7 +1087,7 @@ paths:
           description: The organization that this team belongs to.
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -1144,7 +1144,7 @@ paths:
           description: The organization that this team belongs to.
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -1196,7 +1196,7 @@ paths:
 
         ```bash
 
-        blind organizations users list --organization-id "<organization-id>"
+        blind organizations users list --organization-id ""
 
         ```'
       summary: List organization users
@@ -1250,7 +1250,7 @@ paths:
         schema:
           type: string
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -1275,7 +1275,7 @@ paths:
 
         ```bash
 
-        blind organizations users create --organization-id "<organization-id>" --data organization-user.json
+        blind organizations users create --organization-id "" --data organization-user.json
 
         ```'
       summary: Create organization user
@@ -1286,7 +1286,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -1324,7 +1324,7 @@ paths:
 
         ```bash
 
-        blind organizations users retrieve --organization-id "<organization-id>" --id "<user-id>"
+        blind organizations users retrieve --organization-id "" --id ""
 
         ```'
       summary: Retrieve organization user
@@ -1341,7 +1341,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -1366,7 +1366,7 @@ paths:
 
         ```bash
 
-        blind organizations users update --organization-id "<organization-id>" --id "<user-id>" --data organization-user.json
+        blind organizations users update --organization-id "" --id "" --data organization-user.json
 
         ```'
       summary: Update organization user
@@ -1383,7 +1383,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -1421,7 +1421,7 @@ paths:
 
         ```bash
 
-        blind organizations users partial-update --organization-id "<organization-id>" --id "<user-id>" --data organization-user-update.json
+        blind organizations users partial-update --organization-id "" --id "" --data organization-user-update.json
 
         ```'
       summary: Partial update organization user
@@ -1438,7 +1438,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       requestBody:
         content:
           application/json:
@@ -1474,7 +1474,7 @@ paths:
 
         ```bash
 
-        blind organizations users destroy --organization-id "<organization-id>" --id "<user-id>"
+        blind organizations users destroy --organization-id "" --id ""
 
         ```'
       summary: Delete organization user
@@ -1491,7 +1491,7 @@ paths:
           type: string
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -1513,7 +1513,7 @@ paths:
 
         ```bash
 
-        blind organizations by-slug --slug "<organization-slug>"
+        blind organizations by-slug --slug ""
 
         ```'
       summary: Retrieve organization by slug
@@ -1525,7 +1525,7 @@ paths:
           pattern: ^[-a-zA-Z0-9_]+$
         required: true
       tags:
-      - organizations
+      - Organizations
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -1539,45 +1539,7 @@ paths:
           description: ''
 components:
   schemas:
-    PaginatedOrganizationUserList:
-      type: array
-      items:
-        $ref: '#/components/schemas/OrganizationUser'
-    Team:
-      type: object
-      description: Team object denoting permissions within an organization.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        members:
-          type: array
-          items:
-            type: string
-            format: uri
-        name:
-          type: string
-          description: A human-readable name for this team.
-          maxLength: 150
-        slug:
-          type: string
-          description: A unique slug for this team.
-          maxLength: 127
-          pattern: ^[-a-zA-Z0-9_]+$
-      required:
-      - id
-      - members
-      - name
-      - organization
-      - url
-    PatchedOrganizationInvitation:
+    PatchedOrganizationUserUpdate:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
       properties:
@@ -1591,93 +1553,7 @@ components:
         organization:
           type: string
           format: uri
-        guid:
-          type: string
-          format: uuid
           readOnly: true
-        invitee_identifier:
-          type: string
-          description: The contact identifier for the invitee, email, phone number, social media handle, etc.
-          maxLength: 1000
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        invited_by:
-          type: string
-          format: uri
-        invitee:
-          type: string
-          format: uri
-          nullable: true
-    PaginatedOrganizationInvitationList:
-      type: array
-      items:
-        $ref: '#/components/schemas/OrganizationInvitation'
-    ActionEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      description: '* `0` - create
-
-        * `1` - update
-
-        * `2` - delete
-
-        * `3` - access'
-    PatchedTeam:
-      type: object
-      description: Team object denoting permissions within an organization.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        members:
-          type: array
-          items:
-            type: string
-            format: uri
-        name:
-          type: string
-          description: A human-readable name for this team.
-          maxLength: 150
-        slug:
-          type: string
-          description: A unique slug for this team.
-          maxLength: 127
-          pattern: ^[-a-zA-Z0-9_]+$
-    OrganizationInvitationCreate:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        email:
-          type: string
-          format: email
-          writeOnly: true
         created:
           type: string
           format: date-time
@@ -1688,90 +1564,10 @@ components:
           readOnly: true
         is_admin:
           type: boolean
-          default: false
-      required:
-      - created
-      - email
-      - id
-      - modified
-      - url
-    PatchedOrganizationUpdate:
-      type: object
-      description: 'Update an Organization, allowing for the owner to be changed.
-
-
-        Since an Owner is a 1:1 relationship, we can''t use the default
-
-        `NestedHyperlinkedRelatedField` and must change it to an `OrganizationUser`
-
-        queryset limited to organization members.
-
-
-        The `to_representation()` method is overloaded to return the correct URL for
-
-        the owner.'
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
+        user:
           type: string
           format: uri
           readOnly: true
-        owner:
-          type: string
-          format: uri
-        organization_users:
-          type: array
-          items:
-            type: string
-            format: uri
-          readOnly: true
-        subscription:
-          type: object
-          properties:
-            slug:
-              type: string
-              enum:
-              - build
-              - scale
-              - scale_plus
-              - enterprise
-              - none
-            display_name:
-              type: string
-            active:
-              type: boolean
-          required:
-          - slug
-          - display_name
-          - active
-          readOnly: true
-        slug:
-          type: string
-          title: Organization Slug
-          description: A unique ID used to identify this organization
-          pattern: ^[-a-zA-Z0-9_]+$
-        name:
-          type: string
-          title: Display Name
-          description: A human-readable name for this organization
-          maxLength: 200
-        is_active:
-          type: boolean
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        stripe_customer_id:
-          type: string
-          nullable: true
-          description: Stripe customer id mirrored from settings['stripe']; indexed.
-          maxLength: 255
     OrganizationUserUpdate:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -1808,6 +1604,108 @@ components:
       - organization
       - url
       - user
+    OrganizationUser:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+        user:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - created
+      - id
+      - modified
+      - organization
+      - url
+      - user
+    PaginatedTeamList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Team'
+    AuditLogEntry:
+      type: object
+      description: Serializer for the AuditLogEntry model.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        model:
+          type: string
+        object_pk:
+          type: string
+          maxLength: 255
+        object_repr:
+          type: string
+          title: Object representation
+        action:
+          allOf:
+          - $ref: '#/components/schemas/ActionEnum'
+          minimum: 0
+          maximum: 32767
+        changes_text:
+          type: string
+          title: Change message
+        changes:
+          type:
+          - object
+          - 'null'
+          title: Change message
+        cid:
+          type:
+          - string
+          - 'null'
+          title: Correlation ID
+          maxLength: 255
+        remote_addr:
+          type:
+          - string
+          - 'null'
+          title: Remote address
+        remote_port:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        timestamp:
+          type: string
+          format: date-time
+        actor_email:
+          type:
+          - string
+          - 'null'
+          maxLength: 254
+        actor:
+          type:
+          - string
+          - 'null'
+      required:
+      - action
+      - id
+      - model
+      - object_pk
+      - object_repr
     Organization:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -1870,8 +1768,9 @@ components:
           description: A unique ID used to identify this organization
           pattern: ^[-a-zA-Z0-9_]+$
         stripe_customer_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Stripe customer id mirrored from settings['stripe']; indexed.
           maxLength: 255
       required:
@@ -1957,8 +1856,9 @@ components:
           format: date-time
           readOnly: true
         stripe_customer_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Stripe customer id mirrored from settings['stripe']; indexed.
           maxLength: 255
       required:
@@ -1970,9 +1870,9 @@ components:
       - owner
       - subscription
       - url
-    PatchedOrganizationUserUpdate:
+    Team:
       type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
+      description: Team object denoting permissions within an organization.
       properties:
         id:
           type: string
@@ -1984,21 +1884,30 @@ components:
         organization:
           type: string
           format: uri
-          readOnly: true
-        created:
+        members:
+          type: array
+          items:
+            type: string
+            format: uri
+        name:
           type: string
-          format: date-time
-          readOnly: true
-        modified:
+          description: A human-readable name for this team.
+          maxLength: 150
+        slug:
           type: string
-          format: date-time
-          readOnly: true
-        is_admin:
-          type: boolean
-        user:
-          type: string
-          format: uri
-          readOnly: true
+          description: A unique slug for this team.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - id
+      - members
+      - name
+      - organization
+      - url
+    PaginatedOrganizationInvitationList:
+      type: array
+      items:
+        $ref: '#/components/schemas/OrganizationInvitation'
     OrganizationUserCreate:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -2033,9 +1942,9 @@ components:
       - modified
       - url
       - user
-    OrganizationUser:
+    PatchedTeam:
       type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
+      description: Team object denoting permissions within an organization.
       properties:
         id:
           type: string
@@ -2047,73 +1956,20 @@ components:
         organization:
           type: string
           format: uri
-        created:
+        members:
+          type: array
+          items:
+            type: string
+            format: uri
+        name:
           type: string
-          format: date-time
-          readOnly: true
-        modified:
+          description: A human-readable name for this team.
+          maxLength: 150
+        slug:
           type: string
-          format: date-time
-          readOnly: true
-        is_admin:
-          type: boolean
-        user:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - created
-      - id
-      - modified
-      - organization
-      - url
-      - user
-    OrganizationInvitation:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        guid:
-          type: string
-          format: uuid
-          readOnly: true
-        invitee_identifier:
-          type: string
-          description: The contact identifier for the invitee, email, phone number, social media handle, etc.
-          maxLength: 1000
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        invited_by:
-          type: string
-          format: uri
-        invitee:
-          type: string
-          format: uri
-          nullable: true
-      required:
-      - created
-      - guid
-      - id
-      - invited_by
-      - invitee_identifier
-      - modified
-      - organization
-      - url
+          description: A unique slug for this team.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
     PaginatedAuditLogEntryList:
       type: array
       items:
@@ -2166,9 +2022,10 @@ components:
           - active
           readOnly: true
         stripe_session_id:
-          type: string
+          type:
+          - string
+          - 'null'
           writeOnly: true
-          nullable: true
           description: Stripe Checkout Session ID to attach a subscription at org creation.
         name:
           type: string
@@ -2192,8 +2049,9 @@ components:
           description: A unique ID used to identify this organization
           pattern: ^[-a-zA-Z0-9_]+$
         stripe_customer_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Stripe customer id mirrored from settings['stripe']; indexed.
           maxLength: 255
       required:
@@ -2205,71 +2063,226 @@ components:
       - slug
       - subscription
       - url
-    AuditLogEntry:
-      type: object
-      description: Serializer for the AuditLogEntry model.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        model:
-          type: string
-        object_pk:
-          type: string
-          maxLength: 255
-        object_repr:
-          type: string
-          title: Object representation
-        action:
-          allOf:
-          - $ref: '#/components/schemas/ActionEnum'
-          minimum: 0
-          maximum: 32767
-        changes_text:
-          type: string
-          title: Change message
-        changes:
-          type: object
-          nullable: true
-          title: Change message
-        cid:
-          type: string
-          nullable: true
-          title: Correlation ID
-          maxLength: 255
-        remote_addr:
-          type: string
-          nullable: true
-          title: Remote address
-        remote_port:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-        timestamp:
-          type: string
-          format: date-time
-        actor_email:
-          type: string
-          nullable: true
-          maxLength: 254
-        actor:
-          type: string
-          nullable: true
-      required:
-      - action
-      - id
-      - model
-      - object_pk
-      - object_repr
-    PaginatedTeamList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Team'
     PaginatedOrganizationList:
       type: array
       items:
         $ref: '#/components/schemas/Organization'
+    OrganizationInvitation:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        guid:
+          type: string
+          format: uuid
+          readOnly: true
+        invitee_identifier:
+          type: string
+          description: The contact identifier for the invitee, email, phone number, social media handle, etc.
+          maxLength: 1000
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        invited_by:
+          type: string
+          format: uri
+        invitee:
+          type:
+          - string
+          - 'null'
+          format: uri
+      required:
+      - created
+      - guid
+      - id
+      - invited_by
+      - invitee_identifier
+      - modified
+      - organization
+      - url
+    ActionEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      description: '* `0` - create
+
+        * `1` - update
+
+        * `2` - delete
+
+        * `3` - access'
+    PaginatedOrganizationUserList:
+      type: array
+      items:
+        $ref: '#/components/schemas/OrganizationUser'
+    PatchedOrganizationUpdate:
+      type: object
+      description: 'Update an Organization, allowing for the owner to be changed.
+
+
+        Since an Owner is a 1:1 relationship, we can''t use the default
+
+        `NestedHyperlinkedRelatedField` and must change it to an `OrganizationUser`
+
+        queryset limited to organization members.
+
+
+        The `to_representation()` method is overloaded to return the correct URL for
+
+        the owner.'
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        owner:
+          type: string
+          format: uri
+        organization_users:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        subscription:
+          type: object
+          properties:
+            slug:
+              type: string
+              enum:
+              - build
+              - scale
+              - scale_plus
+              - enterprise
+              - none
+            display_name:
+              type: string
+            active:
+              type: boolean
+          required:
+          - slug
+          - display_name
+          - active
+          readOnly: true
+        slug:
+          type: string
+          title: Organization Slug
+          description: A unique ID used to identify this organization
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          title: Display Name
+          description: A human-readable name for this organization
+          maxLength: 200
+        is_active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        stripe_customer_id:
+          type:
+          - string
+          - 'null'
+          description: Stripe customer id mirrored from settings['stripe']; indexed.
+          maxLength: 255
+    OrganizationInvitationCreate:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+          writeOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+          default: false
+      required:
+      - created
+      - email
+      - id
+      - modified
+      - url
+    PatchedOrganizationInvitation:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        guid:
+          type: string
+          format: uuid
+          readOnly: true
+        invitee_identifier:
+          type: string
+          description: The contact identifier for the invitee, email, phone number, social media handle, etc.
+          maxLength: 1000
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        invited_by:
+          type: string
+          format: uri
+        invitee:
+          type:
+          - string
+          - 'null'
+          format: uri
   securitySchemes:
     basicAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Blind Insight REST accounts delete-jobs API
+  title: Blind Insight REST Delete Jobs API
   version: 10.22.0
   description: End-to-end encrypted datastore
 tags:
@@ -35,11 +35,13 @@ paths:
                   state:
                     type: string
                   progress:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
           description: Job status
 components:
   securitySchemes:
