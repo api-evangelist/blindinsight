@@ -815,6 +815,27 @@ paths:
           description: Proxy search failed
 components:
   schemas:
+    Record:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        schema:
+          type: string
+          format: uri
+        data:
+          type: object
+          description: The data that this record represents.
+      required:
+      - id
+      - schema
+      - url
     IndexedRecord:
       type: object
       description: Serializer for creating a Record and creating the schema index values together.
@@ -869,10 +890,23 @@ components:
       - id
       - schema
       - url
-    PaginatedRecordList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Record'
+    PatchedRecord:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        schema:
+          type: string
+          format: uri
+        data:
+          type: object
+          description: The data that this record represents.
     RecordUpdate:
       type: object
       description: Serializer for replacing a record's encrypted payload and search index.
@@ -927,44 +961,10 @@ components:
       - id
       - schema
       - url
-    Record:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        schema:
-          type: string
-          format: uri
-        data:
-          type: object
-          description: The data that this record represents.
-      required:
-      - id
-      - schema
-      - url
-    PatchedRecord:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        schema:
-          type: string
-          format: uri
-        data:
-          type: object
-          description: The data that this record represents.
+    PaginatedRecordList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Record'
   securitySchemes:
     basicAuth:
       type: http

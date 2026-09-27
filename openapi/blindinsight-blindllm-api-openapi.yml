@@ -106,19 +106,6 @@ paths:
           description: No response body
 components:
   schemas:
-    BlindLLMInspectResponse:
-      type: object
-      description: Public catalog inspect response consumed by the dot-com hero.
-      properties:
-        datasets:
-          type: array
-          items:
-            type: object
-        catalog_snapshot_at:
-          type: string
-      required:
-      - catalog_snapshot_at
-      - datasets
     BlindLLMDemoResponse:
       type: object
       description: Public demo response — slim subset of `BlindLLMQuery`.
@@ -169,6 +156,19 @@ components:
       - request_id
       - schemas_queried
       - used_tool
+    BlindLLMInspectResponse:
+      type: object
+      description: Public catalog inspect response consumed by the dot-com hero.
+      properties:
+        datasets:
+          type: array
+          items:
+            type: object
+        catalog_snapshot_at:
+          type: string
+      required:
+      - catalog_snapshot_at
+      - datasets
     BlindLLMDemoRequest:
       type: object
       description: Public demo request — prompt plus an optional model selector.

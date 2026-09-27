@@ -443,6 +443,10 @@ paths:
           description: No materials were found.
 components:
   schemas:
+    PaginatedMaterialList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Material'
     Material:
       type: object
       description: Encrypted material object.
@@ -485,10 +489,6 @@ components:
       - request
       - uploaded_by
       - url
-    PaginatedMaterialList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Material'
     MaterialProof:
       type: object
       description: Proof for a material.

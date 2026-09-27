@@ -59,9 +59,10 @@ tags:
 - Privacy
 - Confidential Computing
 - Data
-- Machine-Learning
+- Machine Learning
 - Compliance
 - Cryptography
+- Real-Time
 tags_raw:
 - Company
 - Security
@@ -72,9 +73,11 @@ tags_raw:
 - Machine Learning
 - Compliance
 - Cryptography
+- Machine-Learning
+- Real-Time
 apis:
 - aid: blindinsight:blindinsight-accounts-api
-  name: BlindInsight accounts API
+  name: BlindInsight Accounts API
   description: The accounts API from BlindInsight — 10 operation(s) for accounts.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -88,7 +91,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-blindllm-api
-  name: BlindInsight blindllm API
+  name: BlindInsight Blindllm API
   description: The blindllm API from BlindInsight — 4 operation(s) for blindllm.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -100,7 +103,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-blindllm-queries-api
-  name: BlindInsight blindllm-queries API
+  name: BlindInsight Blindllm Queries API
   description: The blindllm-queries API from BlindInsight — 2 operation(s) for blindllm-queries.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -112,7 +115,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-csrf-api
-  name: BlindInsight csrf API
+  name: BlindInsight Csrf API
   description: The csrf API from BlindInsight — 1 operation(s) for csrf.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -126,7 +129,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-datasets-api
-  name: BlindInsight datasets API
+  name: BlindInsight Datasets API
   description: The datasets API from BlindInsight — 3 operation(s) for datasets.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -140,7 +143,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-delete-jobs-api
-  name: BlindInsight delete-jobs API
+  name: BlindInsight Delete Jobs API
   description: The delete-jobs API from BlindInsight — 1 operation(s) for delete-jobs.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -152,7 +155,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-files-api
-  name: BlindInsight files API
+  name: BlindInsight Files API
   description: The files API from BlindInsight — 2 operation(s) for files.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -166,7 +169,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-grants-api
-  name: BlindInsight grants API
+  name: BlindInsight Grants API
   description: The grants API from BlindInsight — 2 operation(s) for grants.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -180,7 +183,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-identities-api
-  name: BlindInsight identities API
+  name: BlindInsight Identities API
   description: The identities API from BlindInsight — 2 operation(s) for identities.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -194,7 +197,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-jobs-api
-  name: BlindInsight jobs API
+  name: BlindInsight Jobs API
   description: The jobs API from BlindInsight — 2 operation(s) for jobs.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -208,7 +211,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-materials-api
-  name: BlindInsight materials API
+  name: BlindInsight Materials API
   description: The materials API from BlindInsight — 8 operation(s) for materials.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -222,7 +225,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-organizations-api
-  name: BlindInsight organizations API
+  name: BlindInsight Organizations API
   description: The organizations API from BlindInsight — 15 operation(s) for organizations.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -236,7 +239,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-records-api
-  name: BlindInsight records API
+  name: BlindInsight Records API
   description: The records API from BlindInsight — 5 operation(s) for records.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -250,7 +253,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-requests-api
-  name: BlindInsight requests API
+  name: BlindInsight Requests API
   description: The requests API from BlindInsight — 4 operation(s) for requests.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -264,7 +267,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-schemas-api
-  name: BlindInsight schemas API
+  name: BlindInsight Schemas API
   description: The schemas API from BlindInsight — 4 operation(s) for schemas.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -278,7 +281,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-status-api
-  name: BlindInsight status API
+  name: BlindInsight Status API
   description: The status API from BlindInsight — 1 operation(s) for status.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -292,7 +295,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-token-api
-  name: BlindInsight token API
+  name: BlindInsight Token API
   description: The token API from BlindInsight — 3 operation(s) for token.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -306,7 +309,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-users-api
-  name: BlindInsight users API
+  name: BlindInsight Users API
   description: The users API from BlindInsight — 4 operation(s) for users.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io
@@ -320,7 +323,7 @@ apis:
   - type: APIReference
     url: https://api.app.blindinsight.io/api/docs/
 - aid: blindinsight:blindinsight-ws-api
-  name: BlindInsight ws API
+  name: BlindInsight Ws API
   description: The ws API from BlindInsight — 1 operation(s) for ws.
   humanURL: https://docs.blindinsight.io/api-reference/
   baseURL: https://api.app.blindinsight.io

@@ -150,6 +150,14 @@ components:
       required:
       - organization
       - prompt
+    DataModeEnum:
+      enum:
+      - proxy
+      - mock
+      type: string
+      description: '* `proxy` - proxy
+
+        * `mock` - mock'
     BlindLLMQuery:
       type: object
       description: Read-side serializer for `BlindLLMQuery`.
@@ -239,14 +247,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/BlindLLMQuery'
-    DataModeEnum:
-      enum:
-      - proxy
-      - mock
-      type: string
-      description: '* `proxy` - proxy
-
-        * `mock` - mock'
   securitySchemes:
     basicAuth:
       type: http

@@ -672,107 +672,95 @@ paths:
           description: ''
 components:
   schemas:
-    DefaultRegisterEmail:
-      type: object
-      description: Default serializer used for e-mail registration (e-mail change).
-      properties:
-        email:
-          type: string
-          format: email
-      required:
-      - email
-    AccountVerifiedError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
-    PasswordChanged:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Password changed successfully
-    PasswordReset:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Reset password successful
-    VerifiedEmailError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
-    LogoutSuccessful:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Logout successful
-    VerifyEmail:
-      type: object
-      properties:
-        user_id:
-          type: string
-        email:
-          type: string
-          format: email
-        timestamp:
-          type: integer
-        signature:
-          type: string
-      required:
-      - email
-      - signature
-      - timestamp
-      - user_id
-    ResetPasswordLinkSent:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Reset link sent
-    RegisteredEmail:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Register email link email sent
-    Logout:
-      type: object
-      properties:
-        revoke_token:
-          type: boolean
-          default: false
-    LogoutSuccessfulError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
     RegisteredEmailError:
       type: object
       properties:
         detail:
           type: string
           default: <Error message>
-    DefaultUserProfile:
+    DefaultLogin:
       type: object
-      description: 'Default serializer used for user profile. It will use these:
+      description: 'Default serializer used for user login. Please keep in mind that
+
+        the authentication is done by separate function defined by
+
+        :ref:`login-authenticator-setting` setting.
 
 
-        * User fields
+        By default :ref:`login-authenticator-setting` function will use
 
-        * :ref:`user-hidden-fields-setting` setting
+        :ref:`user-login-fields-setting` setting to extract the login field
 
-        * :ref:`user-public-fields-setting` setting
+        from the validated serializer data either by using the ''login'' key
 
-        * :ref:`user-editable-fields-setting` setting
+        (which is used here) or the specific login field name(s)
+
+        (e.g. ''username'', ''email'').
 
 
-        to automagically generate the required serializer fields.'
+        If you want different behavior, you need to
+
+        override :ref:`login-authenticator-setting` in your settings.'
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+      required:
+      - login
+      - password
+    DefaultSendResetPasswordLink:
+      type: object
+      description: 'Default serializer used for sending reset password link.
+
+
+        It will use :ref:`send-reset-password-link-serializer-use-email-setting`
+
+        setting.'
+      properties:
+        email:
+          type: string
+      required:
+      - email
+    PasswordChanged:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Password changed successfully
+    ResetPasswordLinkSent:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Reset link sent
+    LogoutSuccessfulError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    VerifiedEmail:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Email verified successfully
+    AccountVerified:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: User verified successfully
+    LogoutSuccessful:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Logout successful
+    OrganizationUserProfile:
+      type: object
+      description: Oerloads DefaultUserProfileSerializer to include organization_name and organization_slug.
       properties:
         email:
           type: string
@@ -790,26 +778,91 @@ components:
           type: string
           description: Last name (optional)
           maxLength: 150
+        organization_name:
+          type: string
+          readOnly: true
+          description: Organization Name
+          maxLength: 50
+        organization_slug:
+          type: string
+          readOnly: true
+          description: Organization URL
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        url:
+          type: string
+          format: uri
+          readOnly: true
       required:
       - email
       - id
-    AccountVerified:
+      - organization_name
+      - organization_slug
+      - url
+    LoginSuccessful:
       type: object
       properties:
         detail:
           type: string
-          default: User verified successfully
-    DefaultSendResetPasswordLink:
+          default: Login successful
+    ResetPasswordLinkSentError:
       type: object
-      description: 'Default serializer used for sending reset password link.
-
-
-        It will use :ref:`send-reset-password-link-serializer-use-email-setting`
-
-        setting.'
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    PasswordChangedError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    ResetPassword:
+      type: object
+      properties:
+        user_id:
+          type: string
+        timestamp:
+          type: integer
+        signature:
+          type: string
+        password:
+          type: string
+      required:
+      - password
+      - signature
+      - timestamp
+      - user_id
+    VerifyEmail:
+      type: object
+      properties:
+        user_id:
+          type: string
+        email:
+          type: string
+          format: email
+        timestamp:
+          type: integer
+        signature:
+          type: string
+      required:
+      - email
+      - signature
+      - timestamp
+      - user_id
+    Logout:
+      type: object
+      properties:
+        revoke_token:
+          type: boolean
+          default: false
+    DefaultRegisterEmail:
+      type: object
+      description: Default serializer used for e-mail registration (e-mail change).
       properties:
         email:
           type: string
+          format: email
       required:
       - email
     OrganizationRegisterUser:
@@ -871,46 +924,39 @@ components:
       - id
       - password
       - password_confirm
-    DefaultLogin:
+    RegisteredEmail:
       type: object
-      description: 'Default serializer used for user login. Please keep in mind that
-
-        the authentication is done by separate function defined by
-
-        :ref:`login-authenticator-setting` setting.
-
-
-        By default :ref:`login-authenticator-setting` function will use
-
-        :ref:`user-login-fields-setting` setting to extract the login field
-
-        from the validated serializer data either by using the ''login'' key
-
-        (which is used here) or the specific login field name(s)
-
-        (e.g. ''username'', ''email'').
-
-
-        If you want different behavior, you need to
-
-        override :ref:`login-authenticator-setting` in your settings.'
       properties:
-        login:
+        detail:
           type: string
-        password:
-          type: string
-      required:
-      - login
-      - password
-    PasswordChangedError:
+          default: Register email link email sent
+    LoginSuccessfulError:
       type: object
       properties:
         detail:
           type: string
           default: <Error message>
-    OrganizationUserProfile:
+    PasswordReset:
       type: object
-      description: Oerloads DefaultUserProfileSerializer to include organization_name and organization_slug.
+      properties:
+        detail:
+          type: string
+          default: Reset password successful
+    DefaultUserProfile:
+      type: object
+      description: 'Default serializer used for user profile. It will use these:
+
+
+        * User fields
+
+        * :ref:`user-hidden-fields-setting` setting
+
+        * :ref:`user-public-fields-setting` setting
+
+        * :ref:`user-editable-fields-setting` setting
+
+
+        to automagically generate the required serializer fields.'
       properties:
         email:
           type: string
@@ -928,63 +974,10 @@ components:
           type: string
           description: Last name (optional)
           maxLength: 150
-        organization_name:
-          type: string
-          readOnly: true
-          description: Organization Name
-          maxLength: 50
-        organization_slug:
-          type: string
-          readOnly: true
-          description: Organization URL
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-        url:
-          type: string
-          format: uri
-          readOnly: true
       required:
       - email
       - id
-      - organization_name
-      - organization_slug
-      - url
-    VerifyRegistration:
-      type: object
-      properties:
-        user_id:
-          type: string
-        timestamp:
-          type: integer
-        signature:
-          type: string
-      required:
-      - signature
-      - timestamp
-      - user_id
-    PasswordResetError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
-    ResetPassword:
-      type: object
-      properties:
-        user_id:
-          type: string
-        timestamp:
-          type: integer
-        signature:
-          type: string
-        password:
-          type: string
-      required:
-      - password
-      - signature
-      - timestamp
-      - user_id
-    LoginSuccessfulError:
+    VerifiedEmailError:
       type: object
       properties:
         detail:
@@ -1004,18 +997,19 @@ components:
       - old_password
       - password
       - password_confirm
-    VerifiedEmail:
+    VerifyRegistration:
       type: object
       properties:
-        detail:
+        user_id:
           type: string
-          default: Email verified successfully
-    ResetPasswordLinkSentError:
-      type: object
-      properties:
-        detail:
+        timestamp:
+          type: integer
+        signature:
           type: string
-          default: <Error message>
+      required:
+      - signature
+      - timestamp
+      - user_id
     PatchedDefaultUserProfile:
       type: object
       description: 'Default serializer used for user profile. It will use these:
@@ -1048,12 +1042,18 @@ components:
           type: string
           description: Last name (optional)
           maxLength: 150
-    LoginSuccessful:
+    AccountVerifiedError:
       type: object
       properties:
         detail:
           type: string
-          default: Login successful
+          default: <Error message>
+    PasswordResetError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
   securitySchemes:
     basicAuth:
       type: http

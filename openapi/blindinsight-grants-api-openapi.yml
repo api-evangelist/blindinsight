@@ -280,6 +280,10 @@ components:
           type: string
           format: uri
           description: The schema that this grant belongs to.
+    PaginatedGrantList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Grant'
     Grant:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -335,10 +339,6 @@ components:
       - schema
       - teams
       - url
-    PaginatedGrantList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Grant'
   securitySchemes:
     basicAuth:
       type: http

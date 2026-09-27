@@ -239,10 +239,33 @@ paths:
           description: ''
 components:
   schemas:
-    PaginatedDatasetList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Dataset'
+    PatchedDataset:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        name:
+          type: string
+          description: A human-readable name for this dataset.
+          maxLength: 127
+        slug:
+          type: string
+          description: A unique slug for this dataset.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          description: A longer description of the dataset.
+          maxLength: 255
     Dataset:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -275,33 +298,10 @@ components:
       - name
       - organization
       - url
-    PatchedDataset:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        name:
-          type: string
-          description: A human-readable name for this dataset.
-          maxLength: 127
-        slug:
-          type: string
-          description: A unique slug for this dataset.
-          maxLength: 127
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          description: A longer description of the dataset.
-          maxLength: 255
+    PaginatedDatasetList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Dataset'
   securitySchemes:
     basicAuth:
       type: http
