@@ -443,6 +443,18 @@ paths:
           description: No materials were found.
 components:
   schemas:
+    MaterialProof:
+      type: object
+      description: Proof for a material.
+      properties:
+        proof:
+          type: string
+          writeOnly: true
+          description: Proof for the material.
+          maxLength: 64
+          minLength: 64
+      required:
+      - proof
     PaginatedMaterialList:
       type: array
       items:
@@ -489,18 +501,6 @@ components:
       - request
       - uploaded_by
       - url
-    MaterialProof:
-      type: object
-      description: Proof for a material.
-      properties:
-        proof:
-          type: string
-          writeOnly: true
-          description: Proof for the material.
-          maxLength: 64
-          minLength: 64
-      required:
-      - proof
   securitySchemes:
     basicAuth:
       type: http

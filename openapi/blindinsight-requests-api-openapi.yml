@@ -296,6 +296,39 @@ paths:
           description: The requests were not fulfilled successfully.
 components:
   schemas:
+    PatchedRequest:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        identity:
+          $ref: '#/components/schemas/Identity'
+        schema:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        field_name:
+          type: string
+          maxLength: 255
+        expires:
+          type: string
+          format: date-time
+        received:
+          type: boolean
+        fulfilled:
+          type: boolean
     Request:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -338,74 +371,10 @@ components:
       - modified
       - schema
       - url
-    Identity:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        user:
-          type: string
-          format: uri
-        device_id:
-          type: string
-          description: The device ID associated with this identity.
-          maxLength: 255
-        primary_public_key:
-          type: string
-          description: The primary PGP key for the identity.
-        sub_public_key:
-          type: string
-          description: The PGP sub-key for the identity.
-      required:
-      - device_id
-      - id
-      - primary_public_key
-      - sub_public_key
-      - url
-      - user
     PaginatedRequestList:
       type: array
       items:
         $ref: '#/components/schemas/Request'
-    PatchedRequest:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        identity:
-          $ref: '#/components/schemas/Identity'
-        schema:
-          type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        field_name:
-          type: string
-          maxLength: 255
-        expires:
-          type: string
-          format: date-time
-        received:
-          type: boolean
-        fulfilled:
-          type: boolean
     Material:
       type: object
       description: Encrypted material object.
@@ -448,6 +417,37 @@ components:
       - request
       - uploaded_by
       - url
+    Identity:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        user:
+          type: string
+          format: uri
+        device_id:
+          type: string
+          description: The device ID associated with this identity.
+          maxLength: 255
+        primary_public_key:
+          type: string
+          description: The primary PGP key for the identity.
+        sub_public_key:
+          type: string
+          description: The PGP sub-key for the identity.
+      required:
+      - device_id
+      - id
+      - primary_public_key
+      - sub_public_key
+      - url
+      - user
   securitySchemes:
     basicAuth:
       type: http

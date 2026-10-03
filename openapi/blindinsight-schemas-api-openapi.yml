@@ -480,10 +480,6 @@ components:
         schema:
           type: object
           description: The JSON schema definition.
-    PaginatedSchemaList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Schema'
     Schema:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -519,6 +515,10 @@ components:
       - id
       - name
       - url
+    PaginatedSchemaList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Schema'
   securitySchemes:
     basicAuth:
       type: http

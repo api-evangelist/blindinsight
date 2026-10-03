@@ -815,9 +815,9 @@ paths:
           description: Proxy search failed
 components:
   schemas:
-    Record:
+    RecordUpdate:
       type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
+      description: Serializer for replacing a record's encrypted payload and search index.
       properties:
         id:
           type: string
@@ -831,8 +831,41 @@ components:
           format: uri
         data:
           type: object
-          description: The data that this record represents.
+        hashed_label_map:
+          type: object
+          example:
+            b92e749344f081287b034c57b7a02c77f:
+              hashed_value: b4486fe169178ec73d3dfad17227da820b89d27e1994f7
+              field_schema:
+                type: string
+            961298e17a97e7d0b847b8b743e179b2b:
+              hashed_value: 8d90841201a70611da0b964a743564e035fc
+              field_schema:
+                type: number
+                minimum: 0
+                maximum: 10
+          additionalProperties:
+            type: object
+            properties:
+              field_schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  minimum:
+                    type: number
+                    example: 0
+                  maximum:
+                    type: number
+                    example: 10
+                required:
+                - type
+              hashed_value:
+                type: string
+          writeOnly: true
       required:
+      - data
+      - hashed_label_map
       - id
       - schema
       - url
@@ -890,6 +923,10 @@ components:
       - id
       - schema
       - url
+    PaginatedRecordList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Record'
     PatchedRecord:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -907,9 +944,9 @@ components:
         data:
           type: object
           description: The data that this record represents.
-    RecordUpdate:
+    Record:
       type: object
-      description: Serializer for replacing a record's encrypted payload and search index.
+      description: HyperlinkedModelSerializer with `id` as the first field.
       properties:
         id:
           type: string
@@ -923,48 +960,11 @@ components:
           format: uri
         data:
           type: object
-        hashed_label_map:
-          type: object
-          example:
-            b92e749344f081287b034c57b7a02c77f:
-              hashed_value: b4486fe169178ec73d3dfad17227da820b89d27e1994f7
-              field_schema:
-                type: string
-            961298e17a97e7d0b847b8b743e179b2b:
-              hashed_value: 8d90841201a70611da0b964a743564e035fc
-              field_schema:
-                type: number
-                minimum: 0
-                maximum: 10
-          additionalProperties:
-            type: object
-            properties:
-              field_schema:
-                type: object
-                properties:
-                  type:
-                    type: string
-                  minimum:
-                    type: number
-                    example: 0
-                  maximum:
-                    type: number
-                    example: 10
-                required:
-                - type
-              hashed_value:
-                type: string
-          writeOnly: true
+          description: The data that this record represents.
       required:
-      - data
-      - hashed_label_map
       - id
       - schema
       - url
-    PaginatedRecordList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Record'
   securitySchemes:
     basicAuth:
       type: http

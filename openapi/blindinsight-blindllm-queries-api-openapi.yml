@@ -129,27 +129,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BlindLLMQueryCreate:
-      type: object
-      description: 'Write-side serializer — caller supplies `organization` + `prompt`.
-
-
-        `@<slug>` mentions in the prompt are parsed server-side into `hints`.
-
-        Optional `model` selects the LLM provider (openai / anthropic / gemini).'
-      properties:
-        organization:
-          type: string
-        prompt:
-          type: string
-          maxLength: 4000
-        model:
-          type: string
-          default: ''
-          maxLength: 64
-      required:
-      - organization
-      - prompt
     DataModeEnum:
       enum:
       - proxy
@@ -158,6 +137,10 @@ components:
       description: '* `proxy` - proxy
 
         * `mock` - mock'
+    PaginatedBlindLLMQueryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BlindLLMQuery'
     BlindLLMQuery:
       type: object
       description: Read-side serializer for `BlindLLMQuery`.
@@ -243,10 +226,27 @@ components:
       - tool_payload
       - url
       - used_tool
-    PaginatedBlindLLMQueryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/BlindLLMQuery'
+    BlindLLMQueryCreate:
+      type: object
+      description: 'Write-side serializer — caller supplies `organization` + `prompt`.
+
+
+        `@<slug>` mentions in the prompt are parsed server-side into `hints`.
+
+        Optional `model` selects the LLM provider (openai / anthropic / gemini).'
+      properties:
+        organization:
+          type: string
+        prompt:
+          type: string
+          maxLength: 4000
+        model:
+          type: string
+          default: ''
+          maxLength: 64
+      required:
+      - organization
+      - prompt
   securitySchemes:
     basicAuth:
       type: http

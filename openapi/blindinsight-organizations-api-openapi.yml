@@ -1539,11 +1539,117 @@ paths:
           description: ''
 components:
   schemas:
-    PaginatedTeamList:
+    PatchedOrganizationUserUpdate:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+        user:
+          type: string
+          format: uri
+          readOnly: true
+    PaginatedOrganizationUserList:
       type: array
       items:
-        $ref: '#/components/schemas/Team'
-    OrganizationInvitation:
+        $ref: '#/components/schemas/OrganizationUser'
+    Organization:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        owner:
+          type: string
+          format: uri
+        organization_users:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        subscription:
+          type: object
+          properties:
+            slug:
+              type: string
+              enum:
+              - build
+              - scale
+              - scale_plus
+              - enterprise
+              - none
+            display_name:
+              type: string
+            active:
+              type: boolean
+          required:
+          - slug
+          - display_name
+          - active
+          readOnly: true
+        name:
+          type: string
+          title: Display Name
+          description: A human-readable name for this organization
+          maxLength: 200
+        is_active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+          title: Organization Slug
+          description: A unique ID used to identify this organization
+          pattern: ^[-a-zA-Z0-9_]+$
+        stripe_customer_id:
+          type:
+          - string
+          - 'null'
+          description: Stripe customer id mirrored from settings['stripe']; indexed.
+          maxLength: 255
+      required:
+      - created
+      - id
+      - modified
+      - name
+      - organization_users
+      - owner
+      - slug
+      - subscription
+      - url
+    PatchedOrganizationInvitation:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
       properties:
@@ -1581,55 +1687,10 @@ components:
           - string
           - 'null'
           format: uri
-      required:
-      - created
-      - guid
-      - id
-      - invited_by
-      - invitee_identifier
-      - modified
-      - organization
-      - url
-    OrganizationUserUpdate:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-          readOnly: true
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        is_admin:
-          type: boolean
-        user:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - created
-      - id
-      - modified
-      - organization
-      - url
-      - user
-    PaginatedOrganizationList:
+    PaginatedTeamList:
       type: array
       items:
-        $ref: '#/components/schemas/Organization'
+        $ref: '#/components/schemas/Team'
     OrganizationInvitationCreate:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -1665,13 +1726,13 @@ components:
       - id
       - modified
       - url
-    PaginatedAuditLogEntryList:
+    PaginatedOrganizationInvitationList:
       type: array
       items:
-        $ref: '#/components/schemas/AuditLogEntry'
-    PatchedOrganizationUserUpdate:
+        $ref: '#/components/schemas/OrganizationInvitation'
+    Team:
       type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
+      description: Team object denoting permissions within an organization.
       properties:
         id:
           type: string
@@ -1683,35 +1744,30 @@ components:
         organization:
           type: string
           format: uri
-          readOnly: true
-        created:
+        members:
+          type: array
+          items:
+            type: string
+            format: uri
+        name:
           type: string
-          format: date-time
-          readOnly: true
-        modified:
+          description: A human-readable name for this team.
+          maxLength: 150
+        slug:
           type: string
-          format: date-time
-          readOnly: true
-        is_admin:
-          type: boolean
-        user:
-          type: string
-          format: uri
-          readOnly: true
-    ActionEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      description: '* `0` - create
-
-        * `1` - update
-
-        * `2` - delete
-
-        * `3` - access'
+          description: A unique slug for this team.
+          maxLength: 127
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - id
+      - members
+      - name
+      - organization
+      - url
+    PaginatedAuditLogEntryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AuditLogEntry'
     OrganizationUpdate:
       type: object
       description: 'Update an Organization, allowing for the owner to be changed.
@@ -1799,108 +1855,7 @@ components:
       - owner
       - subscription
       - url
-    PaginatedOrganizationInvitationList:
-      type: array
-      items:
-        $ref: '#/components/schemas/OrganizationInvitation'
-    OrganizationUser:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        is_admin:
-          type: boolean
-        user:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - created
-      - id
-      - modified
-      - organization
-      - url
-      - user
-    PatchedTeam:
-      type: object
-      description: Team object denoting permissions within an organization.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        members:
-          type: array
-          items:
-            type: string
-            format: uri
-        name:
-          type: string
-          description: A human-readable name for this team.
-          maxLength: 150
-        slug:
-          type: string
-          description: A unique slug for this team.
-          maxLength: 127
-          pattern: ^[-a-zA-Z0-9_]+$
-    OrganizationUserCreate:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        is_admin:
-          type: boolean
-          default: false
-        user:
-          type: string
-          format: uri
-      required:
-      - created
-      - id
-      - modified
-      - url
-      - user
-    PatchedOrganizationInvitation:
+    OrganizationInvitation:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
       properties:
@@ -1938,6 +1893,50 @@ components:
           - string
           - 'null'
           format: uri
+      required:
+      - created
+      - guid
+      - id
+      - invited_by
+      - invitee_identifier
+      - modified
+      - organization
+      - url
+    OrganizationUser:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+        user:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - created
+      - id
+      - modified
+      - organization
+      - url
+      - user
     AuditLogEntry:
       type: object
       description: Serializer for the AuditLogEntry model.
@@ -2001,6 +2000,132 @@ components:
       - model
       - object_pk
       - object_repr
+    ActionEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      description: '* `0` - create
+
+        * `1` - update
+
+        * `2` - delete
+
+        * `3` - access'
+    OrganizationUserCreate:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        is_admin:
+          type: boolean
+          default: false
+        user:
+          type: string
+          format: uri
+      required:
+      - created
+      - id
+      - modified
+      - url
+      - user
+    PatchedOrganizationUpdate:
+      type: object
+      description: 'Update an Organization, allowing for the owner to be changed.
+
+
+        Since an Owner is a 1:1 relationship, we can''t use the default
+
+        `NestedHyperlinkedRelatedField` and must change it to an `OrganizationUser`
+
+        queryset limited to organization members.
+
+
+        The `to_representation()` method is overloaded to return the correct URL for
+
+        the owner.'
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        owner:
+          type: string
+          format: uri
+        organization_users:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        subscription:
+          type: object
+          properties:
+            slug:
+              type: string
+              enum:
+              - build
+              - scale
+              - scale_plus
+              - enterprise
+              - none
+            display_name:
+              type: string
+            active:
+              type: boolean
+          required:
+          - slug
+          - display_name
+          - active
+          readOnly: true
+        slug:
+          type: string
+          title: Organization Slug
+          description: A unique ID used to identify this organization
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          title: Display Name
+          description: A human-readable name for this organization
+          maxLength: 200
+        is_active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        stripe_customer_id:
+          type:
+          - string
+          - 'null'
+          description: Stripe customer id mirrored from settings['stripe']; indexed.
+          maxLength: 255
     OrganizationCreate:
       type: object
       description: 'Organization create serializer.
@@ -2090,21 +2215,9 @@ components:
       - slug
       - subscription
       - url
-    PatchedOrganizationUpdate:
+    OrganizationUserUpdate:
       type: object
-      description: 'Update an Organization, allowing for the owner to be changed.
-
-
-        Since an Owner is a 1:1 relationship, we can''t use the default
-
-        `NestedHyperlinkedRelatedField` and must change it to an `OrganizationUser`
-
-        queryset limited to organization members.
-
-
-        The `to_representation()` method is overloaded to return the correct URL for
-
-        the owner.'
+      description: HyperlinkedModelSerializer with `id` as the first field.
       properties:
         id:
           type: string
@@ -2113,47 +2226,10 @@ components:
           type: string
           format: uri
           readOnly: true
-        owner:
+        organization:
           type: string
           format: uri
-        organization_users:
-          type: array
-          items:
-            type: string
-            format: uri
           readOnly: true
-        subscription:
-          type: object
-          properties:
-            slug:
-              type: string
-              enum:
-              - build
-              - scale
-              - scale_plus
-              - enterprise
-              - none
-            display_name:
-              type: string
-            active:
-              type: boolean
-          required:
-          - slug
-          - display_name
-          - active
-          readOnly: true
-        slug:
-          type: string
-          title: Organization Slug
-          description: A unique ID used to identify this organization
-          pattern: ^[-a-zA-Z0-9_]+$
-        name:
-          type: string
-          title: Display Name
-          description: A human-readable name for this organization
-          maxLength: 200
-        is_active:
-          type: boolean
         created:
           type: string
           format: date-time
@@ -2162,13 +2238,24 @@ components:
           type: string
           format: date-time
           readOnly: true
-        stripe_customer_id:
-          type:
-          - string
-          - 'null'
-          description: Stripe customer id mirrored from settings['stripe']; indexed.
-          maxLength: 255
-    Team:
+        is_admin:
+          type: boolean
+        user:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - created
+      - id
+      - modified
+      - organization
+      - url
+      - user
+    PaginatedOrganizationList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Organization'
+    PatchedTeam:
       type: object
       description: Team object denoting permissions within an organization.
       properties:
@@ -2196,93 +2283,6 @@ components:
           description: A unique slug for this team.
           maxLength: 127
           pattern: ^[-a-zA-Z0-9_]+$
-      required:
-      - id
-      - members
-      - name
-      - organization
-      - url
-    PaginatedOrganizationUserList:
-      type: array
-      items:
-        $ref: '#/components/schemas/OrganizationUser'
-    Organization:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        owner:
-          type: string
-          format: uri
-        organization_users:
-          type: array
-          items:
-            type: string
-            format: uri
-          readOnly: true
-        subscription:
-          type: object
-          properties:
-            slug:
-              type: string
-              enum:
-              - build
-              - scale
-              - scale_plus
-              - enterprise
-              - none
-            display_name:
-              type: string
-            active:
-              type: boolean
-          required:
-          - slug
-          - display_name
-          - active
-          readOnly: true
-        name:
-          type: string
-          title: Display Name
-          description: A human-readable name for this organization
-          maxLength: 200
-        is_active:
-          type: boolean
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        slug:
-          type: string
-          readOnly: true
-          title: Organization Slug
-          description: A unique ID used to identify this organization
-          pattern: ^[-a-zA-Z0-9_]+$
-        stripe_customer_id:
-          type:
-          - string
-          - 'null'
-          description: Stripe customer id mirrored from settings['stripe']; indexed.
-          maxLength: 255
-      required:
-      - created
-      - id
-      - modified
-      - name
-      - organization_users
-      - owner
-      - slug
-      - subscription
-      - url
   securitySchemes:
     basicAuth:
       type: http

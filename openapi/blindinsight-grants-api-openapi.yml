@@ -234,52 +234,6 @@ paths:
           description: No response body
 components:
   schemas:
-    PatchedGrant:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        organization:
-          type: string
-          format: uri
-        teams:
-          type: array
-          items:
-            type: string
-            format: uri
-        name:
-          type: string
-          description: A human-readable name for this grant.
-          maxLength: 255
-        codename:
-          type: string
-          description: The codename for this grant.
-          maxLength: 100
-        field_names:
-          type:
-          - object
-          - 'null'
-          description: 'Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{''field_name'': True, ...}`'
-        can_share_keys:
-          type: boolean
-          description: Whether this permission allows the user to share the key(s) assigned to this permission.
-        can_create_records:
-          type: boolean
-          description: Whether this permission allows the user to create records.
-        dataset:
-          type: string
-          format: uri
-          description: The dataset that this grant belongs to.
-        schema:
-          type: string
-          format: uri
-          description: The schema that this grant belongs to.
     PaginatedGrantList:
       type: array
       items:
@@ -339,6 +293,52 @@ components:
       - schema
       - teams
       - url
+    PatchedGrant:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        organization:
+          type: string
+          format: uri
+        teams:
+          type: array
+          items:
+            type: string
+            format: uri
+        name:
+          type: string
+          description: A human-readable name for this grant.
+          maxLength: 255
+        codename:
+          type: string
+          description: The codename for this grant.
+          maxLength: 100
+        field_names:
+          type:
+          - object
+          - 'null'
+          description: 'Field names of keys to request. None means allows all fields & query key; or a mapping of specific field names: `{''field_name'': True, ...}`'
+        can_share_keys:
+          type: boolean
+          description: Whether this permission allows the user to share the key(s) assigned to this permission.
+        can_create_records:
+          type: boolean
+          description: Whether this permission allows the user to create records.
+        dataset:
+          type: string
+          format: uri
+          description: The dataset that this grant belongs to.
+        schema:
+          type: string
+          format: uri
+          description: The schema that this grant belongs to.
   securitySchemes:
     basicAuth:
       type: http

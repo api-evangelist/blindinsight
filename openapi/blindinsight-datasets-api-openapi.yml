@@ -239,6 +239,10 @@ paths:
           description: ''
 components:
   schemas:
+    PaginatedDatasetList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Dataset'
     PatchedDataset:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -298,10 +302,6 @@ components:
       - name
       - organization
       - url
-    PaginatedDatasetList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Dataset'
   securitySchemes:
     basicAuth:
       type: http
