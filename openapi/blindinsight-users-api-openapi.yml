@@ -386,55 +386,6 @@ paths:
           description: ''
 components:
   schemas:
-    PatchedUser:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        has_identity:
-          type: boolean
-          readOnly: true
-        last_login:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        is_superuser:
-          type: boolean
-          title: Superuser status
-          description: Designates that this user has all permissions without explicitly assigning them.
-        email:
-          type: string
-          format: email
-          title: Email address
-          maxLength: 255
-        is_staff:
-          type: boolean
-          title: Staff status
-          description: Designates whether the user can log into this admin site.
-        is_active:
-          type: boolean
-          title: Active
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-        date_joined:
-          type: string
-          format: date-time
-        first_name:
-          type: string
-          description: First name (optional)
-          maxLength: 150
-        last_name:
-          type: string
-          description: Last name (optional)
-          maxLength: 150
-        settings:
-          type: object
     User:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -489,6 +440,55 @@ components:
       - has_identity
       - id
       - url
+    PatchedUser:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        has_identity:
+          type: boolean
+          readOnly: true
+        last_login:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly assigning them.
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 255
+        is_staff:
+          type: boolean
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+        settings:
+          type: object
     PaginatedUserList:
       type: array
       items:

@@ -234,10 +234,6 @@ paths:
           description: No response body
 components:
   schemas:
-    PaginatedGrantList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Grant'
     Grant:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -293,6 +289,10 @@ components:
       - schema
       - teams
       - url
+    PaginatedGrantList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Grant'
     PatchedGrant:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.

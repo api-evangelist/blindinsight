@@ -137,10 +137,6 @@ components:
       description: '* `proxy` - proxy
 
         * `mock` - mock'
-    PaginatedBlindLLMQueryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/BlindLLMQuery'
     BlindLLMQuery:
       type: object
       description: Read-side serializer for `BlindLLMQuery`.
@@ -226,6 +222,10 @@ components:
       - tool_payload
       - url
       - used_tool
+    PaginatedBlindLLMQueryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BlindLLMQuery'
     BlindLLMQueryCreate:
       type: object
       description: 'Write-side serializer — caller supplies `organization` + `prompt`.

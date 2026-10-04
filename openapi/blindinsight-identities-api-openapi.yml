@@ -318,10 +318,6 @@ components:
       - sub_public_key
       - url
       - user
-    PaginatedIdentityList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Identity'
     PatchedIdentity:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -346,6 +342,10 @@ components:
         sub_public_key:
           type: string
           description: The PGP sub-key for the identity.
+    PaginatedIdentityList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Identity'
   securitySchemes:
     basicAuth:
       type: http

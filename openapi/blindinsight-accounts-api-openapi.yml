@@ -672,12 +672,117 @@ paths:
           description: ''
 components:
   schemas:
+    DefaultUserProfile:
+      type: object
+      description: 'Default serializer used for user profile. It will use these:
+
+
+        * User fields
+
+        * :ref:`user-hidden-fields-setting` setting
+
+        * :ref:`user-public-fields-setting` setting
+
+        * :ref:`user-editable-fields-setting` setting
+
+
+        to automagically generate the required serializer fields.'
+      properties:
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Email address
+        id:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+      required:
+      - email
+      - id
+    LogoutSuccessful:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Logout successful
+    LoginSuccessfulError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    LoginSuccessful:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Login successful
+    PasswordReset:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Reset password successful
+    ResetPasswordLinkSentError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    VerifiedEmailError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    PasswordResetError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
+    ResetPassword:
+      type: object
+      properties:
+        user_id:
+          type: string
+        timestamp:
+          type: integer
+        signature:
+          type: string
+        password:
+          type: string
+      required:
+      - password
+      - signature
+      - timestamp
+      - user_id
+    VerifiedEmail:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Email verified successfully
     ResetPasswordLinkSent:
       type: object
       properties:
         detail:
           type: string
           default: Reset link sent
+    RegisteredEmailError:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: <Error message>
     VerifyRegistration:
       type: object
       properties:
@@ -691,33 +796,59 @@ components:
       - signature
       - timestamp
       - user_id
-    LoginSuccessful:
+    PasswordChangedError:
       type: object
       properties:
         detail:
           type: string
-          default: Login successful
-    Logout:
-      type: object
-      properties:
-        revoke_token:
-          type: boolean
-          default: false
+          default: <Error message>
     PasswordChanged:
       type: object
       properties:
         detail:
           type: string
           default: Password changed successfully
-    DefaultRegisterEmail:
+    OrganizationUserProfile:
       type: object
-      description: Default serializer used for e-mail registration (e-mail change).
+      description: Oerloads DefaultUserProfileSerializer to include organization_name and organization_slug.
       properties:
         email:
           type: string
           format: email
+          readOnly: true
+          title: Email address
+        id:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          description: First name (optional)
+          maxLength: 150
+        last_name:
+          type: string
+          description: Last name (optional)
+          maxLength: 150
+        organization_name:
+          type: string
+          readOnly: true
+          description: Organization Name
+          maxLength: 50
+        organization_slug:
+          type: string
+          readOnly: true
+          description: Organization URL
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        url:
+          type: string
+          format: uri
+          readOnly: true
       required:
       - email
+      - id
+      - organization_name
+      - organization_slug
+      - url
     OrganizationRegisterUser:
       type: object
       description: 'Overloads DefaultRegisterUserSerializer for the Blind Insight register
@@ -777,6 +908,12 @@ components:
       - id
       - password
       - password_confirm
+    RegisteredEmail:
+      type: object
+      properties:
+        detail:
+          type: string
+          default: Register email link email sent
     ChangePassword:
       type: object
       properties:
@@ -791,59 +928,27 @@ components:
       - old_password
       - password
       - password_confirm
-    OrganizationUserProfile:
+    DefaultRegisterEmail:
       type: object
-      description: Oerloads DefaultUserProfileSerializer to include organization_name and organization_slug.
+      description: Default serializer used for e-mail registration (e-mail change).
       properties:
         email:
           type: string
           format: email
-          readOnly: true
-          title: Email address
-        id:
-          type: string
-          readOnly: true
-        first_name:
-          type: string
-          description: First name (optional)
-          maxLength: 150
-        last_name:
-          type: string
-          description: Last name (optional)
-          maxLength: 150
-        organization_name:
-          type: string
-          readOnly: true
-          description: Organization Name
-          maxLength: 50
-        organization_slug:
-          type: string
-          readOnly: true
-          description: Organization URL
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-        url:
-          type: string
-          format: uri
-          readOnly: true
       required:
       - email
-      - id
-      - organization_name
-      - organization_slug
-      - url
-    VerifiedEmailError:
+    AccountVerified:
       type: object
       properties:
         detail:
           type: string
-          default: <Error message>
-    PasswordChangedError:
+          default: User verified successfully
+    Logout:
       type: object
       properties:
-        detail:
-          type: string
-          default: <Error message>
+        revoke_token:
+          type: boolean
+          default: false
     VerifyEmail:
       type: object
       properties:
@@ -861,12 +966,12 @@ components:
       - signature
       - timestamp
       - user_id
-    AccountVerified:
+    LogoutSuccessfulError:
       type: object
       properties:
         detail:
           type: string
-          default: User verified successfully
+          default: <Error message>
     AccountVerifiedError:
       type: object
       properties:
@@ -905,24 +1010,6 @@ components:
           type: string
           description: Last name (optional)
           maxLength: 150
-    PasswordResetError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
-    ResetPasswordLinkSentError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
-    LogoutSuccessful:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Logout successful
     DefaultLogin:
       type: object
       description: 'Default serializer used for user login. Please keep in mind that
@@ -954,59 +1041,6 @@ components:
       required:
       - login
       - password
-    LoginSuccessfulError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
-    RegisteredEmail:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Register email link email sent
-    VerifiedEmail:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Email verified successfully
-    DefaultUserProfile:
-      type: object
-      description: 'Default serializer used for user profile. It will use these:
-
-
-        * User fields
-
-        * :ref:`user-hidden-fields-setting` setting
-
-        * :ref:`user-public-fields-setting` setting
-
-        * :ref:`user-editable-fields-setting` setting
-
-
-        to automagically generate the required serializer fields.'
-      properties:
-        email:
-          type: string
-          format: email
-          readOnly: true
-          title: Email address
-        id:
-          type: string
-          readOnly: true
-        first_name:
-          type: string
-          description: First name (optional)
-          maxLength: 150
-        last_name:
-          type: string
-          description: Last name (optional)
-          maxLength: 150
-      required:
-      - email
-      - id
     DefaultSendResetPasswordLink:
       type: object
       description: 'Default serializer used for sending reset password link.
@@ -1020,40 +1054,6 @@ components:
           type: string
       required:
       - email
-    RegisteredEmailError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
-    PasswordReset:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: Reset password successful
-    LogoutSuccessfulError:
-      type: object
-      properties:
-        detail:
-          type: string
-          default: <Error message>
-    ResetPassword:
-      type: object
-      properties:
-        user_id:
-          type: string
-        timestamp:
-          type: integer
-        signature:
-          type: string
-        password:
-          type: string
-      required:
-      - password
-      - signature
-      - timestamp
-      - user_id
   securitySchemes:
     basicAuth:
       type: http

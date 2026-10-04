@@ -329,6 +329,10 @@ components:
           type: boolean
         fulfilled:
           type: boolean
+    PaginatedRequestList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Request'
     Request:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -371,10 +375,6 @@ components:
       - modified
       - schema
       - url
-    PaginatedRequestList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Request'
     Material:
       type: object
       description: Encrypted material object.
