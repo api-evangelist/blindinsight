@@ -1,0 +1,12 @@
+{
+ "url": "https://api.app.blindinsight.io/api/schema/",
+ "requested_url": "https://api.app.blindinsight.io/api/schema/",
+ "status": 200,
+ "content_type": "application/yaml; charset=utf-8",
+ "bytes": 219955,
+ "sha256": "4f46743532b774ca2c40621d179e6419f6bf6bd2a8ad9f6e8621f3a69cb079c4",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.984), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
