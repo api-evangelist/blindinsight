@@ -450,6 +450,10 @@ paths:
           description: Proxy decrypt failed
 components:
   schemas:
+    PaginatedSchemaList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Schema'
     PatchedSchema:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -515,10 +519,6 @@ components:
       - id
       - name
       - url
-    PaginatedSchemaList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Schema'
   securitySchemes:
     basicAuth:
       type: http

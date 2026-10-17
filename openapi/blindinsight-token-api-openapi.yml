@@ -133,26 +133,6 @@ paths:
           description: ''
 components:
   schemas:
-    TokenVerify:
-      type: object
-      properties:
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - token
-    TokenRefresh:
-      type: object
-      properties:
-        access:
-          type: string
-          readOnly: true
-        refresh:
-          type: string
-          writeOnly: true
-      required:
-      - access
-      - refresh
     TokenObtainPair:
       type: object
       properties:
@@ -172,6 +152,26 @@ components:
       - access
       - email
       - password
+      - refresh
+    TokenVerify:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - token
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
       - refresh
   securitySchemes:
     basicAuth:

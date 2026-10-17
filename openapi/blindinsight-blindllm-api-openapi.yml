@@ -106,40 +106,6 @@ paths:
           description: No response body
 components:
   schemas:
-    BlindLLMDemoRequest:
-      type: object
-      description: Public demo request — prompt plus an optional model selector.
-      properties:
-        prompt:
-          type: string
-          maxLength: 1000
-        model:
-          type: string
-          default: ''
-          maxLength: 64
-        client_proxy:
-          type: string
-          default: ''
-          maxLength: 64
-        demo_user_id:
-          type: string
-          default: ''
-          maxLength: 128
-      required:
-      - prompt
-    BlindLLMInspectResponse:
-      type: object
-      description: Public catalog inspect response consumed by the dot-com hero.
-      properties:
-        datasets:
-          type: array
-          items:
-            type: object
-        catalog_snapshot_at:
-          type: string
-      required:
-      - catalog_snapshot_at
-      - datasets
     BlindLLMDemoResponse:
       type: object
       description: Public demo response — slim subset of `BlindLLMQuery`.
@@ -190,6 +156,40 @@ components:
       - request_id
       - schemas_queried
       - used_tool
+    BlindLLMDemoRequest:
+      type: object
+      description: Public demo request — prompt plus an optional model selector.
+      properties:
+        prompt:
+          type: string
+          maxLength: 1000
+        model:
+          type: string
+          default: ''
+          maxLength: 64
+        client_proxy:
+          type: string
+          default: ''
+          maxLength: 64
+        demo_user_id:
+          type: string
+          default: ''
+          maxLength: 128
+      required:
+      - prompt
+    BlindLLMInspectResponse:
+      type: object
+      description: Public catalog inspect response consumed by the dot-com hero.
+      properties:
+        datasets:
+          type: array
+          items:
+            type: object
+        catalog_snapshot_at:
+          type: string
+      required:
+      - catalog_snapshot_at
+      - datasets
   securitySchemes:
     basicAuth:
       type: http

@@ -296,85 +296,10 @@ paths:
           description: The requests were not fulfilled successfully.
 components:
   schemas:
-    PatchedRequest:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        identity:
-          $ref: '#/components/schemas/Identity'
-        schema:
-          type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        field_name:
-          type: string
-          maxLength: 255
-        expires:
-          type: string
-          format: date-time
-        received:
-          type: boolean
-        fulfilled:
-          type: boolean
     PaginatedRequestList:
       type: array
       items:
         $ref: '#/components/schemas/Request'
-    Request:
-      type: object
-      description: HyperlinkedModelSerializer with `id` as the first field.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        identity:
-          $ref: '#/components/schemas/Identity'
-        schema:
-          type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        modified:
-          type: string
-          format: date-time
-          readOnly: true
-        field_name:
-          type: string
-          maxLength: 255
-        expires:
-          type: string
-          format: date-time
-        received:
-          type: boolean
-        fulfilled:
-          type: boolean
-      required:
-      - created
-      - expires
-      - field_name
-      - id
-      - identity
-      - modified
-      - schema
-      - url
     Material:
       type: object
       description: Encrypted material object.
@@ -417,6 +342,48 @@ components:
       - request
       - uploaded_by
       - url
+    Request:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        identity:
+          $ref: '#/components/schemas/Identity'
+        schema:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        field_name:
+          type: string
+          maxLength: 255
+        expires:
+          type: string
+          format: date-time
+        received:
+          type: boolean
+        fulfilled:
+          type: boolean
+      required:
+      - created
+      - expires
+      - field_name
+      - id
+      - identity
+      - modified
+      - schema
+      - url
     Identity:
       type: object
       description: HyperlinkedModelSerializer with `id` as the first field.
@@ -448,6 +415,39 @@ components:
       - sub_public_key
       - url
       - user
+    PatchedRequest:
+      type: object
+      description: HyperlinkedModelSerializer with `id` as the first field.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        identity:
+          $ref: '#/components/schemas/Identity'
+        schema:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        field_name:
+          type: string
+          maxLength: 255
+        expires:
+          type: string
+          format: date-time
+        received:
+          type: boolean
+        fulfilled:
+          type: boolean
   securitySchemes:
     basicAuth:
       type: http
