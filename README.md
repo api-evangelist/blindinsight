@@ -64,6 +64,161 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-BlindInsight is a company surfaced as a portfolio company of 500-global and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+BlindInsight (Blind Insight) is an end-to-end encrypted datastore and privacy-preserving data-analysis platform. It lets teams encrypt, ingest, search, and run machine learning and LLM queries over fully encrypted records without ever exposing plaintext, using a locally deployed Blind Proxy that transparently performs client-side encryption and decryption against the cloud REST API. The platform provides schema-constrained encrypted fields, searchable encryption, key sharing and keyring management, role- and team-based access grants, organization and user management, resumable batch ingestion, and a BlindLLM interface for prompting models over protected data — aimed at regulated, compliance-sensitive workloads.
 
-Backed by: 500-global — https://blindinsight.io
+**Areas:** Company · Security · Encryption · Privacy · Confidential Computing · Data · Machine Learning · Compliance · Cryptography · Real-Time
+
+## BlindInsight on APIs.io
+
+Everything profiled for BlindInsight is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/blindinsight/](https://apis.io/providers/blindinsight/)** — or go straight to one of the APIs or properties below.
+
+### APIs (19)
+
+- [BlindInsight Accounts API](https://apis.io/apis/blindinsight/blindinsight-accounts-api/) — The accounts API from BlindInsight — 10 operation(s) for accounts.
+- [BlindInsight Blindllm API](https://apis.io/apis/blindinsight/blindinsight-blindllm-api/) — The blindllm API from BlindInsight — 4 operation(s) for blindllm.
+- [BlindInsight Blindllm Queries API](https://apis.io/apis/blindinsight/blindinsight-blindllm-queries-api/) — The blindllm-queries API from BlindInsight — 2 operation(s) for blindllm-queries.
+- [BlindInsight Csrf API](https://apis.io/apis/blindinsight/blindinsight-csrf-api/) — The csrf API from BlindInsight — 1 operation(s) for csrf.
+- [BlindInsight Datasets API](https://apis.io/apis/blindinsight/blindinsight-datasets-api/) — The datasets API from BlindInsight — 3 operation(s) for datasets.
+- [BlindInsight Delete Jobs API](https://apis.io/apis/blindinsight/blindinsight-delete-jobs-api/) — The delete-jobs API from BlindInsight — 1 operation(s) for delete-jobs.
+- [BlindInsight Files API](https://apis.io/apis/blindinsight/blindinsight-files-api/) — The files API from BlindInsight — 2 operation(s) for files.
+- [BlindInsight Grants API](https://apis.io/apis/blindinsight/blindinsight-grants-api/) — The grants API from BlindInsight — 2 operation(s) for grants.
+- [BlindInsight Identities API](https://apis.io/apis/blindinsight/blindinsight-identities-api/) — The identities API from BlindInsight — 2 operation(s) for identities.
+- [BlindInsight Jobs API](https://apis.io/apis/blindinsight/blindinsight-jobs-api/) — The jobs API from BlindInsight — 2 operation(s) for jobs.
+- [BlindInsight Materials API](https://apis.io/apis/blindinsight/blindinsight-materials-api/) — The materials API from BlindInsight — 8 operation(s) for materials.
+- [BlindInsight Organizations API](https://apis.io/apis/blindinsight/blindinsight-organizations-api/) — The organizations API from BlindInsight — 15 operation(s) for organizations.
+- [BlindInsight Records API](https://apis.io/apis/blindinsight/blindinsight-records-api/) — The records API from BlindInsight — 5 operation(s) for records.
+- [BlindInsight Requests API](https://apis.io/apis/blindinsight/blindinsight-requests-api/) — The requests API from BlindInsight — 4 operation(s) for requests.
+- [BlindInsight Schemas API](https://apis.io/apis/blindinsight/blindinsight-schemas-api/) — The schemas API from BlindInsight — 4 operation(s) for schemas.
+- [BlindInsight Status API](https://apis.io/apis/blindinsight/blindinsight-status-api/) — The status API from BlindInsight — 1 operation(s) for status.
+- [BlindInsight Token API](https://apis.io/apis/blindinsight/blindinsight-token-api/) — The token API from BlindInsight — 3 operation(s) for token.
+- [BlindInsight Users API](https://apis.io/apis/blindinsight/blindinsight-users-api/) — The users API from BlindInsight — 4 operation(s) for users.
+- [BlindInsight Ws API](https://apis.io/apis/blindinsight/blindinsight-ws-api/) — The ws API from BlindInsight — 1 operation(s) for ws.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Blind Insight Jobs WebSocket](https://apis.io/asyncapis/blindinsight/blindinsight-jobs-asyncapi/)
+
+#### Event channels (1)
+
+Individual events and webhooks the provider emits.
+
+- [/api/ws/jobs/{job_id}/](https://apis.io/channels/blindinsight/api-ws-jobs-job-id/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [blindinsight](https://apis.io/servers/blindinsight/blindinsight/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Blindinsight Agentic Access](https://apis.io/agentic-access/blindinsight/blindinsight-agentic-access/)
+
+#### Collections (19)
+
+Postman and Open Collection request collections.
+
+- [Blind Insight REST accounts API](https://apis.io/collections/blindinsight/open-blindinsight-accounts-api/)
+- [Blind Insight REST accounts blindllm API](https://apis.io/collections/blindinsight/open-blindinsight-blindllm-api/)
+- [Blind Insight REST accounts blindllm-queries API](https://apis.io/collections/blindinsight/open-blindinsight-blindllm-queries-api/)
+- [Blind Insight REST accounts csrf API](https://apis.io/collections/blindinsight/open-blindinsight-csrf-api/)
+- [Blind Insight REST accounts datasets API](https://apis.io/collections/blindinsight/open-blindinsight-datasets-api/)
+- [Blind Insight REST accounts delete-jobs API](https://apis.io/collections/blindinsight/open-blindinsight-delete-jobs-api/)
+- [Blind Insight REST accounts files API](https://apis.io/collections/blindinsight/open-blindinsight-files-api/)
+- [Blind Insight REST accounts grants API](https://apis.io/collections/blindinsight/open-blindinsight-grants-api/)
+- [Blind Insight REST accounts identities API](https://apis.io/collections/blindinsight/open-blindinsight-identities-api/)
+- [Blind Insight REST accounts jobs API](https://apis.io/collections/blindinsight/open-blindinsight-jobs-api/)
+- [Blind Insight REST accounts materials API](https://apis.io/collections/blindinsight/open-blindinsight-materials-api/)
+- [Blind Insight REST accounts organizations API](https://apis.io/collections/blindinsight/open-blindinsight-organizations-api/)
+- [Blind Insight REST accounts records API](https://apis.io/collections/blindinsight/open-blindinsight-records-api/)
+- [Blind Insight REST accounts requests API](https://apis.io/collections/blindinsight/open-blindinsight-requests-api/)
+- [Blind Insight REST accounts schemas API](https://apis.io/collections/blindinsight/open-blindinsight-schemas-api/)
+- [Blind Insight REST accounts status API](https://apis.io/collections/blindinsight/open-blindinsight-status-api/)
+- [Blind Insight REST accounts token API](https://apis.io/collections/blindinsight/open-blindinsight-token-api/)
+- [Blind Insight REST accounts users API](https://apis.io/collections/blindinsight/open-blindinsight-users-api/)
+- [Blind Insight REST accounts ws API](https://apis.io/collections/blindinsight/open-blindinsight-ws-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Blindinsight Openapi Overlay](https://apis.io/overlays/blindinsight/blindinsight-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Blindinsight Authentication](https://apis.io/security/blindinsight/blindinsight-authentication/)
+- [Blindinsight Domain Security](https://apis.io/security/blindinsight/blindinsight-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://blindinsight.io)
+- [Documentation](https://docs.blindinsight.io/)
+- [Getting started](https://docs.blindinsight.io/getting-started/)
+- [API reference](https://docs.blindinsight.io/api-reference/)
+- [Sign up](https://app.blindinsight.io/)
+- [GitHub](https://github.com/blind-insight)
+
+## API Evangelist rating
+
+**Kin Score 35.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 51.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 0.0 |
+
+**Agent readiness 25.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/blindinsight/](https://apis.io/providers/blindinsight/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BlindInsight: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/blindinsight/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
